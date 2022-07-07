@@ -11,7 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Landing, NotFound } from './pages';
+import { Dashboard, Landing, NotFound, Register, Login } from './pages';
 
 
 
@@ -20,7 +20,10 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Landing />} />
+          <Route index element={<Dashboard />} />
+          <Route path='landing' element={<Landing />} />
+          <Route path='register' element={<Register />} />
+          <Route path='login' element={<Login />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
