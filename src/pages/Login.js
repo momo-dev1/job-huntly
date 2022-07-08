@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../store/userSlice'
 
 const Login = () => {
     const [error, setError] = useState(false);
     const [formFields, setFormFields] = useState({ email: "", password: "" });
     const isInvalid = formFields.email === "" || formFields.password === "";
+    const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -17,14 +20,14 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formFields);
+        dispatch(loginUser(formFields));
     };
 
     return (
 
         <FormWrapper>
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[600px]">
-                <div className="px-6 py-8 bg-white shadow w-[300px] sm:w-[400px] ">
+                <div className="px-6 py-8 bg-white shadow w-[300px] sm:w-[400px] rounded-lg">
                     <div>
                         logo
                     </div>
@@ -65,7 +68,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="px-4 py-4 mt-3 text-gray-600 font-semibold text-center bg-white shadow sm:px-10">
+            <div className="px-4 py-4 mt-3 text-gray-600 font-semibold text-center bg-white shadow sm:px-10 rounded-lg">
                 Need an account?
                 <Link to="/register">
                     <span className="ml-2 text-blue-600 cursor-pointer">

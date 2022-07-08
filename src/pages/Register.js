@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { FormField, SubmitButton, FormWrapper } from "../components"
+import { useDispatch } from 'react-redux'
+import { registerUser } from '../store/userSlice'
 
 const schema = yup.object().shape({
     username: yup.string().min(3).max(20).required(),
@@ -16,15 +18,15 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors, isValid } } = useForm({
         resolver: yupResolver(schema),
     });
-
-    const onSubmit = (data) => console.log(data);
+    const dispatch = useDispatch()
+    const onSubmit = (data) => dispatch(registerUser(data))
 
 
     return (
 
         <FormWrapper>
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[600px]">
-                <div className="px-6 py-8 bg-white shadow w-[300px] sm:w-[400px] ">
+            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[600px] ">
+                <div className="px-6 py-8 bg-white shadow w-[300px] sm:w-[400px] rounded-lg">
                     <div>
                         logo
                     </div>
@@ -116,7 +118,7 @@ const Register = () => {
                 </div>
             </div>
             <div className="px-4 py-4 mt-3 font-semibold text-center  bg-white
-                  text-gray-600 shadow sm:px-10">
+                  text-gray-600 shadow sm:px-10 rounded-lg">
                 Have an account?
                 <Link to="/login">
                     <span className="ml-2  text-blue-600  cursor-pointer">
