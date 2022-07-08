@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../store/userSlice'
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state.user)
+    const navigate = useNavigate()
     const [error, setError] = useState(false);
     const [formFields, setFormFields] = useState({ email: "", password: "" });
     const isInvalid = formFields.email === "" || formFields.password === "";
-    const dispatch = useDispatch()
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -22,6 +25,14 @@ const Login = () => {
         e.preventDefault();
         dispatch(loginUser(formFields));
     };
+
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
+        }
+    }, [user, navigate])
 
     return (
 
