@@ -55,7 +55,6 @@ const Login = () => {
                             type="password"
                         />
 
-
                         <SubmitButton name="Log In" isInvalid={isInvalid} />
                     </form>
 
