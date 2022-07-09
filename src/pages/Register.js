@@ -44,14 +44,14 @@ const Register = () => {
                             name="email"
                             type="text"
                         >
-                            {/* <div className="flex flex-col gap-1 mt-1">
-                                            {errors.email?.message && (
-                                                <span className="text-sm text-red-500">
-                                                    {errors?.email?.message}
-                                                </span>
-                                            )}
+                            <div className="flex flex-col gap-1 mt-1">
+                                {errors.email?.message && (
+                                    <span className="text-sm text-red-500">
+                                        {errors?.email?.message}
+                                    </span>
+                                )}
 
-                                        </div> */}
+                            </div>
                         </FormField>
 
                         <FormField FormField
@@ -63,11 +63,11 @@ const Register = () => {
                             name="username"
                             type="text"
                         >
-                            {/* {errors?.username?.message && (
-                                            <span className="text-sm text-red-500">
-                                                {errors?.username?.message}
-                                            </span>
-                                        )} */}
+                            {errors?.username?.message && (
+                                <span className="text-sm text-red-500">
+                                    {errors?.username?.message}
+                                </span>
+                            )}
                         </FormField>
 
 
@@ -81,11 +81,11 @@ const Register = () => {
                             name="password"
                             type="password"
                         >
-                            {/* {errors?.password?.message && (
-                                            <span className="text-sm text-red-500">
-                                                {errors?.password?.message}
-                                            </span>
-                                        )} */}
+                            {errors?.password?.message && (
+                                <span className="text-sm text-red-500">
+                                    {errors?.password?.message}
+                                </span>
+                            )}
                         </FormField>
 
                         <FormField
@@ -97,11 +97,11 @@ const Register = () => {
                             name="confirm password"
                             type="password"
                         >
-                            {/* {errors.confirmPassword?.message && (
-                                            <span className="text-sm text-red-500">
-                                                {errors.confirmPassword?.message}
-                                            </span>
-                                        )} */}
+                            {errors.confirmPassword?.message && (
+                                <span className="text-sm text-red-500">
+                                    {errors.confirmPassword?.message}
+                                </span>
+                            )}
                         </FormField>
 
 
