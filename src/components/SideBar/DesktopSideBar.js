@@ -1,21 +1,18 @@
 import { Link } from 'react-router-dom'
 
 import {
-    CalendarIcon,
+    BriefcaseIcon,
     ChartBarIcon,
-    FolderIcon,
-    HomeIcon,
-    InboxIcon,
-    UsersIcon,
+    UserCircleIcon,
+    PlusCircleIcon
+
 } from '@heroicons/react/outline'
 
 const navigation = [
-    { name: 'Dashboard', path: '#', icon: HomeIcon, current: true },
-    { name: 'Team', path: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', path: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', path: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', path: '#', icon: InboxIcon, current: false },
-    { name: 'Reports', path: '#', icon: ChartBarIcon, current: false },
+    { name: 'Job Listing', path: 'job-listing', icon: BriefcaseIcon, current: true },
+    { name: 'Add Job', path: 'add-job', icon: PlusCircleIcon, current: false },
+    { name: 'Profile', path: 'profile', icon: UserCircleIcon, current: false },
+    { name: 'Reports', path: 'reports', icon: ChartBarIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -24,7 +21,6 @@ function classNames(...classes) {
 
 function DesktopSideBar({ user }) {
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4">

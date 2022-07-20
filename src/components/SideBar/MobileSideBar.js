@@ -2,23 +2,20 @@ import { Link } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
-    CalendarIcon,
+
     ChartBarIcon,
-    FolderIcon,
-    HomeIcon,
-    InboxIcon,
-    UsersIcon,
+    BriefcaseIcon,
+    UserCircleIcon,
+    PlusCircleIcon,
     XIcon,
 } from '@heroicons/react/outline'
 
 
 const navigation = [
-    { name: 'Dashboard', path: '#', icon: HomeIcon, current: true },
-    { name: 'Team', path: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', path: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', path: '#', icon: CalendarIcon, current: false },
-    { name: 'Documents', path: '#', icon: InboxIcon, current: false },
-    { name: 'Reports', path: '#', icon: ChartBarIcon, current: false },
+    { name: 'Job Listing', path: 'job-listing', icon: BriefcaseIcon, current: true },
+    { name: 'Add Job', path: 'add-job', icon: PlusCircleIcon, current: false },
+    { name: 'Profile', path: 'profile', icon: UserCircleIcon, current: false },
+    { name: 'Reports', path: 'reports', icon: ChartBarIcon, current: false },
 ]
 
 function classNames(...classes) {
