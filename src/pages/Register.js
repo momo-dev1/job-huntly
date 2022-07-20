@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom"
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { FormField, SubmitButton, FormWrapper } from "../components"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../store/userSlice'
 
-const schema = yup.object().shape({
-    username: yup.string().min(3).max(20).required(),
-    email: yup.string().email().required(),
-    password: yup.string().min(4).max(30).required(),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
-});
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors, isValid } } = useForm({
-        resolver: yupResolver(schema),
-    });
+    const { user, err, isLoading } = useSelector(state => state.user)
+    const [formFields, setFormFields] = useState({ email: "", username: "", password: "", confirmPassword: "" });
+    const [emptyFields, setEmptyFields] = useState("");
+    const isInvalid = formFields.email === "" || formFields.password === "";
     const dispatch = useDispatch()
-    const onSubmit = (data) => dispatch(registerUser(data))
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormFields((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isInvalid) {
+            setEmptyFields("Please fill out all fields");
+            return
+        }
+        dispatch(registerUser(formFields));
+    };
 
     return (
 
@@ -32,80 +39,51 @@ const Register = () => {
                     </div>
 
                     <form
-                        onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={handleSubmit}
                         className="mt-8 space-y-6"
                     >
+                        {err ? (
+                            <span className="block text-sm text-center text-red-primary">
+                                {err}
+                            </span>
+                        ) : null}
+                        {emptyFields ? (
+                            <span className="block text-sm text-center text-red-primary mt-2">
+                                {emptyFields}
+                            </span>
+                        ) : null}
+
                         <FormField FormField
                             id="email"
                             label="Email address"
-                            register={register}
-                            isRegister={true}
-                            registerName="email"
+                            value={formFields.email}
+                            onChange={handleInputChange}
                             name="email"
-                            type="text"
+                            type="email"
                         >
-                            <div className="flex flex-col gap-1 mt-1">
-                                {errors.email?.message && (
-                                    <span className="text-sm text-red-500">
-                                        {errors?.email?.message}
-                                    </span>
-                                )}
-
-                            </div>
                         </FormField>
 
                         <FormField FormField
                             id="username"
                             label="Username"
-                            register={register}
-                            isRegister={true}
-                            registerName="username"
+                            value={formFields.username}
+                            onChange={handleInputChange}
                             name="username"
                             type="text"
                         >
-                            {errors?.username?.message && (
-                                <span className="text-sm text-red-500">
-                                    {errors?.username?.message}
-                                </span>
-                            )}
                         </FormField>
-
-
 
                         <FormField
                             id="password"
                             label="Password"
-                            register={register}
-                            isRegister={true}
-                            registerName="password"
+                            value={formFields.password}
+                            onChange={handleInputChange}
                             name="password"
                             type="password"
                         >
-                            {errors?.password?.message && (
-                                <span className="text-sm text-red-500">
-                                    {errors?.password?.message}
-                                </span>
-                            )}
                         </FormField>
 
-                        <FormField
-                            id="confirm password"
-                            label="Confirm Password"
-                            register={register}
-                            isRegister={true}
-                            registerName="confirmPassword"
-                            name="confirm password"
-                            type="password"
-                        >
-                            {errors.confirmPassword?.message && (
-                                <span className="text-sm text-red-500">
-                                    {errors.confirmPassword?.message}
-                                </span>
-                            )}
-                        </FormField>
-
-
-                        <SubmitButton name="Sign up" />
+                        <SubmitButton name="Sign up" isInvalid={isInvalid} isLoading={isLoading} />
                     </form>
 
                     <div className="mt-5 text-center text-md">

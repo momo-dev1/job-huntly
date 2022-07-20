@@ -6,9 +6,9 @@ import { loginUser } from '../store/userSlice'
 
 const Login = () => {
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.user)
+    const { user, err, isLoading } = useSelector(state => state.user)
     const navigate = useNavigate()
-    const [error, setError] = useState(false);
+    const [emptyFields, setEmptyFields] = useState("")
     const [formFields, setFormFields] = useState({ email: "", password: "" });
     const isInvalid = formFields.email === "" || formFields.password === "";
 
@@ -23,6 +23,10 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isInvalid) {
+            setEmptyFields("Please fill out all fields");
+            return
+        };
         dispatch(loginUser(formFields));
     };
 
@@ -43,11 +47,17 @@ const Login = () => {
                         logo
                     </div>
                     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                        {error.signError && (
+                        {err ? (
                             <span className="block text-sm text-center text-red-primary">
-                                {error.signError}
+                                {err}
                             </span>
-                        )}
+                        ) : null}
+                        {emptyFields ? (
+                            <span className="block text-sm text-center text-red-primary mt-2">
+                                {emptyFields}
+                            </span>
+                        ) : null}
+
                         <FormField
                             id="email"
                             label="Email address"
@@ -66,7 +76,7 @@ const Login = () => {
                             type="password"
                         />
 
-                        <SubmitButton name="Log In" isInvalid={isInvalid} />
+                        <SubmitButton name="Log In" isInvalid={isInvalid} isLoading={isLoading} />
                     </form>
 
                     <div>

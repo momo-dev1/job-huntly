@@ -11,7 +11,15 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Dashboard, Landing, NotFound, Register, Login } from './pages';
+import {
+  Landing,
+  NotFound,
+  Register,
+  Login,
+  SharedLayout,
+  ProtectedRoute,
+  JobListing
+} from './pages';
 
 
 
@@ -21,7 +29,13 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Dashboard />} />
+          <Route path='/' element={
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
+          } >
+            <Route path="job-listing" element={<JobListing />} />
+          </Route>
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />

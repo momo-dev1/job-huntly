@@ -1,7 +1,9 @@
 import Landing from "./Landing"
 import NotFound from "./NotFound"
-import Dashboard from "./Dashboard"
 import Login from "./Login"
 import Register from "./Register"
+import JobListing from "./JobListing"
+import SharedLayout from "./dashboard/SharedLayout"
+import ProtectedRoute from "./dashboard/ProtectedRoute"
 
-export { Landing, NotFound, Dashboard, Login, Register } 
+export { Landing, NotFound, SharedLayout, Login, Register, ProtectedRoute, JobListing } 

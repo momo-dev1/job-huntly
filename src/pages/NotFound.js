@@ -6,7 +6,7 @@ const NotFound = () => {
         <div className="overflow-hidden ">
             <div className=" flex items-center flex-col justify-center lg:flex-row py-28 px-6 md:px-24 md:py-20 lg:py-32 gap-16 lg:gap-28">
                 <div className="w-full lg:w-1/2">
-                    <img className="mx-auto" src="https://i.ibb.co/v30JLYr/Group-192-2.png" />
+                    <img className="mx-auto" alt='error img' src="https://i.ibb.co/v30JLYr/Group-192-2.png" />
                 </div>
                 <div className="w-full lg:w-1/2 ">
                     <h1 className="py-4 text-3xl lg:text-4xl font-extrabold text-gray-800">Looks like you've found the doorway to the great nothing</h1>
