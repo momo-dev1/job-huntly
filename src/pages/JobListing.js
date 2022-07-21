@@ -3,7 +3,9 @@ import { JobItem } from '../components'
 
 const JobListing = () => {
     return (
-        <div><JobItem /></div>
+        <div>
+            <JobItem />
+        </div>
     )
 }
 
