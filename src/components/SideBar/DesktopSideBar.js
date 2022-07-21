@@ -4,7 +4,8 @@ import {
     BriefcaseIcon,
     ChartBarIcon,
     UserCircleIcon,
-    PlusCircleIcon
+    PlusCircleIcon,
+    LogoutIcon
 
 } from '@heroicons/react/outline'
 
@@ -63,7 +64,7 @@ function DesktopSideBar({ user }) {
                                 <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900 capitalize">{user?.username}</p>
                                 <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
                             </div>
-                            log out
+                           <LogoutIcon className='h-6 w-6'/>
                         </div>
                     </div>
                 </Link>

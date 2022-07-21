@@ -1,10 +1,10 @@
 import React from 'react'
-import { JobItem } from '../components'
+import { JobCard } from '../components'
 
 const JobListing = () => {
     return (
         <div>
-            <JobItem />
+            <JobCard />
         </div>
     )
 }

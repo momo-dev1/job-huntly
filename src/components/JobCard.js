@@ -1,4 +1,5 @@
 import React from 'react'
+import { Tag } from "./index"
 import {
     LocationMarkerIcon,
     BriefcaseIcon,
@@ -16,15 +17,9 @@ const JobItem = () => {
                 <div>
                     <h3 className='text-lg font-semibold'>{company}</h3>
                     <div className='flex gap-3 mt-2 text-sm font-semibold'>
-                        <span className='text-[#180ad99f] bg-[#2538c62c] px-2 py-1 rounded-[100vw]'>
-                            3D Design
-                        </span>
-                        <span className='text-[#180ad99f] bg-[#2538c62c] px-2 py-1 rounded-[100vw]'>
-                            Blender
-                        </span>
-                        <span className='text-[#180ad99f] bg-[#2538c62c] px-2 py-1 rounded-[100vw]'>
-                            Figma
-                        </span>
+                        <Tag title="3D Design" />
+                        <Tag title="Blender" />
+                        <Tag title="Figma" />
                     </div>
                 </div>
 
