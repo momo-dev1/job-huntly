@@ -11,9 +11,9 @@ import {
 const JobItem = () => {
     const company = 'Visual Designer'
     return (
-        <figure className='p-5 bg-white w-[600px] shadow-md rounded-lg mb-5'>
+        <figure className='p-5 bg-white shadow-md rounded-lg mb-5 mt-5'>
             <div className='flex items-center gap-5'>
-                <div className='h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.slice(0, 1)}</div>
+                <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.slice(0, 1)}</div>
                 <div>
                     <h3 className='text-lg font-semibold'>{company}</h3>
                     <div className='flex gap-3 mt-2 text-sm font-semibold'>
@@ -29,7 +29,7 @@ const JobItem = () => {
                 Magni deleniti aspernatur dolorem aliquid repellat.
                 Aut ipsam minus doloremque ratione rerum.
             </p>
-            <div className='mt-8 flex items-center justify-between'>
+            <div className='mt-8 flex items-center justify-between flex-wrap gap-y-4'>
                 <span className='flex items-center gap-2'>
                     <BriefcaseIcon className='h-6 w-6 text-gray-400' />
                     <h5 className='font-semibold'>Full time</h5>
