@@ -57,14 +57,18 @@ function DesktopSideBar({ user }) {
                 <Link to="#" className="flex-shrink-0 w-full group block">
                     <div className="flex items-center">
                         <div>
-                            <div className='h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white uppercase'>{user?.username.slice(0, 1)}</div>
+                            <div className='flex-shrink-0 h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white uppercase'>{user?.username.slice(0, 1)}</div>
                         </div>
                         <div className="ml-3 flex items-center justify-between w-full">
                             <div>
                                 <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900 capitalize">{user?.username}</p>
-                                <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
+                                <Link to="/profile">
+                                    <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                        View profile
+                                    </p>
+                                </Link>
                             </div>
-                           <LogoutIcon className='h-6 w-6'/>
+                            <LogoutIcon className='h-6 w-6 text-gray-700 hover:text-red-600' />
                         </div>
                     </div>
                 </Link>

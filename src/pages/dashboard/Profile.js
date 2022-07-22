@@ -30,9 +30,9 @@ const Profile = () => {
     };
     return (
         <div>
-            <h2 className='text-2xl font-semibold tracking-wide'>Profile</h2>
+            <h2 className='text-2xl font-semibold tracking-wide '>Profile</h2>
             <form onSubmit={handleSubmit}>
-                <div className="shadow overflow-hidden sm:rounded-md mt-5">
+                <div className="overflow-hidden shadow-md rounded-lg mt-5">
                     <div className="px-4 py-5 bg-white sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">

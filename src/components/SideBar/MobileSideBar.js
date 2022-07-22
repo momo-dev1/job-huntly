@@ -110,7 +110,12 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                                 <div className="ml-3 flex items-center justify-between w-full ">
                                     <div>
                                         <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{user?.username}</p>
-                                        <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
+                                        <Link to="/profile">
+                                            <p onClick={() => setSidebarOpen(false)}
+                                                className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                                View profile
+                                            </p>
+                                        </Link>
                                     </div>
                                     <LogoutIcon className='h-6 w-6' />
                                 </div>
