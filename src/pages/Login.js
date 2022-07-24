@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../store/userSlice'
+import { loginUser, emptyError } from '../store/userSlice'
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -31,13 +31,21 @@ const Login = () => {
     };
 
     useEffect(() => {
+        if (emptyFields || err) {
+            setTimeout(() => {
+                emptyFields("")
+                dispatch(emptyError())
+            }, 4000);
+        }
+    }, [emptyFields, err, dispatch])
+
+    useEffect(() => {
         if (user) {
             setTimeout(() => {
                 navigate("/")
             }, 2000);
         }
     }, [user, navigate])
-
     return (
 
         <FormWrapper>

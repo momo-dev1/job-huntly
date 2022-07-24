@@ -39,6 +39,10 @@ const userSlice = createSlice({
         signOut: (state) => {
             state.user = null;
             removeLocalStorage("user");
+        },
+        emptyError: (state) => {
+            state.err = null;
+
         }
     },
     extraReducers: {
@@ -68,6 +72,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { signOut } = userSlice.actions;
+export const { signOut, emptyError } = userSlice.actions;
 
 export default userSlice.reducer;
