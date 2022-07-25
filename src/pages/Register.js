@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../store/userSlice'
@@ -11,6 +11,7 @@ const Register = () => {
     const [emptyFields, setEmptyFields] = useState("");
     const isInvalid = formFields.email === "" || formFields.password === "";
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,6 +28,11 @@ const Register = () => {
             return
         }
         dispatch(registerUser(formFields));
+        setFormFields({ email: "", username: "", password: "", confirmPassword: "" });
+        setTimeout(() => {
+            navigate("/login");
+        }, 2000);
+
     };
 
     return (

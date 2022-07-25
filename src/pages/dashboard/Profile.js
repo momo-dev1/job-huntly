@@ -1,25 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormField } from '../../components'
+import { updateUser } from "../../store/userSlice";
 
 const Profile = () => {
-    const { user, isLoading } = useSelector(state => state.user)
+    const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
 
     const [userData, setUserData] = useState({
         username: user?.username || "",
         email: user?.email || "",
-        lastName: user?.lastName || "",
-        location: "",
+        location: user?.location || "",
     })
-    const [emptyFields, setEmptyFields] = useState("")
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!userData.name || !userData.lastName || !userData.email || !userData.location) {
-            setEmptyFields("Please fill out all fields");
-            return
-        };
+        dispatch(updateUser(userData))
     };
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,6 +24,7 @@ const Profile = () => {
             ...prevState,
             [name]: value,
         }));
+       
     };
     return (
         <div>
@@ -46,17 +44,7 @@ const Profile = () => {
                                 >
                                 </FormField>
                             </div>
-                            <div className="col-span-6 sm:col-span-3">
-                                <FormField
-                                    id="lastname"
-                                    label="Last Name"
-                                    value={userData.lastName}
-                                    onChange={handleInputChange}
-                                    name="lastname"
-                                    type="text"
-                                >
-                                </FormField>
-                            </div>
+
                             <div className="col-span-6 sm:col-span-3">
                                 <FormField
                                     id="email"

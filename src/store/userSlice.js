@@ -65,10 +65,9 @@ const userSlice = createSlice({
             state.isLoading = true
         },
         [updateUser.fulfilled]: (state, { payload }) => {
-            const { user } = payload;
             state.isLoading = false
-            state.user = user
-            setLocalStorage("user", user)
+            state.user = payload
+            setLocalStorage("user", payload)
         },
         [updateUser.rejected]: (state, { payload }) => {
             state.isLoading = false

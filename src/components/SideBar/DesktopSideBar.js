@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-
+import { signOut } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
 import {
     BriefcaseIcon,
     ChartBarIcon,
@@ -21,6 +22,11 @@ function classNames(...classes) {
 }
 
 function DesktopSideBar({ user }) {
+    
+    const dispatch = useDispatch();
+    const handleSignOut = () => {
+        dispatch(signOut())
+    }
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -68,7 +74,7 @@ function DesktopSideBar({ user }) {
                                     </p>
                                 </Link>
                             </div>
-                            <LogoutIcon className='h-6 w-6 text-gray-700 hover:text-red-600' />
+                            <LogoutIcon onClick={handleSignOut} className='h-6 w-6 text-gray-700 hover:text-red-600' />
                         </div>
                     </div>
                 </Link>

@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-
+import { signOut } from "../../store/userSlice";
+import { useDispatch } from "react-redux";
 import {
     ChartBarIcon,
     BriefcaseIcon,
@@ -24,6 +25,10 @@ function classNames(...classes) {
 }
 
 function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
+    const dispatch = useDispatch();
+    const handleSignOut = () => {
+        dispatch(signOut())
+    }
     return <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
             <Transition.Child
@@ -117,7 +122,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                                             </p>
                                         </Link>
                                     </div>
-                                    <LogoutIcon className='h-6 w-6' />
+                                    <LogoutIcon onClick={handleSignOut} className='h-6 w-6' />
                                 </div>
                             </div>
                         </Link>
