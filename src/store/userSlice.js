@@ -31,6 +31,21 @@ export const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAP
     }
 });
 
+export const updateUser = createAsyncThunk("user/updateUser", async (user, thunkAPI) => {
+    const { rejectWithValue, getState } = thunkAPI
+
+    try {
+        const res = await fetchJson.patch('/auth/updateUser', user, {
+            headers: {
+                Authorization: `Bearer ${ getState().user.user.token }`
+            }
+        });
+        return res.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data.msg);
+    }
+})
+
 
 const userSlice = createSlice({
     name: 'user',
@@ -46,6 +61,19 @@ const userSlice = createSlice({
         }
     },
     extraReducers: {
+        [updateUser.pending]: (state) => {
+            state.isLoading = true
+        },
+        [updateUser.fulfilled]: (state, { payload }) => {
+            const { user } = payload;
+            state.isLoading = false
+            state.user = user
+            setLocalStorage("user", user)
+        },
+        [updateUser.rejected]: (state, { payload }) => {
+            state.isLoading = false
+            state.err = payload
+        },
         [registerUser.pending]: (state) => {
             state.isLoading = true
         },
