@@ -5,7 +5,6 @@ import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../utils/L
 const initialState = {
     user: getLocalStorage('user'),
     isLoading: false,
-    err: ""
 };
 
 export const registerUser = createAsyncThunk('user/registerUser', async (user, thunkAPI) => {
@@ -55,10 +54,6 @@ const userSlice = createSlice({
             state.user = null;
             removeLocalStorage("user");
         },
-        emptyError: (state) => {
-            state.err = null;
-
-        }
     },
     extraReducers: {
         [updateUser.pending]: (state) => {
@@ -71,8 +66,8 @@ const userSlice = createSlice({
         },
         [updateUser.rejected]: (state, { payload }) => {
             state.isLoading = false
-            state.err = payload
         },
+
         [registerUser.pending]: (state) => {
             state.isLoading = true
         },
@@ -83,8 +78,8 @@ const userSlice = createSlice({
         },
         [registerUser.rejected]: (state, { payload }) => {
             state.isLoading = false
-            state.err = payload
         },
+
         [loginUser.pending]: (state) => {
             state.isLoading = true
         },
@@ -99,6 +94,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { signOut, emptyError } = userSlice.actions;
+export const { signOut } = userSlice.actions;
 
 export default userSlice.reducer;

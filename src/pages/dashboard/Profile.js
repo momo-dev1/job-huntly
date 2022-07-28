@@ -13,18 +13,18 @@ const Profile = () => {
         location: user?.location || "",
     })
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(updateUser(userData))
     };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserData((prevState) => ({
             ...prevState,
             [name]: value,
         }));
-       
+
     };
     return (
         <div>
@@ -33,6 +33,7 @@ const Profile = () => {
                 <div className="overflow-hidden shadow-md rounded-lg mt-5">
                     <div className="px-4 py-5 bg-white sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
+
                             <div className="col-span-6 sm:col-span-3">
                                 <FormField
                                     id="username"

@@ -38,8 +38,8 @@ const Register = () => {
     return (
 
         <FormWrapper>
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-[600px] ">
-                <div className="px-6 py-8 bg-white shadow w-[300px] sm:w-[400px] rounded-lg">
+            <div className="mt-8 sm:mx-auto sm:w-full max-w-[600px] ">
+                <div className="px-6 py-8 bg-white shadow max-w-[400px] rounded-lg">
                     <div>
                         logo
                     </div>

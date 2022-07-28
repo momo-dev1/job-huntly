@@ -1,14 +1,12 @@
 import React from 'react'
-
-import { JobCard } from '../../components'
+import { JobCard, SectionWrapper } from '../../components'
 
 const JobListing = () => {
 
     return (
-        <div>
-            <h2 className='text-2xl font-semibold tracking-wide'>Job Listing</h2>
+        <SectionWrapper title="Job Listing">
             <JobCard />
-        </div>
+        </SectionWrapper>
     )
 }
 

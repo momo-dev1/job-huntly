@@ -3,7 +3,7 @@ import SubmitButton from "./SubmitButton"
 import FormWrapper from "./FormWrapper"
 import JobCard from "./JobCard"
 import Tag from "./Tag"
-
+import SectionWrapper from "./SectionWrapper"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
@@ -14,5 +14,6 @@ export {
     DesktopSideBar,
     MobileSideBar,
     HamburgerNav,
+    SectionWrapper,
     Tag
 }
