@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FormField } from '../../components'
+import { FormField, SectionWrapper } from '../../components'
 import { updateUser } from "../../store/userSlice";
 
 const Profile = () => {
@@ -27,8 +27,7 @@ const Profile = () => {
 
     };
     return (
-        <div>
-            <h2 className='text-2xl font-semibold tracking-wide '>Profile</h2>
+        <SectionWrapper title="Profile">
             <form onSubmit={handleSubmit}>
                 <div className="overflow-hidden shadow-md rounded-lg mt-5">
                     <div className="px-4 py-5 bg-white sm:p-6">
@@ -82,7 +81,7 @@ const Profile = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </SectionWrapper>
     )
 }
 
