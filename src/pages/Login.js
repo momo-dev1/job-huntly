@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser, emptyError } from '../store/userSlice'
+import { loginUser } from '../store/userSlice'
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -34,7 +34,6 @@ const Login = () => {
         if (emptyFields || err) {
             setTimeout(() => {
                 emptyFields("")
-                dispatch(emptyError())
             }, 4000);
         }
     }, [emptyFields, err, dispatch])

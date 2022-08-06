@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { FormField, SectionWrapper } from '../../components'
+import { FormField, SectionWrapper, FormSelect } from '../../components'
 
 const AddJob = () => {
     const { company,
@@ -59,6 +59,23 @@ const AddJob = () => {
                                 </FormField>
                             </div>
 
+                            <div class="grid grid-cols-6">
+                                <FormSelect
+                                    list={statusType}
+                                    onChange={handleInputChange}
+                                    name="status"
+                                >
+                                </FormSelect>
+                            </div>
+
+                            <div class="grid grid-cols-6">
+                                <FormSelect
+                                    list={positionType}
+                                    onChange={handleInputChange}
+                                    name="status"
+                                >
+                                </FormSelect>
+                            </div>
                         </div>
                     </div>
 

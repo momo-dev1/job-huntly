@@ -1,9 +1,10 @@
 import FormField from "./FormField"
-import SubmitButton from "./Button"
+import SubmitButton from "./SubmitButton"
 import FormWrapper from "./FormWrapper"
 import JobCard from "./JobCard"
 import Tag from "./Tag"
 import SectionWrapper from "./SectionWrapper"
+import FormSelect from "./FormSelect"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
@@ -15,5 +16,6 @@ export {
     MobileSideBar,
     HamburgerNav,
     SectionWrapper,
-    Tag
+    Tag,
+    FormSelect
 }
