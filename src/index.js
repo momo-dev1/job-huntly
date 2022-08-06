@@ -19,7 +19,7 @@ import {
   SharedLayout,
   ProtectedRoute,
   JobListing,
-  Profile
+  Profile,AddJob
 } from './pages';
 
 
@@ -37,6 +37,7 @@ ReactDOM.render(
           } >
             <Route path="job-listing" element={<JobListing />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="add-job" element={<AddJob />} />
           </Route>
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />

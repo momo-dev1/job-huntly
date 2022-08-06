@@ -6,7 +6,7 @@ const FormField = ({ id, value, onChange, name, type, label }) => {
         <div>
             <label
                 htmlFor={id}
-                className="block text-sm font-medium text-gray-600"
+                className="block capitalize text-sm font-medium text-gray-600"
             >
                 {label}
             </label>

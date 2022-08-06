@@ -5,6 +5,7 @@ import { getLocalStorage } from '../utils/LocalStorage';
 const initialState = {
     isLoading: false,
     company: "",
+    location: "",
     position: "intern",
     positionType: ["intern", "junior", "senior", "lead", "manager"],
     status: "pending",
@@ -19,10 +20,17 @@ const initialState = {
 const jobSlice = createSlice({
     name: 'job',
     initialState,
-    reducers: {},
+    reducers: {
+        setSelection: (state, action) => {
+            const { name, value } = action.payload;
+            state[name] = value;
+        },
+
+    },
 });
 
 
+export const { setSelection } = jobSlice.actions;
 
 export default jobSlice.reducer;
 
