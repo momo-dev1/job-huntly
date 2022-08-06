@@ -1,5 +1,5 @@
 import FormField from "./FormField"
-import SubmitButton from "./SubmitButton"
+import SubmitButton from "./Button"
 import FormWrapper from "./FormWrapper"
 import JobCard from "./JobCard"
 import Tag from "./Tag"
