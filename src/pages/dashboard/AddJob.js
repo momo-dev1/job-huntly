@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormField, SectionWrapper, FormSelect } from '../../components'
-import { setSelection } from '../../store/jobSlice'
+import { setSelection, clearValues, createJob } from '../../store/jobSlice'
 
 const AddJob = () => {
     const {
@@ -17,6 +17,7 @@ const AddJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(createJob({ company, location, position, status }))
     }
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -79,7 +80,6 @@ const AddJob = () => {
                                         </FormSelect>
                                     </div>
                                 </div>
-
                             </div>
 
                         </div>
@@ -88,6 +88,7 @@ const AddJob = () => {
                     <div className='flex items-center gap-2 m-4 justify-end'>
                         <div className="bg-gray-50 text-right">
                             <button
+                                onClick={() => dispatch(clearValues())}
                                 type="button"
                                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
