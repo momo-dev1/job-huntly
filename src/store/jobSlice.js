@@ -56,7 +56,7 @@ const jobSlice = createSlice({
 });
 
 
-export const { setSelectiona, clearValues } = jobSlice.actions;
+export const { setSelection, clearValues } = jobSlice.actions;
 
 export default jobSlice.reducer;
 

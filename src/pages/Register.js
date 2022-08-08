@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../store/userSlice'
+import { LogoIcon } from "../assets";
 
 
 const Register = () => {
@@ -38,10 +39,10 @@ const Register = () => {
     return (
 
         <FormWrapper>
-            <div className="mt-8 sm:mx-auto sm:w-full max-w-[600px] ">
+            <div className="mt-8 sm:mx-auto sm:w-full max-w-[600px] px-7">
                 <div className="px-6 py-8 bg-white shadow max-w-[400px] rounded-lg">
-                    <div>
-                        logo
+                    <div className="flex items-center justify-center flex-shrink-0">
+                        <LogoIcon classes="w-52" />
                     </div>
 
                     <form
@@ -101,8 +102,8 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <div className="px-4 py-4 mt-3 font-semibold text-center  bg-white
-                  text-gray-600 shadow sm:px-10 rounded-lg">
+            <div className="mx-7 py-4 mt-3 font-semibold text-center  bg-white
+                  text-gray-600 shadow sm:px-10 rounded-lg ">
                 Have an account?
                 <Link to="/login">
                     <span className="ml-2  text-blue-600  cursor-pointer">

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../store/userSlice'
+import { LogoIcon } from "../assets";
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -48,10 +49,10 @@ const Login = () => {
     return (
 
         <FormWrapper>
-            <div className="mt-8 sm:mx-auto sm:w-full max-w-[600px] ">
+            <div className="mt-8 sm:mx-auto min-w-[400px] max-w-[600px] px-7">
                 <div className="px-6 py-8 bg-white shadow max-w-[400px] rounded-lg">
-                    <div>
-                        logo
+                    <div className="flex items-center justify-center flex-shrink-0 ">
+                        <LogoIcon classes="w-52" />
                     </div>
                     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                         {err ? (
@@ -95,7 +96,8 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="px-4 py-4 mt-3 text-gray-600 font-semibold text-center bg-white shadow sm:px-10 rounded-lg">
+            <div className="mx-7 py-4 mt-3 font-semibold text-center  bg-white
+                  text-gray-600 shadow sm:px-10 rounded-lg ">
                 Need an account?
                 <Link to="/register">
                     <span className="ml-2 text-blue-600 cursor-pointer">

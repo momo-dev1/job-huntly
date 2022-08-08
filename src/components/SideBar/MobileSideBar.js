@@ -11,6 +11,7 @@ import {
     LogoutIcon,
     XIcon,
 } from '@heroicons/react/outline'
+import { LogoIcon } from '../../assets';
 
 
 const navigation = [
@@ -73,12 +74,8 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                         </div>
                     </Transition.Child>
                     <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
-                        <div className="flex-shrink-0 flex items-center px-4">
-                            <img
-                                className="h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
-                                alt="Workflow"
-                            />
+                        <div className="flex items-center flex-shrink-0 px-4 ">
+                            <LogoIcon classes="w-40" />
                         </div>
                         <nav className="mt-5 px-2 space-y-1">
                             {navigation.map((item) => (
