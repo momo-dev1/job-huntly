@@ -19,7 +19,8 @@ import {
   SharedLayout,
   ProtectedRoute,
   JobListing,
-  Profile,AddJob
+  Profile,
+  AddJob,
 } from './pages';
 
 

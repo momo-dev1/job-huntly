@@ -22,11 +22,11 @@ const initialState = {
 }
 
 
-const allJobsSlice = createSlice({
+const jobListingSlice = createSlice({
     name: 'allJobs',
     initialState,
     reducers: {},
 });
 
 // export const {  } = allJobsSlice.actions;
-export default allJobsSlice.reducer;
+export default jobListingSlice.reducer;

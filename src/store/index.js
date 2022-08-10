@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from "./userSlice"
 import jobSlice from "./jobSlice"
-import allJobsSlice from "./allJobsSlice"
+import jobListingSlice from "./jobListingSlice"
 
 const store = configureStore({
     reducer: {
         user: userSlice,
         job: jobSlice,
-        allJobs: allJobsSlice
+        jobListing: jobListingSlice
     }
 })
 export default store;
