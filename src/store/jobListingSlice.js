@@ -21,11 +21,38 @@ const initialState = {
     ...initialFilterState
 }
 
+export const getListingJobs = createAsyncThunk('jobSlice/getListingJobs', async (_, thunkAPI) => {
+    const { rejectWithValue, getState } = thunkAPI
+
+    try {
+        const res = await fetchJson.patch('/jobs', {
+            headers: {
+                Authorization: `Bearer ${ getState().user.user.token }`
+            }
+        });
+        return res.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data.msg);
+    }
+});
 
 const jobListingSlice = createSlice({
     name: 'allJobs',
     initialState,
     reducers: {},
+    extraReducers: {
+        [getListingJobs.pending]: (state) => {
+            state.isLoading = true
+        },
+        [getListingJobs.fulfilled]: (state, { payload }) => {
+            state.isLoading = false
+            state.jobs = payload.jobs
+        },
+        [getListingJobs.rejected]: (state, { payload }) => {
+            state.isLoading = false
+
+        },
+    }
 });
 
 // export const {  } = allJobsSlice.actions;

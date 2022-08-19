@@ -41,7 +41,8 @@ const jobSlice = createSlice({
         clearValues: (state) => {
             return initialState
         }
-    }, extraReducers: {
+    },
+    extraReducers: {
         [createJob.pending]: (state) => {
             state.isLoading = true
         },
