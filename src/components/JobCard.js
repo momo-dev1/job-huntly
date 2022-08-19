@@ -7,12 +7,10 @@ import {
     ClockIcon,
 } from '@heroicons/react/solid'
 
-const JobItem = () => {
-    const company = 'Visual Designer'
-
+const JobItem = ({ status, company, position, jobLocation: location }) => {
 
     return (
-        
+
         <figure className='p-5 bg-white shadow-md rounded-lg max-w-2xl mb-5 mt-5'>
             <div className='flex items-center gap-5'>
                 <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.slice(0, 1)}</div>
@@ -34,11 +32,11 @@ const JobItem = () => {
             <div className='mt-8 flex items-center justify-between flex-wrap gap-y-4'>
                 <span className='flex items-center gap-2'>
                     <BriefcaseIcon className='h-6 w-6 text-gray-400' />
-                    <h5 className='font-semibold'>Full time</h5>
+                    <h5 className='font-semibold'>{position}</h5>
                 </span>
                 <span className='flex items-center gap-2'>
                     <LocationMarkerIcon className='h-6 w-6 text-gray-400' />
-                    <h5 className='font-semibold'>Alexandria</h5>
+                    <h5 className='font-semibold'>{location}</h5>
                 </span>
                 <span className='flex items-center gap-2'>
                     <UserIcon className='h-6 w-6 text-gray-400' />
@@ -46,7 +44,7 @@ const JobItem = () => {
                 </span>
                 <span className='flex items-center gap-2'>
                     <ClockIcon className='h-6 w-6 text-gray-400' />
-                    <h5 className='font-semibold'>3 days left</h5>
+                    <h5 className='font-semibold'>{status}</h5>
                 </span>
             </div>
         </figure>
