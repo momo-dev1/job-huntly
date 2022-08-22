@@ -13,7 +13,7 @@ const JobItem = ({ status, company, position, jobLocation: location }) => {
 
         <figure className='p-5 bg-white shadow-md rounded-lg max-w-2xl mb-5 mt-5'>
             <div className='flex items-center gap-5'>
-                <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.slice(0, 1)}</div>
+                <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.charAt(0)}</div>
                 <div>
                     <h3 className='text-lg font-semibold'>{company}</h3>
                     <div className='flex gap-3 mt-2 text-sm font-semibold flex-wrap'>

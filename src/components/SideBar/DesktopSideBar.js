@@ -60,7 +60,7 @@ function DesktopSideBar({ user }) {
                 <Link to="#" className="flex-shrink-0 w-full group block">
                     <div className="flex items-center">
                         <div>
-                            <div className='flex-shrink-0 h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white uppercase'>{user?.username.slice(0, 1)}</div>
+                            <div className='flex-shrink-0 h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white uppercase'>{user?.username.charAt(0)}</div>
                         </div>
                         <div className="ml-3 flex items-center justify-between w-full">
                             <div>
