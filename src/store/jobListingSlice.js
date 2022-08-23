@@ -8,6 +8,7 @@ const initialFilterState = {
     searchStatus: 'all',
     searchType: 'all',
     sortOptions: ["latest", "oldest", "alphabetical"],
+    jobCounts: 0
 }
 
 
@@ -54,6 +55,7 @@ const jobListingSlice = createSlice({
         [getListingJobs.fulfilled]: (state, { payload }) => {
             state.isLoading = false
             state.jobs = payload.jobs
+            state.jobCounts = payload.job_Counts
         },
         [getListingJobs.rejected]: (state, { payload }) => {
             state.isLoading = false
