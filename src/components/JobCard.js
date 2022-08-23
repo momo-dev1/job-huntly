@@ -5,12 +5,15 @@ import {
     BriefcaseIcon,
     UserIcon,
     ClockIcon,
+    CalendarIcon
 } from '@heroicons/react/solid'
+import moment from 'moment'
 
-const JobItem = ({ status, company, position, jobLocation: location }) => {
+const JobItem = ({ status, company, position, jobLocation: location, createdAt }) => {
+
+    const date = moment(createdAt).format("MMM Do, YYYY")
 
     return (
-
         <figure className='p-5 bg-white shadow-md rounded-lg max-w-2xl mb-5 mt-5'>
             <div className='flex items-center gap-5'>
                 <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.charAt(0)}</div>
@@ -45,6 +48,10 @@ const JobItem = ({ status, company, position, jobLocation: location }) => {
                 <span className='flex items-center gap-2'>
                     <ClockIcon className='h-6 w-6 text-gray-400' />
                     <h5 className='font-semibold'>{status}</h5>
+                </span>
+                <span className='flex items-center gap-2'>
+                    <CalendarIcon className='h-6 w-6 text-gray-400' />
+                    <h5 className='font-semibold'>{date}</h5>
                 </span>
             </div>
         </figure>

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import fetchJson from '../utils/fetchJson';
 import { getLocalStorage } from '../utils/LocalStorage';
+import { getListingJobs, showLoading, hideLoading } from "./jobListingSlice"
 
 const initialState = {
     isLoading: false,
