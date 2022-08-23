@@ -11,11 +11,13 @@ import moment from 'moment'
 const JobCard = ({ status, company, position, jobLocation: location, createdAt, jobCounts }) => {
 
     const date = moment(createdAt).format("MMM Do, YYYY")
+    const jobFound = jobCounts === 1 ? "Job Found" : "Jobs Found"
 
     return (
         <>
-            <h5 className='text-lg font-semibold mt-5'>Jobs found {jobCounts}</h5>
-
+            <h5 className='text-lg font-semibold mt-5'>
+                {jobCounts} {jobFound}
+            </h5>
             <figure className='p-5 bg-white shadow-md rounded-lg max-w-2xl mb-5 mt-5'>
                 <div className='flex items-center gap-5'>
                     <div className='flex-shrink-0 h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.charAt(0)}</div>
