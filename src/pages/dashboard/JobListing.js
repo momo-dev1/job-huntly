@@ -7,9 +7,10 @@ import Loading from '../../components/Loading'
 const JobListing = () => {
     const { jobs, jobCounts, isLoading } = useSelector(state => state.jobListing)
     const dispatch = useDispatch()
+    const jobFound = jobCounts === 1 ? "Job Found" : "Jobs Found"
+
     useEffect(() => {
         dispatch(getListingJobs())
-
     }, [dispatch])
 
     return (
@@ -21,7 +22,13 @@ const JobListing = () => {
                     ?
                     <div>No jobs found</div>
                     :
-                    jobs.map(job => <JobCard key={job._id} {...job} jobCounts={jobCounts} />)}
+                    <>
+                        <h5 className='text-lg font-semibold mt-5'>
+                            {jobCounts} {jobFound}
+                        </h5>
+                        {jobs.map(job => <JobCard key={job._id} {...job} jobCounts={jobCounts} />)}
+                    </>
+            }
         </SectionWrapper>
     )
 }

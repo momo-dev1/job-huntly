@@ -19,7 +19,7 @@ export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thun
     const { rejectWithValue, getState, dispatch } = thunkAPI
 
     try {
-        const res = await fetchJson.patch('/jobs', job, {
+        const res = await fetchJson.post('/jobs', job, {
             headers: {
                 Authorization: `Bearer ${ getState().user.user.token }`
             }
@@ -27,6 +27,23 @@ export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thun
         dispatch(clearValues());
         return res.data;
     } catch (error) {
+        return rejectWithValue(error.response.data.msg);
+    }
+});
+
+export const deleteJob = createAsyncThunk('jobSlice/deleteJob', async (jobId, thunkAPI) => {
+    const { rejectWithValue, getState, dispatch } = thunkAPI
+    dispatch(showLoading())
+    try {
+        const res = await fetchJson.delete(`/jobs/${ jobId }`, {
+            headers: {
+                Authorization: `Bearer ${ getState().user.user.token }`
+            }
+        });
+        dispatch(getListingJobs());
+        return res.data;
+    } catch (error) {
+        dispatch(hideLoading())
         return rejectWithValue(error.response.data.msg);
     }
 });

@@ -17,8 +17,9 @@ const AddJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(createJob({ company, location, position, status }))
+        dispatch(createJob({ company, jobLocation: location, position, status }))
     }
+
     const handleInputChange = (e) => {
         const { name, value } = e.target
         dispatch(setSelection({ name, value }))
