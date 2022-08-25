@@ -9,14 +9,14 @@ const SharedLayout = () => {
     const { user } = useSelector(state => state.user)
     return (
 
-        <div>
+        <div >
             <MobileSideBar user={user} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
             <DesktopSideBar user={user} />
 
-            <div className="md:pl-64 flex flex-col flex-1 h-screen">
+            <div className="md:pl-64 flex flex-col flex-1  bg-[#edeef03b] ">
                 <HamburgerNav setSidebarOpen={setSidebarOpen} />
-                <main className="flex-1 p-4 py-10 md:py-20 px-10 relative">
+                <main className="flex-1 p-4 py-10 md:py-20 px-10 relative min-h-screen">
                     <Outlet />
                 </main>
             </div>
