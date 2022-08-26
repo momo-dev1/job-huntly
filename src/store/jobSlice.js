@@ -12,7 +12,7 @@ const initialState = {
     status: "pending",
     statusType: ["applied", "interview", "pending", "hired", "rejected"],
     isEdit: false,
-    editId: "",
+    editId: null,
 };
 
 export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thunkAPI) => {
@@ -50,7 +50,7 @@ export const deleteJob = createAsyncThunk('jobSlice/deleteJob', async (jobId, th
 
 export const updateJob = createAsyncThunk('jobSlice/updateJob', async ({ jobId, job }, thunkAPI) => {
     const { rejectWithValue, getState, dispatch } = thunkAPI
-    dispatch(showLoading())
+
     try {
         const res = await fetchJson.patch(`/jobs/${ jobId }`, job, {
             headers: {

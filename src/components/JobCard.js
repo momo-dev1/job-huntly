@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 import { Tag } from "./index"
 import {
     LocationMarkerIcon,
@@ -8,7 +9,7 @@ import {
 } from '@heroicons/react/solid'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
-import { deleteJob } from '../store/jobSlice'
+import { deleteJob, updateJobs } from '../store/jobSlice'
 
 const JobCard = ({ _id, status, company, position, jobLocation: location, createdAt }) => {
 
@@ -34,7 +35,10 @@ const JobCard = ({ _id, status, company, position, jobLocation: location, create
 
                     <div className='flex gap-2'>
                         <button onClick={() => dispatch(deleteJob(_id))} className='px-4 py-1 bg-red-300 text-red-500 rounded-sm'>delete</button>
-                        <button className='px-4 py-1 bg-green-300 text-green-500 rounded-sm'>edit</button>
+                        <Link to="/add-job">
+                            <button onClick={() => dispatch(updateJobs({ editId: _id, company, position, location, status }))} className='px-4 py-1 bg-green-300 text-green-500 rounded-sm'>edit</button>
+                        </Link>
+
                     </div>
                 </div>
                 <p className='mt-5 text-gray-400 font-semibold'>
