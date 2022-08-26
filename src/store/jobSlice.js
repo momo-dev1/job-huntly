@@ -48,6 +48,23 @@ export const deleteJob = createAsyncThunk('jobSlice/deleteJob', async (jobId, th
     }
 });
 
+export const updateJob = createAsyncThunk('jobSlice/updateJob', async ({ jobId, job }, thunkAPI) => {
+    const { rejectWithValue, getState, dispatch } = thunkAPI
+    dispatch(showLoading())
+    try {
+        const res = await fetchJson.patch(`/jobs/${ jobId }`, job, {
+            headers: {
+                Authorization: `Bearer ${ getState().user.user.token }`
+            }
+        });
+        dispatch(clearValues());
+        return res.data;
+    } catch (error) {
+        dispatch(hideLoading())
+        return rejectWithValue(error.response.data.msg);
+    }
+});
+
 const jobSlice = createSlice({
     name: 'job',
     initialState,
@@ -58,6 +75,9 @@ const jobSlice = createSlice({
         },
         clearValues: (state) => {
             return initialState
+        },
+        updateJobs: (state, { payload }) => {
+            return { ...state, isEdit: true, ...payload }
         }
     },
     extraReducers: {
@@ -71,11 +91,22 @@ const jobSlice = createSlice({
             state.isLoading = false
             console.log(payload)
         },
+        [updateJob.pending]: (state) => {
+            state.isLoading = true
+        },
+        [updateJob.fulfilled]: (state, { payload }) => {
+            state.isLoading = false
+            console.log("job has been updated")
+        },
+        [updateJob.rejected]: (state, { payload }) => {
+            state.isLoading = false
+
+        },
     }
 });
 
 
-export const { setSelection, clearValues } = jobSlice.actions;
+export const { setSelection, clearValues, updateJobs } = jobSlice.actions;
 
 export default jobSlice.reducer;
 
