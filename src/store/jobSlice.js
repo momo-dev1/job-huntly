@@ -13,6 +13,8 @@ const initialState = {
     statusType: ["applied", "interview", "pending", "hired", "rejected"],
     isEdit: false,
     editId: null,
+    deleteId: null,
+    modalIsOpen: false,
 };
 
 export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thunkAPI) => {
@@ -78,6 +80,13 @@ const jobSlice = createSlice({
         },
         updateJobs: (state, { payload }) => {
             return { ...state, isEdit: true, ...payload }
+        },
+        showModal: (state, { payload }) => {
+            state.modalIsOpen = true
+            state.deleteId = payload
+        },
+        hideModal: (state) => {
+            state.modalIsOpen = false
         }
     },
     extraReducers: {
@@ -106,7 +115,7 @@ const jobSlice = createSlice({
 });
 
 
-export const { setSelection, clearValues, updateJobs } = jobSlice.actions;
+export const { setSelection, clearValues, updateJobs, showModal, hideModal } = jobSlice.actions;
 
 export default jobSlice.reducer;
 

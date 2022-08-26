@@ -5,16 +5,19 @@ import {
     LocationMarkerIcon,
     BriefcaseIcon,
     ClockIcon,
-    CalendarIcon
+    CalendarIcon,
+    PencilIcon,
+    TrashIcon
 } from '@heroicons/react/solid'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
-import { deleteJob, updateJobs } from '../store/jobSlice'
+import { showModal, updateJobs } from '../store/jobSlice'
 
 const JobCard = ({ _id, status, company, position, jobLocation: location, createdAt }) => {
 
     const dispatch = useDispatch()
     const date = moment(createdAt).format("MMM Do, YYYY")
+
 
     return (
         <>
@@ -34,9 +37,13 @@ const JobCard = ({ _id, status, company, position, jobLocation: location, create
                     </div>
 
                     <div className='flex gap-2'>
-                        <button onClick={() => dispatch(deleteJob(_id))} className='px-4 py-1 bg-red-300 text-red-500 rounded-sm'>delete</button>
+                        <button onClick={() => dispatch(showModal(_id))} className='p-3 rounded-full border border-red-600'>
+                            <TrashIcon className='h-4 w-4 text-red-600 ' />
+                        </button>
                         <Link to="/add-job">
-                            <button onClick={() => dispatch(updateJobs({ editId: _id, company, position, location, status }))} className='px-4 py-1 bg-green-300 text-green-500 rounded-sm'>edit</button>
+                            <button onClick={() => dispatch(updateJobs({ editId: _id, company, position, location, status }))} className='p-3 rounded-full border border-blue-600'>
+                                <PencilIcon className='h-4 w-4 text-blue-600 ' />
+                            </button>
                         </Link>
                     </div>
                 </div>
