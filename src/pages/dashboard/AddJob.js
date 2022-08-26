@@ -19,8 +19,8 @@ const AddJob = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (isEdit) {
-            console.log({ editId, company, status, location })
-            // dispatch(updateJob())
+            //@Todo => adding {jobLocation,position} to updateJob
+            dispatch(updateJob({ jobId: editId, job: { company, status } }))
             return
         }
         dispatch(createJob({ company, jobLocation: location, position, status }))
