@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import fetchJson from '../utils/fetchJson';
-import { getLocalStorage } from '../utils/LocalStorage';
 import { getListingJobs, showLoading, hideLoading } from "./jobListingSlice"
 
 const initialState = {
@@ -18,14 +17,10 @@ const initialState = {
 };
 
 export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thunkAPI) => {
-    const { rejectWithValue, getState, dispatch } = thunkAPI
+    const { rejectWithValue, dispatch } = thunkAPI
 
     try {
-        const res = await fetchJson.post('/jobs', job, {
-            headers: {
-                Authorization: `Bearer ${ getState().user.user.token }`
-            }
-        });
+        const res = await fetchJson.post('/jobs', job);
         dispatch(clearValues());
         return res.data;
     } catch (error) {
@@ -34,14 +29,10 @@ export const createJob = createAsyncThunk('jobSlice/createJob', async (job, thun
 });
 
 export const deleteJob = createAsyncThunk('jobSlice/deleteJob', async (jobId, thunkAPI) => {
-    const { rejectWithValue, getState, dispatch } = thunkAPI
+    const { rejectWithValue, dispatch } = thunkAPI
     dispatch(showLoading())
     try {
-        const res = await fetchJson.delete(`/jobs/${ jobId }`, {
-            headers: {
-                Authorization: `Bearer ${ getState().user.user.token }`
-            }
-        });
+        const res = await fetchJson.delete(`/jobs/${ jobId }`);
         dispatch(getListingJobs());
         return res.data;
     } catch (error) {
@@ -51,14 +42,10 @@ export const deleteJob = createAsyncThunk('jobSlice/deleteJob', async (jobId, th
 });
 
 export const updateJob = createAsyncThunk('jobSlice/updateJob', async ({ jobId, job }, thunkAPI) => {
-    const { rejectWithValue, getState, dispatch } = thunkAPI
+    const { rejectWithValue, dispatch } = thunkAPI
 
     try {
-        const res = await fetchJson.patch(`/jobs/${ jobId }`, job, {
-            headers: {
-                Authorization: `Bearer ${ getState().user.user.token }`
-            }
-        });
+        const res = await fetchJson.patch(`/jobs/${ jobId }`, job);
         dispatch(clearValues());
         return res.data;
     } catch (error) {

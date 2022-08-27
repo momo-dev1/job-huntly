@@ -31,14 +31,10 @@ export const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAP
 });
 
 export const updateUser = createAsyncThunk("user/updateUser", async (user, thunkAPI) => {
-    const { rejectWithValue, getState } = thunkAPI
+    const { rejectWithValue } = thunkAPI
 
     try {
-        const res = await fetchJson.patch('/auth/updateUser', user, {
-            headers: {
-                Authorization: `Bearer ${ getState().user.user.token }`
-            }
-        });
+        const res = await fetchJson.patch('/auth/updateUser', user);
         return res.data;
     } catch (error) {
         return rejectWithValue(error.response.data.msg);

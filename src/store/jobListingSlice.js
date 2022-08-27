@@ -23,14 +23,10 @@ const initialState = {
 }
 
 export const getListingJobs = createAsyncThunk('jobSlice/getListingJobs', async (_, thunkAPI) => {
-    const { rejectWithValue, getState } = thunkAPI
+    const { rejectWithValue } = thunkAPI
 
     try {
-        const res = await fetchJson.get('/jobs', {
-            headers: {
-                Authorization: `Bearer ${ getState().user.user.token }`
-            }
-        });
+        const res = await fetchJson.get('/jobs');
         return res.data;
     } catch (error) {
         return rejectWithValue(error.response.data.msg);
