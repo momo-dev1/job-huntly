@@ -5,8 +5,8 @@ import FormSelect from './FormSelect'
 
 
 const Search = () => {
-    const { search, sortBy, searchStatus, searchType, sortOptions } = useSelector(state => state.jobListing)
-
+    const { isLoading, search, searchStatus, searchType, sortBy, sortOptions } = useSelector(state => state.jobListing)
+    const { positionType, statusType } = useSelector(state => state.job)
     const handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -27,22 +27,34 @@ const Search = () => {
                                 label="search"
                                 value={search}
                                 onChange={handleInputChange}
-                                name="company"
+                                name="search"
                                 type="text"
                             >
                             </FormField>
+                        </div>
+
+                        <div className="col-span-1">
+                            <FormSelect
+                                id="search Type"
+                                label="search Type"
+                                value={searchType}
+                                list={["all", ...positionType]}
+                                onChange={handleInputChange}
+                                name="search Type"
+                            >
+                            </FormSelect>
                         </div>
 
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
                                 <div className="col-span-1">
                                     <FormSelect
-                                        id="status"
+                                        id="status Type"
                                         label="status Type"
-                                        value={searchType}
-                                        list={searchStatus}
+                                        value={searchStatus}
+                                        list={["all", ...statusType]}
                                         onChange={handleInputChange}
-                                        name="status"
+                                        name="status Type"
                                     >
                                     </FormSelect>
                                 </div>
@@ -54,7 +66,7 @@ const Search = () => {
                                         value={sortBy}
                                         list={sortOptions}
                                         onChange={handleInputChange}
-                                        name="position"
+                                        name="sort"
                                     >
                                     </FormSelect>
                                 </div>

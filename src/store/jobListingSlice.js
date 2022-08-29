@@ -4,9 +4,9 @@ import fetchJson from '../utils/fetchJson';
 
 const initialFilterState = {
     search: '',
-    sortBy: 'latest',
     searchStatus: 'all',
     searchType: 'all',
+    sortBy: 'latest',
     sortOptions: ["latest", "oldest", "alphabetical"],
     jobCounts: 0
 }
