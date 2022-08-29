@@ -1,6 +1,5 @@
 import { ExclamationIcon } from '@heroicons/react/solid'
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { deleteJob, hideModal } from '../store/jobSlice';
 
 const Modal = () => {
