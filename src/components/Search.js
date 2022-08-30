@@ -23,6 +23,7 @@ const Search = () => {
             <div className="overflow-hidden shadow-md rounded-lg mt-5">
                 <div className="px-4 py-5 bg-white sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
+                        {/* col 1 */}
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
                                 <div className="md:col-span-1 col-span-2">
@@ -51,7 +52,7 @@ const Search = () => {
 
                             </div>
                         </div>
-
+                        {/* col 2 */}
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
                                 <div className="md:col-span-1 col-span-2">
@@ -79,14 +80,13 @@ const Search = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
                 <div className='flex items-center gap-2 m-4 justify-end'>
                     <div className="bg-gray-50 text-right">
                         <button
-                            onClick={() => console.log("clear filters")}
+                            onClick={() => dispatch(clearFilters())}
                             type="button"
                             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >

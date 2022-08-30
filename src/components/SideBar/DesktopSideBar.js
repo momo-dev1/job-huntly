@@ -1,29 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { signOut } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
-import {
-    BriefcaseIcon,
-    ChartBarIcon,
-    UserCircleIcon,
-    PlusCircleIcon,
-    LogoutIcon
-
-} from '@heroicons/react/outline'
+import { LogoutIcon } from '@heroicons/react/outline'
 import { LogoIcon } from '../../assets';
 
-const navigation = [
-    { name: 'Job Listing', path: 'job-listing', icon: BriefcaseIcon, current: true },
-    { name: 'Add Job', path: 'add-job', icon: PlusCircleIcon, current: false },
-    { name: 'Profile', path: 'profile', icon: UserCircleIcon, current: false },
-    { name: 'Reports', path: 'reports', icon: ChartBarIcon, current: false },
-]
+import { navigation } from "../../utils/navLinks"
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 function DesktopSideBar({ user }) {
-
+    const location = useLocation()
     const dispatch = useDispatch();
     const handleSignOut = () => {
         dispatch(signOut())
@@ -40,7 +28,8 @@ function DesktopSideBar({ user }) {
                             key={item.name}
                             to={item.path}
                             className={classNames(
-                                item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                                location.pathname.slice(1) === item.path
+                                    ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                                 'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                             )}
                         >
