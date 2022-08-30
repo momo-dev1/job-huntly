@@ -1,8 +1,25 @@
 import React from "react";
+import { LogoIcon } from "../assets";
+import { Link } from "react-router-dom"
+
 const Landing = () => {
     return (
         <>
             <section>
+                <header className=" bg-white ">
+                    <nav className="2xl:container 2xl:mx-auto sm:py-6 sm:px-7 py-5 px-4">
+                        <div className="flex justify-between items-center">
+                            <div className="flex items-center flex-shrink-0 px-4">
+                                <LogoIcon classes="w-32" />
+                            </div>
+                            <div className="flex gap-4">
+                                <Link to="/register" className="rounded-md tracking-wide bg-gradient-to-r border border-indigo-600 text-indigo-700 px-4 py-2 font-semibold">Sign Up</Link>
+                                <Link to="/login" className="rounded-md tracking-wide bg-gradient-to-r from-blue-600  to-indigo-400 text-white  px-4 py-2 font-semibold">Sign In</Link>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+
                 <div className="relative">
                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100" />
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,13 +59,6 @@ const Landing = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="2xl:mx-auto 2xl:container w-full mt-24 flex flex-col justify-between items-center">
-                    <div className="flex justify-center items-center w-full md:h-64 h-40 bg-gradient-to-l from-indigo-600 to-indigo-700" />
-                    <div className="md:-mt-40 -mt-20 xl:px-40 md:px-20 px-6 flex justify-center items-center">
-                        <img className="lg:w-full" src="https://i.ibb.co/mTfwGCQ/Light-Theme.png" alt="app img" />
                     </div>
                 </div>
             </section>
