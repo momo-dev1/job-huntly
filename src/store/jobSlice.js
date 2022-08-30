@@ -58,8 +58,7 @@ const jobSlice = createSlice({
     name: 'job',
     initialState,
     reducers: {
-        setSelection: (state, action) => {
-            const { name, value } = action.payload;
+        setSelection: (state, { payload: { name, value } }) => {
             state[name] = value;
         },
         clearValues: (state) => {

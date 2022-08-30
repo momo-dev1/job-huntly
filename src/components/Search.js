@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import FormField from './FormField'
 import FormSelect from './FormSelect'
-import { setSelection } from "../store/jobListingSlice"
+import { setSelection, clearFilters } from "../store/jobListingSlice"
 
 const Search = () => {
     const { isLoading, search, searchStatus, searchType, sortBy, sortOptions } = useSelector(state => state.jobListing)
@@ -11,6 +11,7 @@ const Search = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        dispatch(clearFilters())
     }
 
     const handleInputChange = (e) => {
@@ -22,53 +23,57 @@ const Search = () => {
             <div className="overflow-hidden shadow-md rounded-lg mt-5">
                 <div className="px-4 py-5 bg-white sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
+                        <div className='col-span-6 sm:col-span-3 '>
+                            <div className='grid grid-cols-2 gap-5'>
+                                <div className="md:col-span-1 col-span-2">
+                                    <FormField
+                                        id="search"
+                                        label="search"
+                                        value={search}
+                                        onChange={handleInputChange}
+                                        name="search"
+                                        type="text"
+                                    >
+                                    </FormField>
+                                </div>
 
-                        <div className="col-span-6 sm:col-span-3">
-                            <FormField
-                                id="search"
-                                label="search"
-                                value={search}
-                                onChange={handleInputChange}
-                                name="search"
-                                type="text"
-                            >
-                            </FormField>
-                        </div>
+                                <div className="md:col-span-1 col-span-2">
+                                    <FormSelect
+                                        id="search Type"
+                                        label="search Type"
+                                        value={searchType}
+                                        list={["all", ...positionType]}
+                                        onChange={handleInputChange}
+                                        name="searchType"
+                                    >
+                                    </FormSelect>
+                                </div>
 
-                        <div className="col-span-1">
-                            <FormSelect
-                                id="search Type"
-                                label="search Type"
-                                value={searchType}
-                                list={["all", ...positionType]}
-                                onChange={handleInputChange}
-                                name="search Type"
-                            >
-                            </FormSelect>
+                            </div>
                         </div>
 
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
-                                <div className="col-span-1">
+                                <div className="md:col-span-1 col-span-2">
                                     <FormSelect
                                         id="status Type"
                                         label="status Type"
                                         value={searchStatus}
                                         list={["all", ...statusType]}
                                         onChange={handleInputChange}
-                                        name="status Type"
+                                        name="searchStatus"
                                     >
                                     </FormSelect>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="md:col-span-1 col-span-2">
                                     <FormSelect
                                         id="sort"
                                         label="sort"
                                         value={sortBy}
                                         list={sortOptions}
                                         onChange={handleInputChange}
-                                        name="sort"
+                                        name="sortBy"
                                     >
                                     </FormSelect>
                                 </div>
