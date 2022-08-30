@@ -20,7 +20,7 @@ const JobListing = () => {
                 <Loading /> :
                 jobs.length === 0
                     ?
-                    <div>No jobs found</div>
+                    <div className='mt-6 text-2xl'>No jobs found</div>
                     :
                     <>
                         <h5 className='text-lg font-semibold mt-5'>

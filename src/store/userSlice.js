@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import fetchJson from '../utils/fetchJson';
-import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../utils/LocalStorage';
+import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../utils/localStorage';
 
 const initialState = {
     user: getLocalStorage('user'),
