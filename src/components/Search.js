@@ -1,19 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import FormField from './FormField'
 import FormSelect from './FormSelect'
-
+import { setSelection } from "../store/jobListingSlice"
 
 const Search = () => {
     const { isLoading, search, searchStatus, searchType, sortBy, sortOptions } = useSelector(state => state.jobListing)
     const { positionType, statusType } = useSelector(state => state.job)
+    const dispatch = useDispatch()
+
     const handleSubmit = (e) => {
         e.preventDefault()
     }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
-        // dispatch(setSelection({ name, value }))
+        dispatch(setSelection({ name, value }))
     }
     return (
         <form onSubmit={handleSubmit}>
