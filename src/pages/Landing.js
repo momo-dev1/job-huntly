@@ -1,7 +1,7 @@
 import React from "react";
-import { LogoIcon } from "../assets";
+import { LogoIcon, HeroImg } from "../assets";
 import { Link } from "react-router-dom"
-import heroImg from "../assets/hero.jpg"
+
 
 const Landing = () => {
     return (
@@ -21,14 +21,10 @@ const Landing = () => {
                     <div className=" mx-auto sm:px-6 lg:px-8">
                         <div className="relative shadow-xl rounded-2xl sm:overflow-hidden">
                             <div className="absolute inset-0">
-                                <img
-                                    className="h-full w-full object-cover"
-                                    src={heroImg}
-                                    alt="hero img"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-indigo-700 mix-blend-multiply" />
+                                <HeroImg />
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-500 mix-blend-multiply rounded-2xl" />
                             </div>
-                            <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                            <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 rounded-2xl">
                                 <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                                     <span className="block text-white">Track your</span>
                                     <span className="block text-indigo-200 mt-2">job application</span>
