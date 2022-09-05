@@ -48,6 +48,9 @@ const jobListingSlice = createSlice({
         },
         clearFilters: (state) => {
             return { ...state, ...initialFilterState }
+        },
+        changePage: (state, { payload }) => {
+            state.currentPage = payload
         }
     },
     extraReducers: {
@@ -58,6 +61,7 @@ const jobListingSlice = createSlice({
             state.isLoading = false
             state.jobs = payload.jobs
             state.jobCounts = payload.job_Counts
+            state.numOfPages = payload.numOfPages
         },
         [getListingJobs.rejected]: (state, { payload }) => {
             state.isLoading = false
@@ -66,5 +70,5 @@ const jobListingSlice = createSlice({
     }
 });
 
-export const { showLoading, hideLoading, setSelection, clearFilters } = jobListingSlice.actions;
+export const { showLoading, hideLoading, setSelection, clearFilters, changePage } = jobListingSlice.actions;
 export default jobListingSlice.reducer;
