@@ -13,8 +13,9 @@ import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { showModal, updateJobs } from '../store/jobSlice'
 
-const JobCard = ({ _id, status, company, position, jobLocation: location, createdAt }) => {
 
+
+const JobCard = ({ _id, status, company, position, jobLocation: location, createdAt, avatarColor }) => {
     const dispatch = useDispatch()
     const date = moment(createdAt).format("MMM Do, YYYY")
 
@@ -24,7 +25,7 @@ const JobCard = ({ _id, status, company, position, jobLocation: location, create
             <figure className='p-5 bg-white shadow-md rounded-lg max-w-2xl mb-5 mt-5'>
                 <div className='flex items-center gap-y-6 justify-between flex-wrap '>
                     <div className='flex items-center gap-5 border-b border-b-slate-100 md:border-none w-full md:max-w-max py-3'>
-                        <div className='flex-shrink-0 self-baseline h-12 w-12 font-semibold bg-green-600 flex items-center justify-center rounded-full text-white capitalize'>{company.charAt(0)}</div>
+                        <div style={{ backgroundColor: avatarColor }} className="flex-shrink-0 self-baseline h-12 w-12 font-semibold  flex items-center justify-center rounded-full text-white capitalize">{company.charAt(0)}</div>
                         <div>
                             <h3 className='text-lg font-semibold'>{company}</h3>
                             <div className='flex gap-3 mt-2 text-sm font-semibold flex-wrap'>

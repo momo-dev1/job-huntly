@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FormField, SectionWrapper, FormSelect } from '../../components'
 import { setSelection, clearValues, createJob, updateJob } from '../../store/jobSlice'
 
+
 const AddJob = () => {
     const {
         company,
@@ -24,6 +25,7 @@ const AddJob = () => {
             return
         }
         dispatch(createJob({ company, jobLocation: location, position, status }))
+
     }
 
     const handleInputChange = (e) => {

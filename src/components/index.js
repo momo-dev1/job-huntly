@@ -6,6 +6,7 @@ import Search from "./Search"
 import Tag from "./Tag"
 import SectionWrapper from "./SectionWrapper"
 import FormSelect from "./FormSelect"
+import Pagination from "./Pagination"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
@@ -20,5 +21,5 @@ export {
     Search,
     Tag,
     FormSelect,
-
+    Pagination
 }

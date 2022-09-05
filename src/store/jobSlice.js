@@ -101,7 +101,7 @@ const jobSlice = createSlice({
 });
 
 
-export const { setSelection, clearValues, updateJobs, showModal, hideModal } = jobSlice.actions;
+export const { setSelection, clearValues, updateJobs, showModal, hideModal, setAvatarColor } = jobSlice.actions;
 
 export default jobSlice.reducer;
 

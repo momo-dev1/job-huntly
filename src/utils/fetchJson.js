@@ -7,7 +7,7 @@ const fetchJson = axios.create({
 })
 
 fetchJson.interceptors.request.use(config => {
-    const user = getLocalStorage()
+    const user = getLocalStorage("user")
 
     if (user) {
         config.headers.common["Authorization"] = `Bearer ${ user.token }`
