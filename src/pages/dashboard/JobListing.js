@@ -5,17 +5,20 @@ import { getListingJobs } from '../../store/jobListingSlice'
 import Loading from '../../components/Loading'
 
 const JobListing = () => {
-    const { jobs, jobCounts, isLoading } = useSelector(state => state.jobListing)
+    const { jobs, jobCounts, isLoading, currentPage, searchStatus, searchType, sortBy, search } = useSelector(state => state.jobListing)
     const dispatch = useDispatch()
     const jobFound = jobCounts === 1 ? "Job Found" : "Jobs Found"
 
-    useEffect(() => {
-        dispatch(getListingJobs())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getListingJobs())
+    // }, [currentPage, searchStatus, searchType, sortBy, search,dispatch])
 
     return (
         <SectionWrapper title="Job Listing">
             <Search />
+
+            <button onClick={() => dispatch(getListingJobs())} className='px-2 py-4 bg-blue-600 mt-5 text-white'>fetch</button>
+
             {isLoading ?
                 <Loading /> :
                 jobs.length === 0

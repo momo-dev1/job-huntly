@@ -16,6 +16,7 @@ const Search = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
+        if (isLoading) return
         dispatch(setSelection({ name, value }))
     }
     return (

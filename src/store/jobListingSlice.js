@@ -23,10 +23,14 @@ const initialState = {
 }
 
 export const getListingJobs = createAsyncThunk('jobSlice/getListingJobs', async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI
-
+    const { rejectWithValue, getState } = thunkAPI
+    const { search, currentPage, searchStatus, searchType, sortBy } = getState().jobListing
+    let url = `/jobs?status=${ searchStatus }&position=${ searchType }&sort=${ sortBy }&page=${ currentPage }`
+    if (search) {
+        url = url + `&search=${ search }`
+    }
     try {
-        const res = await fetchJson.get('/jobs');
+        const res = await fetchJson.get(url);
         return res.data;
     } catch (error) {
         return rejectWithValue(error.response.data.msg);
@@ -44,6 +48,7 @@ const jobListingSlice = createSlice({
             state.isLoading = false
         },
         setSelection: (state, { payload: { name, value } }) => {
+            state.currentPage = 1
             state[name] = value
         },
         clearFilters: (state) => {
@@ -51,7 +56,8 @@ const jobListingSlice = createSlice({
         },
         changePage: (state, { payload }) => {
             state.currentPage = payload
-        }
+        },
+        clearAllJobs: () => initialState
     },
     extraReducers: {
         [getListingJobs.pending]: (state) => {
@@ -70,5 +76,5 @@ const jobListingSlice = createSlice({
     }
 });
 
-export const { showLoading, hideLoading, setSelection, clearFilters, changePage } = jobListingSlice.actions;
+export const { showLoading, hideLoading, setSelection, clearFilters, changePage, clearAllJobs } = jobListingSlice.actions;
 export default jobListingSlice.reducer;

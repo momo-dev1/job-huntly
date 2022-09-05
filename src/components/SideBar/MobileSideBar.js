@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { signOut } from "../../store/userSlice";
+import { clearStore } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 import { LogoIcon } from '../../assets';
 import { LogoutIcon, XIcon } from '@heroicons/react/outline'
@@ -16,7 +16,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
     const location = useLocation()
     const dispatch = useDispatch();
     const handleSignOut = () => {
-        dispatch(signOut())
+        dispatch(clearStore())
     }
     return <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>

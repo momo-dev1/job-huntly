@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import fetchJson from '../utils/fetchJson';
 import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../utils/localStorage';
+import { clearAllJobs } from './jobListingSlice';
+import { clearValues } from './jobSlice';
 
 const initialState = {
     user: getLocalStorage('user'),
@@ -38,6 +40,19 @@ export const updateUser = createAsyncThunk("user/updateUser", async (user, thunk
         return res.data;
     } catch (error) {
         return rejectWithValue(error.response.data.msg);
+    }
+})
+
+export const clearStore = createAsyncThunk("user/clearStore", async (user, thunkAPI) => {
+    const { dispatch } = thunkAPI
+
+    try {
+        dispatch(signOut())
+        dispatch(clearAllJobs())
+        dispatch(clearValues())
+        return Promise.resolve()
+    } catch (error) {
+        return Promise.reject();
     }
 })
 
@@ -86,6 +101,9 @@ const userSlice = createSlice({
         },
         [loginUser.rejected]: (state) => {
             state.isLoading = false
+        },
+        [clearStore.rejected]: (state) => {
+            console.log("error while cleaning store")
         },
     },
 });

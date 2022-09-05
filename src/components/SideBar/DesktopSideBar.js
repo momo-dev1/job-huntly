@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { signOut } from "../../store/userSlice";
+import { clearStore } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 import { LogoutIcon } from '@heroicons/react/outline'
 import { LogoIcon } from '../../assets';
@@ -14,7 +14,7 @@ function DesktopSideBar({ user }) {
     const location = useLocation()
     const dispatch = useDispatch();
     const handleSignOut = () => {
-        dispatch(signOut())
+        dispatch(clearStore())
     }
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
