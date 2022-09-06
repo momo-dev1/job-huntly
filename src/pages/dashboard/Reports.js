@@ -2,376 +2,124 @@ import { Chart } from 'chart.js';
 import React, { useEffect, useState } from 'react'
 
 const Reports = () => {
-    const [show, setshow] = useState();
 
-    useEffect(() => {
-        const myBarChart = new Chart(document.getElementById("chartjs-1"), {
-            type: "bar",
-            data: { labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], datasets: [{ data: [25, 55, 100, 75, 60, 60, 120, 150, 40, 0], fill: false, backgroundColor: "#4338CA" }] },
-            options: {
-                scales: [{ yAxes: [{ ticks: { beginAtZero: true } }] }],
-                legend: {
-                    position: false,
-                },
-            },
-        });
-    });
     return (
+        <section className='flex items-center justify-center text-gray-700 '>
 
-        <div>
-            <div className="flex items-center justify-center w-full h-full py-8 px-4">
-                <div className="sm:w-1/2 2xl:flex w-11/12">
-                    <div className="w-full">
-                        <div className="flex w-full justify-between relative md:static">
-                            <h4 className="text-gray-600 dark:text-gray-400 font-bold text-base md:text-xl">
-                                Registrations
-                            </h4>
-                            <div className="static sm:relative">
-                                <div
-                                    onClick={() => setshow(!show)}
-                                    className="py-2 px-3 cursor-pointer flex items-center flex-no-wrap bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 ease-in duration-150 hover:bg-gray-200 relative w-auto"
-                                >
-                                    <p className="text-gray-600 dark:text-gray-400 mr-2 text-xs">
-                                        12 Aug - 19 Aug
-                                    </p>
-                                    <div>
-                                        <button className="text-indigo-700 dark:text-indigo-600">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width={16}
-                                                height={16}
-                                                viewBox="0 0 16 16"
-                                                fill="none"
-                                            >
-                                                <rect
-                                                    x="2.66666"
-                                                    y="3.33337"
-                                                    width="10.6667"
-                                                    height="10.6667"
-                                                    rx="1.33333"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                                <path
-                                                    d="M10.6667 2V4.66667"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                                <path
-                                                    d="M5.33333 2V4.66667"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                                <path
-                                                    d="M2.66666 7.33333H13.3333"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                                <path
-                                                    d="M7.33334 9.99996H8.00001"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                                <path
-                                                    d="M7.99999 10V12"
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div
-                                    id="popup_calender"
-                                    className={show ? "w-full h-full " : "hidden "}
-                                >
-                                    <div
-                                        onClick={() => setshow(!show)}
-                                        className="fixed w-full h-full inset-0  bg-transparent  z-40"
-                                    />
-                                    <div className="bg-white dark:bg-gray-800 absolute -ml-44 sm:-ml-64 xl:ml-0 px-6 py-6 z-50 shadow-xl">
-                                        <p className="text-base text-gray-700 dark:text-gray-400">
-                                            June
-                                        </p>
-                                        <table className="mt-6 ">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Mon
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Tue
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Wed
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Thu
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Fri
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Sat
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div className="w-full flex justify-center">
-                                                            <p className="opacity-50 text-xs font-bold text-center text-gray-600 dark:text-gray-400">
-                                                                Sun
-                                                            </p>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center" />
-                                                    </td>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center" />
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center" />
-                                                    </td>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                1
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                2
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-indigo-600">3</p>
-                                                        </div>
-                                                    </td>
-                                                    <td className="pt-6">
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-indigo-600">4</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-gray-700 ">5</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-gray-700 ">6</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-gray-700 ">7</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center bg-indigo-300">
-                                                            <p className="text-sm text-gray-700 ">8</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="w-full h-full">
-                                                            <div className="w-12 h-12 flex w-full rounded-full justify-center items-center cursor-pointer bg-indigo-500">
-                                                                <p className="text-sm font-bold text-white">9</p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">10</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">11</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                12
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                13
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                14
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                15
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="px-4 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                16
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">17</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">18</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                19
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                20
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                21
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                22
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="px-4 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                23
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">24</p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-indigo-600">25</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                26
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                27
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                28
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="sm:px-4 px-2 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                29
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="px-4 py-2 flex w-full justify-center">
-                                                            <p className="text-sm text-gray-700 dark:text-gray-400">
-                                                                30
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-9">
-                            <canvas id="chartjs-1" />
-                        </div>
+            <div class="flex flex-col items-center w-full max-w-screen-md p-6 pb-6 bg-white rounded-lg shadow-xl sm:p-8">
+
+                {/* chart-content */}
+                <div className='flex flex-col justify-center items-center gap-2'>
+                    <h2 class="text-xl font-bold">title</h2>
+                    <span class="text-sm font-semibold text-gray-500">year</span>
+                </div>
+
+                {/* chart-bars */}
+                <div class="flex items-end flex-grow w-full mt-2 space-x-2 sm:space-x-3">
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$37,500</span>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-16 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Jan</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$45,000</span>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Feb</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Mar</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$50,000</span>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-6 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Apr</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$47,500</span>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">May</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$55,000</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Jun</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$60,000</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-16 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-20 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Jul</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$57,500</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-24 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Aug</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$67,500</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-10 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-32 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Sep</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$65,000</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full bg-indigo-400 h-28"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Oct</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$70,000</span>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Nov</span>
+                    </div>
+                    <div class="relative flex flex-col items-center flex-grow pb-5 group">
+                        <span class="absolute top-0 hidden -mt-6 text-xs font-bold group-hover:block">$75,000</span>
+                        <div class="relative flex justify-center w-full h-12 bg-indigo-200"></div>
+                        <div class="relative flex justify-center w-full h-8 bg-indigo-300"></div>
+                        <div class="relative flex justify-center w-full h-40 bg-indigo-400"></div>
+                        <span class="absolute bottom-0 text-xs font-bold">Dec</span>
                     </div>
                 </div>
+
+                {/* chart-tags */}
+                <div class="flex w-full mt-3">
+                    <div class="flex items-center ml-auto">
+                        <span class="block w-4 h-4 bg-indigo-400"></span>
+                        <span class="ml-1 text-xs font-medium">Existing</span>
+                    </div>
+                    <div class="flex items-center ml-4">
+                        <span class="block w-4 h-4 bg-indigo-300"></span>
+                        <span class="ml-1 text-xs font-medium">Upgrades</span>
+                    </div>
+                    <div class="flex items-center ml-4">
+                        <span class="block w-4 h-4 bg-indigo-200"></span>
+                        <span class="ml-1 text-xs font-medium">New</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </section>
     );
 }
 

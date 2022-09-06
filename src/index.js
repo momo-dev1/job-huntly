@@ -40,11 +40,12 @@ ReactDOM.render(
             <Route path="job-listing" element={<JobListing />} />
             <Route path="profile" element={<Profile />} />
             <Route path="add-job" element={<AddJob />} />
+            <Route path='reports' element={<Reports />} />
           </Route>
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
-          <Route path='reports' element={<Reports />} />
+
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
