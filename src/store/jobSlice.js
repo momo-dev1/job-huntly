@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import fetchJson from '../utils/fetchJson';
 import { getListingJobs, showLoading, hideLoading } from "./jobListingSlice"
 
@@ -78,20 +79,21 @@ const jobSlice = createSlice({
     extraReducers: {
         [createJob.pending]: (state) => {
             state.isLoading = true
+            toast.success('Job has been created successfully')
         },
         [createJob.fulfilled]: (state, { payload }) => {
             state.isLoading = false
         },
-        [createJob.rejected]: (state, { payload }) => {
+        [createJob.rejected]: (state) => {
             state.isLoading = false
-            console.log(payload)
+            toast.error('error!!')
         },
         [updateJob.pending]: (state) => {
             state.isLoading = true
         },
         [updateJob.fulfilled]: (state, { payload }) => {
             state.isLoading = false
-            console.log("job has been updated")
+            toast.success("job has been updated")
         },
         [updateJob.rejected]: (state, { payload }) => {
             state.isLoading = false

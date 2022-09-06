@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import store from "./store/index"
 import { Provider } from "react-redux"
+import { Toaster } from 'react-hot-toast';
 
 import {
   BrowserRouter,
@@ -49,6 +50,10 @@ ReactDOM.render(
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
     </BrowserRouter>
   </Provider>
   ,

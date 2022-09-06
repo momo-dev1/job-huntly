@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import fetchJson from '../utils/fetchJson';
 import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../utils/localStorage';
 import { clearAllJobs } from './jobListingSlice';
@@ -89,6 +90,7 @@ const userSlice = createSlice({
         },
         [registerUser.rejected]: (state, { payload }) => {
             state.isLoading = false
+            toast.error(payload)
         },
 
         [loginUser.pending]: (state) => {
@@ -97,13 +99,16 @@ const userSlice = createSlice({
         [loginUser.fulfilled]: (state, { payload }) => {
             state.isLoading = false
             state.user = payload
+            toast.success(`Welcome ${ payload.username }`)
+            console.log(payload)
             setLocalStorage("user", payload)
         },
-        [loginUser.rejected]: (state) => {
+        [loginUser.rejected]: (state, { payload }) => {
             state.isLoading = false
+            toast.error("unauthorized user")
         },
         [clearStore.rejected]: (state) => {
-            console.log("error while cleaning store")
+            toast.error("error while cleaning store")
         },
     },
 });
