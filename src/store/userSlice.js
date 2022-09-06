@@ -38,6 +38,7 @@ export const updateUser = createAsyncThunk("user/updateUser", async (user, thunk
 
     try {
         const res = await fetchJson.patch('/auth/updateUser', user);
+
         return res.data;
     } catch (error) {
         return rejectWithValue(error.response.data.msg);
@@ -74,10 +75,12 @@ const userSlice = createSlice({
         [updateUser.fulfilled]: (state, { payload }) => {
             state.isLoading = false
             state.user = payload
+            toast.success("User profile has been updated")
             setLocalStorage("user", payload)
         },
         [updateUser.rejected]: (state, { payload }) => {
             state.isLoading = false
+            toast.error("error!!")
         },
 
         [registerUser.pending]: (state) => {
