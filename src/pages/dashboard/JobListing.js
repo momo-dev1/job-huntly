@@ -17,24 +17,28 @@ const JobListing = () => {
 
     return (
         <SectionWrapper title="Job Listing">
+
             <Search />
-            {isLoading ?
-                <Loading /> :
-                jobs.length === 0
-                    ?
-                    <div className='mt-6 text-2xl'>No jobs found</div>
-                    :
-                    <>
-                        <h5 className='text-lg font-semibold mt-5'>
-                            {jobCounts} {jobFound}
-                        </h5>
-                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
-                            {jobs.map(job => <JobCard key={job._id} {...job} jobCounts={jobCounts} />
-                            )}
-                        </div>
-                        <Pagination />
-                    </>
-            }
+            <section className='relative '>
+                {isLoading ?
+                    <Loading /> :
+                    jobs.length === 0
+                        ?
+                        <div className='mt-6 text-2xl'>No jobs found</div>
+                        :
+                        <>
+                            <h5 className='text-lg font-semibold mt-5'>
+                                {jobCounts} {jobFound}
+                            </h5>
+                            <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                                {jobs.map(job => <JobCard key={job._id} {...job} jobCounts={jobCounts} />
+                                )}
+                            </div>
+                            <Pagination />
+                        </>
+                }
+            </section>
+
         </SectionWrapper>
     )
 }

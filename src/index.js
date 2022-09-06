@@ -21,6 +21,7 @@ import {
   JobListing,
   Profile,
   AddJob,
+  Reports
 } from './pages';
 
 
@@ -43,6 +44,7 @@ ReactDOM.render(
           <Route path='landing' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
+          <Route path='reports' element={<Reports />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

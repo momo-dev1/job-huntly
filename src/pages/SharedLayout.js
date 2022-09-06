@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { DesktopSideBar, MobileSideBar, HamburgerNav } from '../components';
-import Modal from '../components/Modal';
-
+import { DesktopSideBar, MobileSideBar, HamburgerNav ,Modal} from '../components';
 
 const SharedLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const { user } = useSelector(state => state.user)
     const { modalIsOpen } = useSelector(state => state.job)
+
     return (
 
         <div >

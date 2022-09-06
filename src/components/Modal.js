@@ -11,7 +11,7 @@ const Modal = () => {
         dispatch(deleteJob(deleteId))
     }
     return (
-        <div className="fixed z-10 inset-0 " >
+        <div className="absolute z-10 inset-0 " >
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div className="fixed inset-0 bg-white/30 backdrop-blur-sm" />
                 {/* This element is to trick the browser into centering the modal contents. */}
