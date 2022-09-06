@@ -5,7 +5,7 @@ import FormSelect from './FormSelect'
 import { setSelection, clearFilters } from "../store/jobListingSlice"
 
 const Search = () => {
-    const { isLoading, search, searchStatus, searchType, sortBy, sortOptions } = useSelector(state => state.jobListing)
+    const { search, searchStatus, searchType, sortBy, sortOptions } = useSelector(state => state.jobListing)
     const { positionType, statusType } = useSelector(state => state.job)
     const dispatch = useDispatch()
 

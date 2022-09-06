@@ -15,7 +15,7 @@ import { showModal, updateJobs } from '../store/jobSlice'
 
 
 
-const JobCard = ({ _id, status, company, position, jobLocation: location, createdAt, avatarColor }) => {
+const JobCard = ({ _id: id, status, company, position, jobLocation: location, createdAt, avatarColor }) => {
     const dispatch = useDispatch()
     const date = moment(createdAt).format("MMM Do, YYYY")
 
@@ -38,11 +38,11 @@ const JobCard = ({ _id, status, company, position, jobLocation: location, create
                     </div>
 
                     <div className='flex gap-2'>
-                        <button onClick={() => dispatch(showModal(_id))} className='p-3 rounded-full border border-red-600'>
+                        <button onClick={() => dispatch(showModal(id))} className='p-3 rounded-full border border-red-600'>
                             <TrashIcon className='h-4 w-4 text-red-600 ' />
                         </button>
                         <Link to="/add-job">
-                            <button onClick={() => dispatch(updateJobs({ editId: _id, company, position, location, status }))} className='p-3 rounded-full border border-blue-600'>
+                            <button onClick={() => dispatch(updateJobs({ editId: id, company, position, location, status }))} className='p-3 rounded-full border border-blue-600'>
                                 <PencilIcon className='h-4 w-4 text-blue-600 ' />
                             </button>
                         </Link>
