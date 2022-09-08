@@ -16,9 +16,9 @@ const Search = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
-
         dispatch(setSelection({ name, value }))
     }
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="overflow-hidden shadow-md rounded-lg mt-5">

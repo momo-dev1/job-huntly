@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { JobCard, SectionWrapper, Search, Pagination } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getListingJobs } from '../../store/jobListingSlice'
@@ -6,18 +6,23 @@ import Loading from '../../components/Loading'
 
 const JobListing = () => {
     const { jobs, jobCounts, isLoading, currentPage, searchStatus, searchType, sortBy, search } = useSelector(state => state.jobListing)
-
+    const [debounceSearch, setDebounceSearch] = useState(search)
     const dispatch = useDispatch()
     const jobFound = jobCounts === 1 ? "Job Found" : "Jobs Found"
 
     useEffect(() => {
-        dispatch(getListingJobs())
-    }, [currentPage, searchStatus, searchType, sortBy, search, dispatch])
+        const timer = setTimeout(() => {
+            setDebounceSearch(search)
+        }, 1200)
+        return () => clearTimeout(timer)
+    }, [search])
 
+    useEffect(() => {
+        dispatch(getListingJobs())
+    }, [currentPage, searchStatus, searchType, sortBy, debounceSearch, dispatch])
 
     return (
         <SectionWrapper title="Job Listing">
-
             <Search />
             <section className='relative '>
                 {isLoading ?
