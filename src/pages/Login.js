@@ -4,12 +4,12 @@ import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../store/userSlice'
 import { LogoIcon } from "../assets";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const dispatch = useDispatch()
-    const { user, err, isLoading } = useSelector(state => state.user)
+    const { user, isLoading } = useSelector(state => state.user)
     const navigate = useNavigate()
-    const [emptyFields, setEmptyFields] = useState("")
     const [formFields, setFormFields] = useState({ email: "", password: "" });
     const isInvalid = formFields.email === "" || formFields.password === "";
 
@@ -25,25 +25,18 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isInvalid) {
-            setEmptyFields("Please fill out all fields");
+            toast.error("Please fill out all fields");
             return
         };
         dispatch(loginUser(formFields));
     };
 
-    useEffect(() => {
-        if (emptyFields || err) {
-            setTimeout(() => {
-                emptyFields("")
-            }, 4000);
-        }
-    }, [emptyFields, err, dispatch])
 
     useEffect(() => {
         if (user) {
             setTimeout(() => {
                 navigate("/")
-            }, 2000);
+            }, 1000);
         }
     }, [user, navigate])
     return (
@@ -55,16 +48,6 @@ const Login = () => {
                         <LogoIcon classes="w-52" />
                     </div>
                     <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                        {err ? (
-                            <span className="block text-sm text-center text-red-primary">
-                                {err}
-                            </span>
-                        ) : null}
-                        {emptyFields ? (
-                            <span className="block text-sm text-center text-red-primary mt-2">
-                                {emptyFields}
-                            </span>
-                        ) : null}
 
                         <FormField
                             id="email"
