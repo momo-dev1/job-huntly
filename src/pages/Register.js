@@ -4,12 +4,12 @@ import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../store/userSlice'
 import { LogoIcon } from "../assets";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
-    const { user, err, isLoading } = useSelector(state => state.user)
+    const { isLoading } = useSelector(state => state.user)
     const [formFields, setFormFields] = useState({ email: "", username: "", password: "", confirmPassword: "" });
-    const [emptyFields, setEmptyFields] = useState("");
     const isInvalid = formFields.email === "" || formFields.password === "";
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isInvalid) {
-            setEmptyFields("Please fill out all fields");
+            toast.error("Please fill out all fields");
             return
         }
         dispatch(registerUser(formFields));
@@ -49,17 +49,6 @@ const Register = () => {
                         onSubmit={handleSubmit}
                         className="mt-8 space-y-6"
                     >
-                        {err ? (
-                            <span className="block text-sm text-center text-red-primary">
-                                {err}
-                            </span>
-                        ) : null}
-                        {emptyFields ? (
-                            <span className="block text-sm text-center text-red-primary mt-2">
-                                {emptyFields}
-                            </span>
-                        ) : null}
-
                         <FormField FormField
                             id="email"
                             label="Email address"

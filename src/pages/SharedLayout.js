@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { DesktopSideBar, MobileSideBar, HamburgerNav ,Modal} from '../components';
+import { DesktopSideBar, MobileSideBar, HamburgerNav, Modal } from '../components';
 
 const SharedLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false)

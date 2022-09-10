@@ -5,6 +5,7 @@ import { LogoutIcon } from '@heroicons/react/outline'
 import { LogoIcon } from '../../assets';
 
 import { navigation } from "../../utils/navLinks"
+import ToggleButton from '../ToggleButton';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -13,6 +14,7 @@ function classNames(...classes) {
 function DesktopSideBar({ user }) {
     const location = useLocation()
     const dispatch = useDispatch();
+    
     const handleSignOut = () => {
         dispatch(clearStore())
     }
@@ -22,6 +24,8 @@ function DesktopSideBar({ user }) {
                 <div className="flex items-center flex-shrink-0 px-4">
                     <LogoIcon classes="w-52" />
                 </div>
+
+                <ToggleButton/>
                 <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
                     {navigation.map((item) => (
                         <Link
