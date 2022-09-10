@@ -7,6 +7,7 @@ import { LogoIcon } from '../../assets';
 import { LogoutIcon, XIcon } from '@heroicons/react/outline'
 
 import { navigation } from "../../utils/navLinks"
+import ToggleButton from '../ToggleButton';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -89,7 +90,8 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                             ))}
                         </nav>
                     </div>
-                    <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+                    <ToggleButton />
+                    <div className="flex-shrink-0 mt-5 flex border-t border-gray-200 p-4">
                         <Link to="#" className="flex-shrink-0 group block w-full">
                             <div className="flex items-center ">
                                 <div>

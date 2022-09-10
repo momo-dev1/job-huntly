@@ -14,7 +14,7 @@ function classNames(...classes) {
 function DesktopSideBar({ user }) {
     const location = useLocation()
     const dispatch = useDispatch();
-    
+
     const handleSignOut = () => {
         dispatch(clearStore())
     }
@@ -25,7 +25,6 @@ function DesktopSideBar({ user }) {
                     <LogoIcon classes="w-52" />
                 </div>
 
-                <ToggleButton/>
                 <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
                     {navigation.map((item) => (
                         <Link
@@ -49,7 +48,8 @@ function DesktopSideBar({ user }) {
                     ))}
                 </nav>
             </div>
-            <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+            <ToggleButton />
+            <div className="flex-shrink-0 flex mt-5 border-t border-gray-200 p-4">
                 <Link to="#" className="flex-shrink-0 w-full group block">
                     <div className="flex items-center">
                         <div>
