@@ -29,10 +29,10 @@ const JobListing = () => {
                     <Loading /> :
                     jobs.length === 0
                         ?
-                        <div className='mt-6 text-2xl'>No jobs found</div>
+                        <div className='mt-6 text-2xl dark:text-jet'>No jobs found</div>
                         :
                         <>
-                            <h5 className='text-lg font-semibold mt-5'>
+                            <h5 className='text-lg md:text-xl font-semibold mt-5 dark:text-jet'>
                                 {jobCounts} {jobFound}
                             </h5>
                             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
