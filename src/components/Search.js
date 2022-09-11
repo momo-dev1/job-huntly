@@ -21,8 +21,8 @@ const Search = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="overflow-hidden shadow-md rounded-lg mt-5">
-                <div className="px-4 py-5 bg-white sm:p-6">
+            <div className="overflow-hidden shadow-md dark:shadow-xl rounded-lg mt-5">
+                <div className="px-4 py-5 bg-white dark:bg-eerie-black  sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
                         {/* col 1 */}
                         <div className='col-span-6 sm:col-span-3 '>
@@ -93,7 +93,6 @@ const Search = () => {
                         >
                             clear Filters
                         </button>
-
                     </div>
                 </div>
 

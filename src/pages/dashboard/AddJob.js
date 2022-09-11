@@ -35,8 +35,8 @@ const AddJob = () => {
     return (
         <SectionWrapper title={`${ isEdit ? "Edit Job" : "Add Job" }`}>
             <form onSubmit={handleSubmit}>
-                <div className="overflow-hidden shadow-md rounded-lg mt-5">
-                    <div className="px-4 py-5 bg-white sm:p-6">
+                <div className="overflow-hidden shadow-md dark:shadow-xl rounded-lg mt-5">
+                    <div className="px-4 py-5 bg-white dark:bg-eerie-black  sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
 
                             <div className="col-span-6 sm:col-span-3">
@@ -94,21 +94,21 @@ const AddJob = () => {
                         </div>
                     </div>
 
-                    <div className='flex items-center gap-2 m-4 justify-end'>
-                        <div className="bg-gray-50 text-right">
+                    <div className='flex items-center gap-2 p-4 justify-end dark:bg-eerie-black/40'>
+                        <div>
                             <button
                                 onClick={() => dispatch(clearValues())}
                                 type="button"
-                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-jet hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                                 clear
                             </button>
 
                         </div>
-                        <div className="bg-gray-50 text-right">
+                        <div>
                             <button
                                 type="submit"
-                                className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cornflower-300 hover:bg-cornflower-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                                 submit
                             </button>
