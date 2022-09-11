@@ -20,7 +20,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
         dispatch(clearStore())
     }
     return <Transition.Root show={sidebarOpen} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
+        <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden " onClose={setSidebarOpen}>
             <Transition.Child
                 as={Fragment}
                 enter="transition-opacity ease-linear duration-300"
@@ -30,7 +30,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >
-                <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75" />
+                <Dialog.Overlay className="fixed inset-0 bg-opacity-75 bg-gray-600 " />
             </Transition.Child>
             <Transition.Child
                 as={Fragment}
@@ -41,7 +41,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
             >
-                <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white">
+                <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white dark:bg-eerie-black">
                     <Transition.Child
                         as={Fragment}
                         enter="ease-in-out duration-300"
@@ -73,15 +73,14 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                                     to={item.path}
                                     className={classNames(
                                         location.pathname.slice(1) === item.path
-                                            ? 'bg-gray-100 text-gray-900'
-                                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                                        'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                                            ? 'bg-gray-100 dark:bg-rich-black text-gray-900 dark:text-jet ' : 'text-gray-600 dark:hover:bg-rich-black hover:bg-gray-50 hover:text-gray-900 dark:hover:text-jet',
+                                        'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md dark:text-jet'
                                     )}
                                 >
                                     <item.icon
                                         className={classNames(
                                             item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                                            'mr-4 flex-shrink-0 h-6 w-6'
+                                            'mr-3 flex-shrink-0 h-6 w-6'
                                         )}
                                         aria-hidden="true"
                                     />
@@ -99,17 +98,16 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                                         <div className='h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white capitalize'>{user?.username.charAt(0)}</div>
                                     </div>
                                 </div>
-                                <div className="ml-3 flex items-center justify-between w-full ">
+                                <div className="ml-3 flex items-center justify-between w-full">
                                     <div>
-                                        <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{user?.username}</p>
+                                        <p className="text-md font-medium text-gray-700 dark:text-jet capitalize">{user?.username}</p>
                                         <Link to="/profile">
-                                            <p onClick={() => setSidebarOpen(false)}
-                                                className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                            <p className="text-xs font-medium text-gray-500">
                                                 View profile
                                             </p>
                                         </Link>
                                     </div>
-                                    <LogoutIcon onClick={handleSignOut} className='h-6 w-6' />
+                                    <LogoutIcon onClick={handleSignOut} className='h-6 w-6 text-gray-700 dark:text-jet dark:hover:text-red-600 hover:text-red-600 ' />
                                 </div>
                             </div>
                         </Link>

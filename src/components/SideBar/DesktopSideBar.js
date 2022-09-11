@@ -19,21 +19,21 @@ function DesktopSideBar({ user }) {
         dispatch(clearStore())
     }
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
+        <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 dark:border-jet bg-white dark:bg-eerie-black">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4">
                     <LogoIcon classes="w-52" />
                 </div>
 
-                <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
+                <nav className="mt-5 flex-1 px-2 space-y-1">
                     {navigation.map((item) => (
                         <Link
                             key={item.name}
                             to={item.path}
                             className={classNames(
                                 location.pathname.slice(1) === item.path
-                                    ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                                'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                                    ? 'bg-gray-100 dark:bg-rich-black text-gray-900 dark:text-jet ' : 'text-gray-600 dark:hover:bg-rich-black hover:bg-gray-50 hover:text-gray-900 dark:hover:text-jet',
+                                'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md dark:text-jet'
                             )}
                         >
                             <item.icon
@@ -49,7 +49,7 @@ function DesktopSideBar({ user }) {
                 </nav>
             </div>
             <ToggleButton />
-            <div className="flex-shrink-0 flex mt-5 border-t border-gray-200 p-4">
+            <div className="flex-shrink-0 flex mt-5 border-t  dark:border-jet border-gray-200 p-4 ">
                 <Link to="#" className="flex-shrink-0 w-full group block">
                     <div className="flex items-center">
                         <div>
@@ -57,14 +57,14 @@ function DesktopSideBar({ user }) {
                         </div>
                         <div className="ml-3 flex items-center justify-between w-full">
                             <div>
-                                <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900 capitalize">{user?.username}</p>
+                                <p className="text-md font-medium text-gray-700 dark:text-jet capitalize">{user?.username}</p>
                                 <Link to="/profile">
-                                    <p className="text-xs font-medium text-gray-500 group-hover:text-gray-700">
+                                    <p className="text-xs font-medium text-gray-500">
                                         View profile
                                     </p>
                                 </Link>
                             </div>
-                            <LogoutIcon onClick={handleSignOut} className='h-6 w-6 text-gray-700 hover:text-red-600' />
+                            <LogoutIcon onClick={handleSignOut} className='h-6 w-6 text-gray-700 dark:text-jet dark:hover:text-red-600 hover:text-red-600 ' />
                         </div>
                     </div>
                 </Link>
