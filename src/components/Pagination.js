@@ -1,7 +1,7 @@
 import React from 'react'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import { useDispatch, useSelector } from 'react-redux';
 import { changePage } from '../store/jobListingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 
 
 const Paginitaion = () => {

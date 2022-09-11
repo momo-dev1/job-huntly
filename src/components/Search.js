@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import FormField from './FormField'
 import FormSelect from './FormSelect'
+import { useSelector, useDispatch } from 'react-redux'
 import { setSelection, clearFilters } from "../store/jobListingSlice"
 
 const Search = () => {
@@ -90,7 +90,7 @@ const Search = () => {
                         type="button"
                         className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none"
                     >
-                        clear Filters
+                        Clear Filters
                     </button>
                 </div>
 

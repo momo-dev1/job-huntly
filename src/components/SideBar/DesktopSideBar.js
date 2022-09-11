@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'
 import { clearStore } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
@@ -6,18 +7,32 @@ import { LogoIcon } from '../../assets';
 
 import { navigation } from "../../utils/navLinks"
 import ToggleButton from '../ToggleButton';
+import toast from 'react-hot-toast';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 function DesktopSideBar({ user }) {
+    const [signOut, setSignOut] = useState(false)
     const location = useLocation()
     const dispatch = useDispatch();
 
+
     const handleSignOut = () => {
-        dispatch(clearStore())
+        setSignOut(true)
+        toast.success(`GoodBye ${ user?.username }`)
     }
+    useEffect(() => {
+        if (signOut) {
+            const timeOut = setTimeout(() => {
+                dispatch(clearStore())
+            }, 1500)
+            return () => clearTimeout(timeOut)
+        }
+    }, [signOut, dispatch])
+
+
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 dark:border-jet bg-white dark:bg-eerie-black">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -38,8 +53,8 @@ function DesktopSideBar({ user }) {
                         >
                             <item.icon
                                 className={classNames(
-                                    item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500',
-                                    'mr-3 flex-shrink-0 h-6 w-6'
+                                    location.pathname.slice(1) === item.path ? 'text-cornflower-400' : 'text-gray-400 group-hover:text-gray-500',
+                                    'mr-3 flex-shrink-0 h-6 w-6 '
                                 )}
                                 aria-hidden="true"
                             />

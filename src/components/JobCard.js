@@ -1,24 +1,21 @@
 import React from 'react'
+import moment from 'moment'
 import { Link } from "react-router-dom"
 import { Tag } from "./index"
-import {
-    LocationMarkerIcon,
-    BriefcaseIcon,
-    ClockIcon,
-    CalendarIcon,
-    PencilIcon,
-    TrashIcon
-} from '@heroicons/react/solid'
-import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { showModal, updateJobs } from '../store/jobSlice'
-
-
+import {
+    ClockIcon,
+    TrashIcon,
+    PencilIcon,
+    CalendarIcon,
+    BriefcaseIcon,
+    LocationMarkerIcon,
+} from '@heroicons/react/solid'
 
 const JobCard = ({ _id: id, status, company, position, jobLocation: location, createdAt, avatarColor }) => {
     const dispatch = useDispatch()
     const date = moment(createdAt).format("MMM Do, YYYY")
-
 
     return (
         <>

@@ -1,24 +1,36 @@
+import { Fragment, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import ToggleButton from '../ToggleButton';
+import { LogoIcon } from '../../assets';
+import { navigation } from "../../utils/navLinks"
 import { clearStore } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
-import { LogoIcon } from '../../assets';
 import { LogoutIcon, XIcon } from '@heroicons/react/outline'
-
-import { navigation } from "../../utils/navLinks"
-import ToggleButton from '../ToggleButton';
+import { Dialog, Transition } from '@headlessui/react'
+import toast from 'react-hot-toast';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
+    const [signOut, setSignOut] = useState(false)
     const location = useLocation()
     const dispatch = useDispatch();
+
     const handleSignOut = () => {
-        dispatch(clearStore())
+        setSignOut(true)
+        toast.success(`GoodBye ${ user?.username }`)
     }
+    useEffect(() => {
+        if (signOut) {
+            const timeOut = setTimeout(() => {
+                dispatch(clearStore())
+            }, 1500)
+            return () => clearTimeout(timeOut)
+        }
+    }, [signOut, dispatch])
+
     return <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden " onClose={setSidebarOpen}>
             <Transition.Child

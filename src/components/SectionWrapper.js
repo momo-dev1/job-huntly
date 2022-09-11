@@ -3,7 +3,8 @@ import React from 'react'
 const SectionWrapper = ({ title, children }) => {
     return (
         <div>
-            <h2 className='text-2xl font-semibold tracking-wide text-jet'>{title}</h2>
+            <h2 className='text-2xl font-semibold tracking-wide dark:text-jet'>{title}
+            </h2>
             {children}
         </div>
     )

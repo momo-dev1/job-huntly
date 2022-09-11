@@ -1,27 +1,27 @@
-import FormField from "./FormField"
-import SubmitButton from "./SubmitButton"
-import FormWrapper from "./FormWrapper"
-import JobCard from "./JobCard"
-import Search from "./Search"
 import Tag from "./Tag"
-import SectionWrapper from "./SectionWrapper"
-import FormSelect from "./FormSelect"
-import Pagination from "./Pagination"
 import Modal from "./Modal"
+import Search from "./Search"
+import JobCard from "./JobCard"
+import FormField from "./FormField"
+import Pagination from "./Pagination"
+import FormSelect from "./FormSelect"
+import FormWrapper from "./FormWrapper"
+import SubmitButton from "./SubmitButton"
+import SectionWrapper from "./SectionWrapper"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
-    FormField,
-    SubmitButton,
-    FormWrapper,
-    JobCard,
-    DesktopSideBar,
-    MobileSideBar,
-    HamburgerNav,
-    SectionWrapper,
-    Search,
     Tag,
+    Modal,
+    Search,
+    JobCard,
+    FormField,
     FormSelect,
     Pagination,
-    Modal
+    FormWrapper,
+    SubmitButton,
+    HamburgerNav,
+    MobileSideBar,
+    DesktopSideBar,
+    SectionWrapper,
 }

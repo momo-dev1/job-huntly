@@ -99,9 +99,9 @@ const AddJob = () => {
                             <button
                                 onClick={() => dispatch(clearValues())}
                                 type="button"
-                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-jet hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
-                                clear
+                                Clear
                             </button>
 
                         </div>
@@ -110,7 +110,7 @@ const AddJob = () => {
                                 type="submit"
                                 className="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cornflower-300 hover:bg-cornflower-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
-                                submit
+                                Submit
                             </button>
                         </div>
                     </div>

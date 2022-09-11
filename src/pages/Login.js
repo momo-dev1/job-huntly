@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom"
-import { FormField, SubmitButton, FormWrapper } from "../components"
-import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../store/userSlice'
-import { LogoIcon } from "../assets";
 import toast from "react-hot-toast";
+import { LogoIcon } from "../assets";
+import { loginUser } from '../store/userSlice'
+import { Link, useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { FormField, SubmitButton, FormWrapper } from "../components"
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -31,7 +31,6 @@ const Login = () => {
         dispatch(loginUser(formFields));
     };
 
-
     useEffect(() => {
         if (user) {
             setTimeout(() => {
@@ -39,6 +38,7 @@ const Login = () => {
             }, 1000);
         }
     }, [user, navigate])
+
     return (
 
         <FormWrapper>

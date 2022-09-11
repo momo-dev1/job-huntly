@@ -1,6 +1,6 @@
 import React from "react";
-import { LogoIcon, HeroImg } from "../assets";
 import { Link } from "react-router-dom"
+import { LogoIcon, HeroImg } from "../assets";
 
 
 const Landing = () => {

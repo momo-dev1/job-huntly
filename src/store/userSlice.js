@@ -108,7 +108,7 @@ const userSlice = createSlice({
         },
         [loginUser.rejected]: (state, { payload }) => {
             state.isLoading = false
-            toast.error("unauthorized user")
+            toast.error("Wrong Crededntials \n Invalid Email or password")
         },
         [clearStore.rejected]: (state) => {
             toast.error("error while cleaning store")
