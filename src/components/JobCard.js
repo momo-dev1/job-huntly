@@ -19,13 +19,13 @@ const JobCard = ({ _id: id, status, company, position, jobLocation: location, cr
 
     return (
         <>
-            <figure className='p-5 bg-white dark:bg-eerie-black shadow-md dark:shadow-xl rounded-lg max-w-2xl mb-5 mt-5'>
-                <div className='flex items-center gap-y-6 justify-between flex-wrap '>
-                    <div className='flex items-center gap-5 border-b border-b-slate-100 md:border-none w-full md:max-w-max py-3'>
-                        <div style={{ backgroundColor: avatarColor }} className="flex-shrink-0 self-baseline h-12 w-12 font-semibold  flex items-center justify-center rounded-full text-white capitalize">{company.charAt(0)}</div>
+            <figure className='max-w-2xl p-5 mt-5 mb-5 bg-white rounded-lg shadow-md dark:bg-eerie-black dark:shadow-xl'>
+                <div className='flex flex-wrap items-center justify-between gap-y-6 '>
+                    <div className='flex items-center w-full gap-5 py-3 border-b border-b-slate-100 md:border-none md:max-w-max'>
+                        <div style={{ backgroundColor: avatarColor }} className="flex items-center justify-center flex-shrink-0 w-12 h-12 font-semibold text-white capitalize rounded-full self-baseline">{company.charAt(0)}</div>
                         <div>
-                            <h3 className='text-lg md:text-xl dark:text-jet font-semibold capitalize'>{company}</h3>
-                            <div className='flex gap-3 mt-2 text-sm font-semibold flex-wrap'>
+                            <h3 className='text-lg font-semibold capitalize md:text-xl dark:text-jet'>{company}</h3>
+                            <div className='flex flex-wrap gap-3 mt-2 text-sm font-semibold'>
                                 <Tag title="3D Design" />
                                 <Tag title="Blender" />
                                 <Tag title="Figma" />
@@ -35,36 +35,36 @@ const JobCard = ({ _id: id, status, company, position, jobLocation: location, cr
                     </div>
 
                     <div className='flex gap-2'>
-                        <button onClick={() => dispatch(showModal(id))} className='p-3 rounded-full border border-red-600'>
-                            <TrashIcon className='h-4 w-4 text-red-600 ' />
+                        <button onClick={() => dispatch(showModal(id))} className='p-3 border border-red-600 rounded-full'>
+                            <TrashIcon className='w-4 h-4 text-red-600 ' />
                         </button>
                         <Link to="/add-job">
-                            <button onClick={() => dispatch(updateJobs({ editId: id, company, position, location, status }))} className='p-3 rounded-full border border-blue-600'>
-                                <PencilIcon className='h-4 w-4 text-blue-600 ' />
+                            <button onClick={() => dispatch(updateJobs({ editId: id, company, position, location, status }))} className='p-3 border border-blue-600 rounded-full'>
+                                <PencilIcon className='w-4 h-4 text-blue-600 ' />
                             </button>
                         </Link>
                     </div>
                 </div>
-                <p className='mt-5 text-gray-400 font-semibold'>
+                <p className='mt-5 font-semibold text-gray-400'>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Magni deleniti aspernatur dolorem aliquid repellat.
                     Aut ipsam minus doloremque ratione rerum.
                 </p>
-                <div className='mt-8 flex items-center justify-between flex-wrap gap-y-4'>
+                <div className='flex flex-wrap items-center justify-between mt-8 gap-y-4'>
                     <span className='flex items-center gap-2'>
-                        <BriefcaseIcon className='h-6 w-6 text-gray-400 dark:text-greyish' />
+                        <BriefcaseIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
                         <h5 className='font-semibold dark:text-jet'>{position}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
-                        <LocationMarkerIcon className='h-6 w-6 text-gray-400 dark:text-greyish' />
+                        <LocationMarkerIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
                         <h5 className='font-semibold dark:text-jet'>{location}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
-                        <ClockIcon className='h-6 w-6 text-gray-400 dark:text-greyish' />
+                        <ClockIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
                         <h5 className='font-semibold dark:text-jet'>{status}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
-                        <CalendarIcon className='h-6 w-6 text-gray-400 dark:text-greyish' />
+                        <CalendarIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
                         <h5 className='font-semibold dark:text-jet'>{date}</h5>
                     </span>
                 </div>

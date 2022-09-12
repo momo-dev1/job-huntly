@@ -21,13 +21,13 @@ const Search = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="overflow-hidden shadow-md dark:shadow-xl rounded-lg mt-5">
-                <div className="px-4 py-5 bg-white dark:bg-eerie-black  sm:p-6">
+            <div className="mt-5 overflow-hidden rounded-lg shadow-md dark:shadow-xl">
+                <div className="px-4 py-5 bg-white dark:bg-eerie-black sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
                         {/* col 1 */}
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
-                                <div className="md:col-span-1 col-span-2">
+                                <div className="col-span-2 md:col-span-1">
                                     <FormField
                                         id="search"
                                         label="search"
@@ -39,7 +39,7 @@ const Search = () => {
                                     </FormField>
                                 </div>
 
-                                <div className="md:col-span-1 col-span-2">
+                                <div className="col-span-2 md:col-span-1">
                                     <FormSelect
                                         id="search Type"
                                         label="search Type"
@@ -56,7 +56,7 @@ const Search = () => {
                         {/* col 2 */}
                         <div className='col-span-6 sm:col-span-3 '>
                             <div className='grid grid-cols-2 gap-5'>
-                                <div className="md:col-span-1 col-span-2">
+                                <div className="col-span-2 md:col-span-1">
                                     <FormSelect
                                         id="status Type"
                                         label="status Type"
@@ -68,7 +68,7 @@ const Search = () => {
                                     </FormSelect>
                                 </div>
 
-                                <div className="md:col-span-1 col-span-2">
+                                <div className="col-span-2 md:col-span-1">
                                     <FormSelect
                                         id="sort"
                                         label="sort"
@@ -84,11 +84,11 @@ const Search = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center gap-2 p-4 justify-end dark:bg-eerie-black/40'>
+                <div className='flex items-center justify-end gap-2 p-4 dark:bg-eerie-black/40'>
                     <button
                         onClick={() => dispatch(clearFilters())}
                         type="button"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-400 border border-transparent rounded-md shadow-sm hover:bg-red-500 focus:outline-none"
                     >
                         Clear Filters
                     </button>

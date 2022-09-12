@@ -28,19 +28,19 @@ const Paginitaion = () => {
     }
 
     return (
-        <div className=" px-4 py-3 flex items-center justify-between border-t border-gray-200 dark:border-greyish sm:px-6">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200  dark:border-greyish sm:px-6">
 
-            <div className=" flex-1 flex items-center justify-between">
+            <div className="flex items-center justify-between flex-1 ">
 
                 <div className='ml-auto'>
-                    <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                    <nav className="relative z-0 inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 
                         <button
                             onClick={prevBtn}
-                            className="relative inline-flex items-center px-2 dark:bg-eerie-black dark:border-greyish py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 dark:bg-eerie-black dark:border-greyish rounded-l-md hover:bg-gray-50"
                         >
                             <span className="sr-only">Previous</span>
-                            <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                            <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
                         </button>
 
                         {pages.map((pageNumber) => {
@@ -54,10 +54,10 @@ const Paginitaion = () => {
 
                         <button
                             onClick={nextBtn}
-                            className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:bg-eerie-black dark:border-greyish bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                            className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md dark:bg-eerie-black dark:border-greyish hover:bg-gray-50"
                         >
                             <span className="sr-only">Next</span>
-                            <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                            <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
                         </button>
                     </nav>
                 </div>

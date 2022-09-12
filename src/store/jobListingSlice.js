@@ -18,6 +18,7 @@ const initialState = {
     numOfPages: 0,
     currentPage: 1,
     stats: {},
+    totalStats: 0,
     monthlyApplication: [],
     ...initialFilterState
 }
@@ -89,6 +90,7 @@ const jobListingSlice = createSlice({
         [getStats.fulfilled]: (state, { payload }) => {
             state.isLoading = false
             state.stats = payload.defaultStats
+            state.totalStats = payload.totalCount
         },
         [getStats.rejected]: (state, { payload }) => {
             state.isLoading = false

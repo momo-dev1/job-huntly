@@ -34,13 +34,13 @@ function DesktopSideBar({ user }) {
 
 
     return <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
-        <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 dark:border-jet bg-white dark:bg-eerie-black">
-            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+        <div className="flex flex-col flex-1 min-h-0 bg-white border-r border-gray-200 dark:border-jet dark:bg-eerie-black">
+            <div className="flex flex-col flex-1 pt-5 pb-4 overflow-y-auto">
                 <div className="flex items-center flex-shrink-0 px-4">
                     <LogoIcon classes="w-52" />
                 </div>
 
-                <nav className="mt-5 flex-1 px-2 space-y-1">
+                <nav className="flex-1 px-2 mt-5 space-y-1">
                     {navigation.map((item) => (
                         <Link
                             key={item.name}
@@ -66,22 +66,22 @@ function DesktopSideBar({ user }) {
                 </nav>
             </div>
             <ToggleButton />
-            <div className="flex-shrink-0 flex mt-5 border-t  dark:border-jet border-gray-200 p-4 ">
-                <Link to="#" className="flex-shrink-0 w-full group block">
+            <div className="flex flex-shrink-0 p-4 mt-5 border-t border-gray-200 dark:border-jet ">
+                <Link to="#" className="flex-shrink-0 block w-full group">
                     <div className="flex items-center">
                         <div>
-                            <div className='flex-shrink-0 h-8 w-8 bg-blue-600 flex items-center justify-center rounded-full text-white uppercase'>{user?.username.charAt(0)}</div>
+                            <div className='flex items-center justify-center flex-shrink-0 w-8 h-8 text-white uppercase bg-blue-600 rounded-full'>{user?.username.charAt(0)}</div>
                         </div>
-                        <div className="ml-3 flex items-center justify-between w-full">
+                        <div className="flex items-center justify-between w-full ml-3">
                             <div>
-                                <p className="text-md font-medium text-gray-700 dark:text-jet capitalize">{user?.username}</p>
+                                <p className="font-medium text-gray-700 capitalize text-md dark:text-jet">{user?.username}</p>
                                 <Link to="/profile">
                                     <p className="text-xs font-medium text-gray-500">
                                         View profile
                                     </p>
                                 </Link>
                             </div>
-                            <LogoutIcon onClick={handleSignOut} className='h-6 w-6 text-gray-700 dark:text-jet dark:hover:text-red-600 hover:text-red-600 ' />
+                            <LogoutIcon onClick={handleSignOut} className='w-6 h-6 text-gray-700 dark:text-jet dark:hover:text-red-600 hover:text-red-600 ' />
                         </div>
                     </div>
                 </Link>

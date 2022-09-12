@@ -7,8 +7,8 @@ const FormWrapper = ({ children }) => {
                 backgroundColor: "#f8f9d2",
                 backgroundImage: "linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%)"
             }}
-                className='inset-0 absolute z-10' />
-            <div className="flex flex-col justify-center min-h-screen py-12 sm:px-6 lg:px-8 z-20">
+                className='absolute inset-0 z-10' />
+            <div className="z-20 flex flex-col justify-center min-h-screen py-12 sm:px-6 lg:px-8">
                 {children}
             </div>
         </div>

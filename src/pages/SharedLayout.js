@@ -17,9 +17,9 @@ const SharedLayout = () => {
 
             {modalIsOpen && <Modal />}
 
-            <div className="md:pl-64 flex flex-col flex-1 bg-greyish dark:bg-rich-black">
+            <div className="flex flex-col flex-1 md:pl-64 bg-greyish dark:bg-rich-black">
                 <HamburgerNav setSidebarOpen={setSidebarOpen} />
-                <main className="flex-1 p-4 py-10 md:pt-20 px-10 relative min-h-screen">
+                <main className="relative flex-1 min-h-screen p-4 px-10 py-10 md:pt-20">
                     <Outlet />
                 </main>
             </div>

@@ -6,8 +6,8 @@ const ToggleButton = () => {
     const isChecked = theme === "light" ? false : true
 
     return (
-        <div className="mx-auto flex flex-col items-center">
-            <div className="cursor-pointer  rounded-full relative shadow-sm">
+        <div className="flex flex-col items-center mx-auto">
+            <div className="relative rounded-full shadow-sm cursor-pointer">
 
                 {theme === "dark" ?
                     <MoonIcon className='w-5 h-5 m-1.5 text-gray-200 absolute rounded-full ' />
@@ -15,11 +15,10 @@ const ToggleButton = () => {
                     <SunIcon className='w-5 h-5 m-1.5 text-yellow-300 absolute rounded-full right-0' />
                 }
 
-                <input checked={isChecked} onClick={() => setTheme(colorTheme)} type="checkbox" name="toggle" id="toggle" className="focus:outline-none checkbox w-6 h-6 rounded-full  absolute m-1 shadow-sm appearance-none cursor-pointer checked:right-0 bg-white" />
+                <input checked={isChecked} onClick={() => setTheme(colorTheme)} type="checkbox" name="toggle" id="toggle" className="absolute w-6 h-6 m-1 bg-white rounded-full shadow-sm appearance-none cursor-pointer focus:outline-none checkbox checked:right-0" />
 
                 <label htmlFor="toggle"
-                    className="dark:bg-gray-700 block w-16 h-8 overflow-hidden rounded-full cursor-pointer
-            bg-sky-400"/>
+                    className="block w-16 h-8 overflow-hidden rounded-full cursor-pointer dark:bg-gray-700 bg-sky-400"/>
             </div>
         </div>
     )

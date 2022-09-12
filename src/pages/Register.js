@@ -83,7 +83,7 @@ const Register = () => {
                     </form>
 
                     <div className="mt-5 text-center text-md">
-                        <div className="mx-auto font-medium text-gray-600 w-full">
+                        <div className="w-full mx-auto font-medium text-gray-600">
                             By signing up, you agree to our  Terms , Data Policy and
                             Cookies
                             Policy.
@@ -91,11 +91,10 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <div className="mx-7 py-4 mt-3 font-semibold text-center  bg-white
-                  text-gray-600 shadow sm:px-10 rounded-lg ">
+            <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow mx-7 sm:px-10 ">
                 Have an account?
                 <Link to="/login">
-                    <span className="ml-2  text-blue-600  cursor-pointer">
+                    <span className="ml-2 text-blue-600 cursor-pointer">
                         Log In
                     </span>
                 </Link>

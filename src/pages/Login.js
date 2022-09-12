@@ -71,7 +71,7 @@ const Login = () => {
                     </form>
 
                     <div>
-                        <div className="mt-2 text-sm  text-blue-600 text-left">
+                        <div className="mt-2 text-sm text-left text-blue-600">
                             <Link to="#" className="font-medium">
                                 Forgot your password?
                             </Link>
@@ -79,8 +79,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className="mx-7 py-4 mt-3 font-semibold text-center  bg-white
-                  text-gray-600 shadow sm:px-10 rounded-lg ">
+            <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow mx-7 sm:px-10 ">
                 Need an account?
                 <Link to="/register">
                     <span className="ml-2 text-blue-600 cursor-pointer">
