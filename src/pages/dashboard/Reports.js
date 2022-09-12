@@ -52,10 +52,10 @@ const Reports = () => {
     }, [dispatch])
 
     return (
-        <div className="flex flex-col w-full gap-10 p-10 bg-white rounded-lg shadow-md dark:bg-eerie-black">
+        <div className="flex flex-col w-full p-10 bg-white rounded-lg shadow-md gap-9 dark:bg-eerie-black">
 
             {statsArray.map(({ state, count, percentage }) => (
-                <div className="w-full h-2 rounded-full bg-jet group">
+                <div className="w-full h-3 transition rounded-full bg-jet group">
                     <div style={{ width: percentage }} className={`h-full  rounded-full ${ `bg-${ colorKey[state] }-500` } text-center text-xs text-white relative`}>
                         {count > 0 &&
                             <span className={`absolute opacity-0 group-hover:opacity-100 transition text-xs right-[-9px] rounded-md text-white px-2 py-1 top-[-30px] ${ `bg-${ colorKey[state] }-500` }`}>{count}</span>}

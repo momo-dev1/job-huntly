@@ -10,7 +10,7 @@ const initialState = {
     position: "intern",
     positionType: ["intern", "junior", "senior", "lead", "manager"],
     status: "pending",
-    statusType: ["applied", "interview", "pending", "hired", "rejected"],
+    statusType: ["applied", "pending", "interview", "hired", "rejected"],
     isEdit: false,
     editId: null,
     deleteId: null,
