@@ -47,13 +47,15 @@ function DesktopSideBar({ user }) {
                             to={item.path}
                             className={classNames(
                                 location.pathname.slice(1) === item.path
-                                    ? 'bg-gray-100 dark:bg-rich-black text-gray-900 dark:text-jet ' : 'text-gray-600 dark:hover:bg-rich-black hover:bg-gray-50 hover:text-gray-900 dark:hover:text-jet',
-                                'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md dark:text-jet'
+                                    ? 'bg-cornflower-300/30 dark:bg-rich-black'
+                                    :
+                                    'text-gray-600 dark:hover:bg-rich-black hover:bg-cornflower-300/30',
+                                'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md text-gray-600 dark:text-jet'
                             )}
                         >
                             <item.icon
                                 className={classNames(
-                                    location.pathname.slice(1) === item.path ? 'text-cornflower-400' : 'text-gray-400 group-hover:text-gray-500',
+                                    location.pathname.slice(1) === item.path ? 'text-cornflower-400' : 'text-gray-400 group-hover:text-cornflower-400',
                                     'mr-3 flex-shrink-0 h-6 w-6 '
                                 )}
                                 aria-hidden="true"
@@ -90,3 +92,8 @@ function DesktopSideBar({ user }) {
 }
 
 export default DesktopSideBar
+
+
+//
+
+//                                 'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md dark:text-jet'

@@ -37,6 +37,17 @@ export const getListingJobs = createAsyncThunk('jobSlice/getListingJobs', async 
     }
 });
 
+export const getStats = createAsyncThunk('jobSlice/getStats', async (_, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI
+
+    try {
+        const res = await fetchJson.get("/jobs/stats");
+        return res.data;
+    } catch (error) {
+        return rejectWithValue(error.response.data.msg);
+    }
+});
+
 const jobListingSlice = createSlice({
     name: 'allJobsListing',
     initialState,
@@ -71,10 +82,27 @@ const jobListingSlice = createSlice({
         },
         [getListingJobs.rejected]: (state, { payload }) => {
             state.isLoading = false
-
+        },
+        [getStats.pending]: (state) => {
+            state.isLoading = true
+        },
+        [getStats.fulfilled]: (state, { payload }) => {
+            state.isLoading = false
+            state.stats = payload.defaultStats
+        },
+        [getStats.rejected]: (state, { payload }) => {
+            state.isLoading = false
         },
     }
 });
 
-export const { showLoading, hideLoading, setSelection, clearFilters, changePage, clearAllJobs } = jobListingSlice.actions;
+export const {
+    changePage,
+    showLoading,
+    hideLoading,
+    setSelection,
+    clearAllJobs,
+    clearFilters,
+} = jobListingSlice.actions;
+
 export default jobListingSlice.reducer;

@@ -1,7 +1,16 @@
 import { Chart } from 'chart.js';
 import React, { useEffect, useState } from 'react'
+import { getStats } from "../../store/jobListingSlice"
+import { useDispatch, useSelector } from 'react-redux';
 
 const Reports = () => {
+    const { stats } = useSelector(state => state.jobListing)
+    const dispatch = useDispatch()
+    console.log(stats)
+
+    useEffect(() => {
+        dispatch(getStats())
+    }, [dispatch])
 
     return (
         <section className='flex items-center justify-center text-gray-700 '>
