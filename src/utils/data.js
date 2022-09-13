@@ -25,7 +25,7 @@ export const skillOptions = [
     { value: 'node.js', label: 'node.js' },
     { value: 'express.js', label: 'express.js' },
 ]
-export const skills = [
+export const skillsArr = [
     {
         name: "javascript",
         icon: "https://img.shields.io/badge/javascript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E&style=for-the-badge"

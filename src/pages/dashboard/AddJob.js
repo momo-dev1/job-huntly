@@ -1,4 +1,5 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormField, SectionWrapper, FormSelect, MultiSelect } from '../../components'
 import { setSelection, clearValues, createJob, updateJob } from '../../store/jobSlice'
@@ -6,17 +7,17 @@ import { setSelection, clearValues, createJob, updateJob } from '../../store/job
 
 const AddJob = () => {
     const {
+        isEdit,
+        skills,
+        status,
+        editId,
         company,
         location,
         position,
-        positionType,
-        status,
         statusType,
-        isEdit,
-        editId
+        positionType
     } = useSelector(state => state.job)
     const dispatch = useDispatch()
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if (isEdit) {
@@ -24,7 +25,11 @@ const AddJob = () => {
             dispatch(updateJob({ jobId: editId, job: { company, status } }))
             return
         }
-        dispatch(createJob({ company, jobLocation: location, position, status }))
+        if (skills.length === 0) {
+            toast.error("Please add skills")
+            return
+        }
+        dispatch(createJob({ company, jobLocation: location, position, status, skills }))
     }
 
     const handleInputChange = (e) => {
