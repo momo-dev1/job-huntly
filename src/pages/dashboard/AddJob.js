@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormField, SectionWrapper, FormSelect, MultiSelect } from '../../components'
@@ -18,6 +18,8 @@ const AddJob = () => {
         positionType
     } = useSelector(state => state.job)
     const dispatch = useDispatch()
+    const [value, setValue] = useState([])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (isEdit) {
@@ -32,6 +34,10 @@ const AddJob = () => {
         dispatch(createJob({ company, jobLocation: location, position, status, skills }))
     }
 
+    const handleClearValues = () => {
+        dispatch(clearValues())
+        setValue([])
+    }
     const handleInputChange = (e) => {
         const { name, value } = e.target
         dispatch(setSelection({ name, value }))
@@ -97,7 +103,7 @@ const AddJob = () => {
 
                             <div className="col-span-6 md:col-span-3 ">
                                 <h3 className="block text-sm font-medium text-gray-600 capitalize dark:text-jet mb-1">Skills</h3>
-                                <MultiSelect />
+                                <MultiSelect value={value} setValue={setValue} />
                             </div>
                         </div>
                     </div>
@@ -105,7 +111,7 @@ const AddJob = () => {
                     <div className='flex items-center justify-end gap-2 p-4 dark:bg-eerie-black/40'>
                         <div>
                             <button
-                                onClick={() => dispatch(clearValues())}
+                                onClick={handleClearValues}
                                 type="button"
                                 className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-gray-400 border border-transparent rounded-md shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >

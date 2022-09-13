@@ -66,6 +66,8 @@ const userSlice = createSlice({
         signOut: (state) => {
             state.user = null;
             removeLocalStorage("user");
+            removeLocalStorage("isDark");
+            window.document.documentElement.classList.remove("dark")
         },
     },
     extraReducers: {

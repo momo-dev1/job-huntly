@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { setLocalStorage, getLocalStorage } from "../utils/localStorage"
 
 const useDarkMode = () => {
-    const [theme, setTheme] = useState(getLocalStorage("isDark"))
+    const [theme, setTheme] = useState(getLocalStorage("isDark") || "light")
     const colorTheme = theme === "dark" ? "light" : "dark"
     useEffect(() => {
         const root = window.document.documentElement

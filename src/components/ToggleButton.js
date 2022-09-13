@@ -1,6 +1,7 @@
 import React from 'react'
 import useDarkMode from '../hooks/useDarkMode'
 import { SunIcon, MoonIcon } from '@heroicons/react/outline'
+
 const ToggleButton = () => {
     const [colorTheme, theme, setTheme] = useDarkMode()
     const isChecked = theme === "light" ? false : true

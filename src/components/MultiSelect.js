@@ -1,38 +1,44 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-import { setMultiSelection } from '../store/jobSlice';
 import { skillOptions } from '../utils/data';
+import { setMultiSelection } from '../store/jobSlice';
+import Select, { components } from 'react-select';
 
-const animatedComponents = makeAnimated();
+const MultiSelect = ({ value, setValue }) => {
 
-const MultiSelect = () => {
     const dispatch = useDispatch()
-    const customStyles = {
-        control: (provided, state) => ({
-            ...provided,
-            border: "1px solid #11182780",
-            boxShadow: "none",
-            '&:hover': {
-                border: "1px solid #11182780",
-            },
-        }),
-    }
     const handleInputChange = (selectedOption) => {
         const values = selectedOption.map(item => item.value)
+        setValue(selectedOption)
         dispatch(setMultiSelection(values))
     }
+
+    const { Option, SingleValue } = components;
+
+    const IconOption = (props) => (
+        <Option {...props}>
+            <img className="maybeUseClassName" src={props.data.image} style={{ width: 100 }} alt="" />
+        </Option>
+    );
+    const ValueOption = (props) => (
+        <SingleValue {...props}>
+            <img className="maybeUseClassName" src={props.data.image} style={{ width: 100 }} alt="" />
+        </SingleValue>
+    );
     return (
-        <Select
-            styles={customStyles}
-            closeMenuOnSelect={false}
-            components={animatedComponents}
-            isMulti
-            options={skillOptions}
-            onChange={handleInputChange}
-        />
+        <>
+            <Select
+                className="my-react-select-container"
+                classNamePrefix="my-react-select"
+                closeMenuOnSelect={false}
+                isClearable
+                value={value}
+                isMulti
+                options={skillOptions}
+                components={{ Option: IconOption, SingleValue: ValueOption }}
+                onChange={handleInputChange}
+            />
+        </>
     );
 }
 export default MultiSelect
