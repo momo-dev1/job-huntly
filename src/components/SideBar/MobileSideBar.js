@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ToggleButton from '../ToggleButton';
 import { LogoIcon } from '../../assets';
-import { navigation } from "../../utils/navLinks"
+import { navigation } from "../../utils/data"
 import { clearStore } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 import { LogoutIcon, XIcon } from '@heroicons/react/outline'

@@ -1,19 +1,20 @@
-import Tag from "./Tag"
+import Badge from "./Badge"
 import Modal from "./Modal"
 import Search from "./Search"
 import JobCard from "./JobCard"
-import ProgressChart from "./ProgressChart"
 import BarChart from "./BarChart"
 import FormField from "./FormField"
 import Pagination from "./Pagination"
 import FormSelect from "./FormSelect"
+import MultiSelect from "./MultiSelect"
 import FormWrapper from "./FormWrapper"
 import SubmitButton from "./SubmitButton"
+import ProgressChart from "./ProgressChart"
 import SectionWrapper from "./SectionWrapper"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
-    Tag,
+    Badge,
     Modal,
     Search,
     JobCard,
@@ -21,6 +22,7 @@ export {
     FormField,
     FormSelect,
     Pagination,
+    MultiSelect,
     FormWrapper,
     HamburgerNav,
     SubmitButton,

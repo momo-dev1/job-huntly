@@ -45,6 +45,7 @@ const Paginitaion = () => {
 
                         {pages.map((pageNumber) => {
                             return <button
+                                key={pageNumber}
                                 onClick={() => dispatch(changePage(pageNumber))}
                                 className={`${ pageNumber === currentPage ? ' z-10 bg-indigo-50 dark:bg-indigo-500  border-indigo-500 text-indigo-600 dark:text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium ' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium dark:bg-eerie-black ' }dark:border-greyish`}
                             >

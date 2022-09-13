@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FormField, SectionWrapper, FormSelect } from '../../components'
+import { FormField, SectionWrapper, FormSelect, MultiSelect } from '../../components'
 import { setSelection, clearValues, createJob, updateJob } from '../../store/jobSlice'
 
 
@@ -25,7 +25,6 @@ const AddJob = () => {
             return
         }
         dispatch(createJob({ company, jobLocation: location, position, status }))
-
     }
 
     const handleInputChange = (e) => {
@@ -35,7 +34,7 @@ const AddJob = () => {
     return (
         <SectionWrapper title={`${ isEdit ? "Edit Job" : "Add Job" }`}>
             <form onSubmit={handleSubmit}>
-                <div className="mt-5 overflow-hidden rounded-lg shadow-md dark:shadow-xl">
+                <div className="mt-5 rounded-lg shadow-md dark:shadow-xl">
                     <div className="px-4 py-5 bg-white dark:bg-eerie-black sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
 
@@ -91,6 +90,10 @@ const AddJob = () => {
                                 </div>
                             </div>
 
+                            <div className="col-span-6 md:col-span-3 ">
+                                <h3 className="block text-sm font-medium text-gray-600 capitalize dark:text-jet mb-1">Skills</h3>
+                                <MultiSelect />
+                            </div>
                         </div>
                     </div>
 

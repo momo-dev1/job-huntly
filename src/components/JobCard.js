@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from "react-router-dom"
-import { Tag } from "./index"
+import { Badge } from "./index"
 import { useDispatch } from 'react-redux'
 import { showModal, updateJobs } from '../store/jobSlice'
 import {
@@ -23,15 +23,7 @@ const JobCard = ({ _id: id, status, company, position, jobLocation: location, cr
                 <div className='flex flex-wrap items-center justify-between gap-y-6 '>
                     <div className='flex items-center w-full gap-5 py-3 border-b border-b-slate-100 md:border-none md:max-w-max'>
                         <div style={{ backgroundColor: avatarColor }} className="flex items-center justify-center flex-shrink-0 w-12 h-12 font-semibold text-white capitalize rounded-full self-baseline">{company.charAt(0)}</div>
-                        <div>
-                            <h3 className='text-lg font-semibold capitalize md:text-xl dark:text-jet'>{company}</h3>
-                            <div className='flex flex-wrap gap-3 mt-2 text-sm font-semibold'>
-                                <Tag title="3D Design" />
-                                <Tag title="Blender" />
-                                <Tag title="Figma" />
-
-                            </div>
-                        </div>
+                        <h3 className='text-lg font-semibold capitalize md:text-xl dark:text-jet'>{company}</h3>
                     </div>
 
                     <div className='flex gap-2'>
@@ -44,28 +36,33 @@ const JobCard = ({ _id: id, status, company, position, jobLocation: location, cr
                             </button>
                         </Link>
                     </div>
+
                 </div>
-                <p className='mt-5 font-semibold text-gray-400'>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Magni deleniti aspernatur dolorem aliquid repellat.
-                    Aut ipsam minus doloremque ratione rerum.
-                </p>
-                <div className='flex flex-wrap items-center justify-between mt-8 gap-y-4'>
+                <div>
+
+                    <div className='flex flex-wrap gap-3 mt-2 text-sm font-semibold'>
+                        <Badge />
+                        <Badge />
+                        <Badge />
+                    </div>
+                </div>
+
+                <div className='flex flex-wrap items-center justify-between mt-8 gap-x-2 gap-y-4'>
                     <span className='flex items-center gap-2'>
                         <BriefcaseIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
-                        <h5 className='font-semibold dark:text-jet'>{position}</h5>
+                        <h5 className='font-semibold dark:text-jet capitalize'>{position}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
                         <LocationMarkerIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
-                        <h5 className='font-semibold dark:text-jet'>{location}</h5>
+                        <h5 className='font-semibold dark:text-jet capitalize'>{location}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
                         <ClockIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
-                        <h5 className='font-semibold dark:text-jet'>{status}</h5>
+                        <h5 className='font-semibold dark:text-jet capitalize'>{status}</h5>
                     </span>
                     <span className='flex items-center gap-2'>
                         <CalendarIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
-                        <h5 className='font-semibold dark:text-jet'>{date}</h5>
+                        <h5 className='font-semibold dark:text-jet capitalize'>{date}</h5>
                     </span>
                 </div>
             </figure>

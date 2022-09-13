@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { LogoutIcon } from '@heroicons/react/outline'
 import { LogoIcon } from '../../assets';
 
-import { navigation } from "../../utils/navLinks"
+import { navigation } from "../../utils/data"
 import ToggleButton from '../ToggleButton';
 import toast from 'react-hot-toast';
 
@@ -88,12 +88,6 @@ function DesktopSideBar({ user }) {
             </div>
         </div>
     </div>
-
 }
 
 export default DesktopSideBar
-
-
-//
-
-//                                 'group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md dark:text-jet'

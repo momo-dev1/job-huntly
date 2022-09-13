@@ -11,6 +11,7 @@ const initialState = {
     positionType: ["intern", "junior", "senior", "lead", "manager"],
     status: "pending",
     statusType: ["applied", "pending", "interview", "hired", "rejected"],
+    skills: [],
     isEdit: false,
     editId: null,
     deleteId: null,
@@ -62,6 +63,9 @@ const jobSlice = createSlice({
         setSelection: (state, { payload: { name, value } }) => {
             state[name] = value;
         },
+        setMultiSelection: (state, { payload }) => {
+            state.skills = payload;
+        },
         clearValues: (state) => {
             return initialState
         },
@@ -103,7 +107,7 @@ const jobSlice = createSlice({
 });
 
 
-export const { setSelection, clearValues, updateJobs, showModal, hideModal, setAvatarColor } = jobSlice.actions;
+export const { setSelection, clearValues, updateJobs, showModal, hideModal, setAvatarColor, setMultiSelection } = jobSlice.actions;
 
 export default jobSlice.reducer;
 
