@@ -2,6 +2,8 @@ import Tag from "./Tag"
 import Modal from "./Modal"
 import Search from "./Search"
 import JobCard from "./JobCard"
+import ProgressChart from "./ProgressChart"
+import BarChart from "./BarChart"
 import FormField from "./FormField"
 import Pagination from "./Pagination"
 import FormSelect from "./FormSelect"
@@ -15,12 +17,14 @@ export {
     Modal,
     Search,
     JobCard,
+    BarChart,
     FormField,
     FormSelect,
     Pagination,
     FormWrapper,
-    SubmitButton,
     HamburgerNav,
+    SubmitButton,
+    ProgressChart,
     MobileSideBar,
     DesktopSideBar,
     SectionWrapper,
