@@ -27,10 +27,10 @@ const BarChart = ({ chartData }) => {
             {
                 data: chartData.map(data => data.count),
                 backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(102,129,220,0.4)",
                 ],
                 borderColor: [
-                    "rgb(255, 99, 132)",
+                    "rgb(102,129,220)",
                 ],
                 borderWidth: 1,
             },
