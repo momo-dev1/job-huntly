@@ -49,6 +49,11 @@ export const skillOptions = [
         image: "https://img.shields.io/badge/vuejs-%2335495e.svg?logo=vuedotjs&logoColor=%234FC08D&style=for-the-badge"
     },
     {
+        value: 'nuxt',
+        label: 'nuxt',
+        image: "https://img.shields.io/badge/-Nuxt.js-00C58E?style=for-the-badge&logo=Nuxt.js&logoColor=white"
+    },
+    {
         value: 'bootstrap',
         label: 'bootstrap',
         image: "https://img.shields.io/badge/bootstrap-%23563D7C.svg?logo=bootstrap&logoColor=white&style=for-the-badge"
@@ -100,7 +105,7 @@ export const skillsArr = [
     },
     {
         name: "nuxt",
-        icon: "https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82"
+        icon: "https://img.shields.io/badge/-Nuxt.js-00C58E?style=for-the-badge&logo=Nuxt.js&logoColor=white"
     },
     {
         name: "bootstrap",
