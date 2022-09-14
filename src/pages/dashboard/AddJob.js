@@ -32,6 +32,7 @@ const AddJob = () => {
             return
         }
         dispatch(createJob({ company, jobLocation: location, position, status, skills }))
+        setValue([])
     }
 
     const handleClearValues = () => {
