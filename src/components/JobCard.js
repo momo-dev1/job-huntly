@@ -46,7 +46,7 @@ const JobCard = ({ _id: id, status, company, position, jobLocation: location, cr
                 </div>
 
 
-                <div className='flex flex-wrap items-center justify-between mt-8 gap-x-2 gap-y-4 self-end'>
+                <div className='flex flex-wrap items-center justify-between mt-8 gap-x-2 gap-y-4'>
                     <span className='flex items-center gap-2'>
                         <BriefcaseIcon className='w-6 h-6 text-gray-400 dark:text-greyish' />
                         <h5 className='font-semibold dark:text-jet capitalize'>{position}</h5>
