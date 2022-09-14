@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 
 const Register = () => {
-    const { isLoading } = useSelector(state => state.user)
+    const { isLoading, user } = useSelector(state => state.user)
     const [formFields, setFormFields] = useState({ email: "", username: "", password: "", confirmPassword: "" });
     const isInvalid = formFields.email === "" || formFields.password === "";
     const dispatch = useDispatch()
@@ -36,6 +36,12 @@ const Register = () => {
 
     };
 
+    useEffect(() => {
+       if (user) {
+         navigate('/')
+    }
+  }, [user, navigate])
+    
     return (
 
         <FormWrapper>
