@@ -4,15 +4,16 @@ import {
     UserCircleIcon,
     PlusCircleIcon,
 } from '@heroicons/react/outline'
+import { INavigationItem, ISkillOption, ISkill } from "../interfaces/data"
 
-export const navigation = [
+export const navigation: INavigationItem[] = [
     { name: 'Job Listing', path: 'job-listing', icon: BriefcaseIcon },
     { name: 'Add Job', path: 'add-job', icon: PlusCircleIcon },
     { name: 'Profile', path: 'profile', icon: UserCircleIcon },
     { name: 'Reports', path: 'reports', icon: ChartBarIcon },
 ]
 
-export const skillOptions = [
+export const skillOptions: ISkillOption[] = [
     {
         value: 'javascript',
         label: 'javascript',
@@ -74,7 +75,7 @@ export const skillOptions = [
         image: "https://img.shields.io/badge/express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB&style=for-the-badge"
     },
 ]
-export const skillsArr = [
+export const skillsArr: ISkill[] = [
     {
         name: "javascript",
         icon: "https://img.shields.io/badge/javascript-%23323330.svg?logo=javascript&logoColor=%23F7DF1E&style=for-the-badge"

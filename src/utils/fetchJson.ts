@@ -9,7 +9,8 @@ fetchJson.interceptors.request.use(config => {
     const user = getLocalStorage("user")
 
     if (user) {
-        config.headers.common["Authorization"] = `Bearer ${ user.token }`
+        config.headers = config.headers || {}
+        config.headers.common["Authorization"] = `Bearer ${user.token}`
     }
     return config
 })
