@@ -2,7 +2,7 @@ import axios from "axios"
 import { getLocalStorage } from "./localStorage"
 
 const fetchJson = axios.create({
-    baseURL: "https://mo-jobs-api-v1.herokuapp.com/api/v1",
+    baseURL: "https://localhost:5500/api/v2",
 })
 
 fetchJson.interceptors.request.use(config => {

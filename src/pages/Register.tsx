@@ -1,47 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import React from "react";
+import { Link, redirect, useNavigation } from "react-router-dom"
 import { FormField, SubmitButton, FormWrapper } from "../components"
-import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from '../store/userSlice'
 import { LogoIcon } from "../assets";
 import toast from "react-hot-toast";
+import fetchJson from "../utils/fetchJson";
 
 
-const Register = () => {
-    const { isLoading, user } = useSelector(state => state.user)
-    const [formFields, setFormFields] = useState({ email: "", username: "", password: "", confirmPassword: "" });
-    const isInvalid = formFields.email === "" || formFields.password === "";
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormFields((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (isInvalid) {
-            toast.error("Please fill out all fields");
-            return
-        }
-        dispatch(registerUser(formFields));
-        setFormFields({ email: "", username: "", password: "", confirmPassword: "" });
-        setTimeout(() => {
-            navigate("/login");
-        }, 2000);
-
-    };
-
-    useEffect(() => {
-       if (user) {
-         navigate('/')
+export const action = async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+        await fetchJson.post('/auth/register', data);
+        toast.success('Registration successful!');
+        return redirect('/login');
+    } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return null;
     }
-  }, [user, navigate])
-    
+};
+const Register = () => {
+    const navigation = useNavigation();
+    const isSubmitting = navigation.state === "submitting";
+
     return (
 
         <FormWrapper>
@@ -52,24 +32,23 @@ const Register = () => {
                     </div>
 
                     <form
-                        onSubmit={handleSubmit}
+                        method="POST"
+
                         className="mt-8 space-y-6"
                     >
-                        <FormField FormField
+                        <FormField
                             id="email"
                             label="Email address"
-                            value={formFields.email}
-                            onChange={handleInputChange}
+                            defaultValue={'momolokii@gmail.com'}
                             name="email"
                             type="email"
                         >
                         </FormField>
 
-                        <FormField FormField
+                        <FormField
                             id="username"
                             label="Username"
-                            value={formFields.username}
-                            onChange={handleInputChange}
+                            defaultValue={'momolokii'}
                             name="username"
                             type="text"
                         >
@@ -78,14 +57,22 @@ const Register = () => {
                         <FormField
                             id="password"
                             label="Password"
-                            value={formFields.password}
-                            onChange={handleInputChange}
+                            defaultValue={'secretpassword123'}
                             name="password"
                             type="password"
                         >
                         </FormField>
 
-                        <SubmitButton name="Sign up" isInvalid={isInvalid} isLoading={isLoading} />
+                        <FormField
+                            id="location"
+                            label="Location"
+                            defaultValue={'moon'}
+                            name="location"
+                            type="text"
+                        >
+                        </FormField>
+
+                        <SubmitButton name="Sign up" isSubmitting={isSubmitting} />
                     </form>
 
                     <div className="mt-5 text-center text-md">

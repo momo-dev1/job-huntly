@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormField, SectionWrapper, FormSelect, MultiSelect } from '../../components'
@@ -39,7 +39,7 @@ const AddJob = () => {
         dispatch(clearValues())
         setValue([])
     }
-    const handleInputChange = (e) => {
+    const handleInputChange = (e:ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         dispatch(setSelection({ name, value }))
     }

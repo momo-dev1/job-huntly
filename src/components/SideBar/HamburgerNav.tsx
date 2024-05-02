@@ -1,3 +1,4 @@
+import React from 'react'
 import { MenuIcon } from '@heroicons/react/outline'
 
 function HamburgerNav({ setSidebarOpen }) {

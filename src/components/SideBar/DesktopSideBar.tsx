@@ -8,6 +8,7 @@ import { LogoIcon } from '../../assets';
 import { navigation } from "../../utils/data"
 import ToggleButton from '../ToggleButton';
 import toast from 'react-hot-toast';
+import React from 'react';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
