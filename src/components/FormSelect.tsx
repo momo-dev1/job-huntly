@@ -1,11 +1,19 @@
 import React from 'react'
 
-const FormSelect = ({ name, value, list, onChange }) => {
+interface IProps {
+    id: string,
+    label: string
+    name: string
+    value: string
+    list: string[]
+    onChange: (e: any) => void
+}
+const FormSelect = ({ id,label, name, value, list, onChange }: IProps) => {
     return (
         <div>
-            <label htmlFor={name} className="block text-sm font-medium text-gray-600 capitalize dark:text-jet"> {name} </label>
+            <label htmlFor={label} className="block text-sm font-medium text-gray-600 capitalize dark:text-jet"> {label} </label>
             <select
-                id={name}
+                id={id}
                 name={name}
                 value={value}
                 onChange={onChange}

@@ -1,3 +1,4 @@
+import React from "react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -13,22 +14,22 @@ import {
   Reports,
   JobListing,
   Profile,
-  Admin,
-  EditJob,
+  // Admin,
+  // EditJob,
 } from "./pages";
 
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
-import { loader as dashboardLoader } from "./pages/DashboardLayout";
-import { action as addJobAction } from "./pages/dashboard/AddJob";
-import { loader as allJobsLoader } from "./pages/dashboard/JobListing";
-import { loader as editJobLoader } from "./pages/EditJob";
-import { action as editJobAction } from "./pages/EditJob";
-import { action as deleteJobAction } from "./pages/DeleteJob";
-import { loader as adminLoader } from "./pages/Admin";
-import { action as profileAction } from "./pages/Profile";
-import { loader as statsLoader } from "./pages/Stats";
-import ErrorElement from "./components/ErrorElement";
+import { loader as dashboardLoader } from "./pages/dashboard/DashboardLayout";
+// import { action as addJobAction } from "./pages/dashboard/AddJob";
+// import { loader as allJobsLoader } from "./pages/dashboard/JobListing";
+// import { loader as editJobLoader } from "./pages/EditJob";
+// import { action as editJobAction } from "./pages/EditJob";
+// import { action as deleteJobAction } from "./pages/DeleteJob";
+// import { loader as adminLoader } from "./pages/Admin";
+// import { action as profileAction } from "./pages/Profile";
+// import { loader as statsLoader } from "./pages/Stats";
+// import ErrorElement from "./components/ErrorElement";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,42 +63,42 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <DashboardLayout queryClient={queryClient} />,
         loader: dashboardLoader(queryClient),
-        children: [
-          {
-            index: true,
-            element: <AddJob />,
-            action: addJobAction(queryClient),
-          },
-          {
-            path: "stats",
-            element: <Reports />,
-            loader: statsLoader(queryClient),
-            errorElement: <ErrorElement />,
-          },
-          {
-            path: "all-jobs",
-            element: <AllJobs />,
-            loader: allJobsLoader(queryClient),
-            errorElement: <ErrorElement />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
-            action: profileAction(queryClient),
-          },
-          {
-            path: "admin",
-            element: <Admin />,
-            loader: adminLoader,
-          },
-          {
-            path: "edit-job/:id",
-            element: <EditJob />,
-            loader: editJobLoader(queryClient),
-            action: editJobAction(queryClient),
-          },
-          { path: "delete-job/:id", action: deleteJobAction(queryClient) },
-        ],
+        // children: [
+        //   {
+        //     index: true,
+        //     element: <AddJob />,
+        //     action: addJobAction(queryClient),
+        //   },
+        //   {
+        //     path: "stats",
+        //     element: <Reports />,
+        //     loader: statsLoader(queryClient),
+        //     errorElement: <ErrorElement />,
+        //   },
+        //   {
+        //     path: "all-jobs",
+        //     element: <AllJobs />,
+        //     loader: allJobsLoader(queryClient),
+        //     errorElement: <ErrorElement />,
+        //   },
+        //   {
+        //     path: "profile",
+        //     element: <Profile />,
+        //     action: profileAction(queryClient),
+        //   },
+        //   {
+        //     path: "admin",
+        //     element: <Admin />,
+        //     loader: adminLoader,
+        //   },
+        //   {
+        //     path: "edit-job/:id",
+        //     element: <EditJob />,
+        //     loader: editJobLoader(queryClient),
+        //     action: editJobAction(queryClient),
+        //   },
+        //   { path: "delete-job/:id", action: deleteJobAction(queryClient) },
+        // ],
       },
     ],
   },

@@ -2,6 +2,7 @@ import Badge from "./Badge"
 import Modal from "./Modal"
 import Search from "./Search"
 import JobCard from "./JobCard"
+import Loading from "./Loading"
 import BarChart from "./BarChart"
 import FormField from "./FormField"
 import Pagination from "./Pagination"
@@ -16,6 +17,7 @@ import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 export {
     Badge,
     Modal,
+    Loading,
     Search,
     JobCard,
     BarChart,

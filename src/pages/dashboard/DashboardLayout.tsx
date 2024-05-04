@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
-import { BigSidebar, Navbar, SmallSidebar, Loading } from "../components";
+import { DesktopSideBar, MobileSideBar } from "../../components";
 import { createContext, useContext, useEffect, useState } from "react";
 import fetchJson from "../../utils/fetchJson";
 import { toast } from "react-hot-toast";
@@ -69,16 +69,19 @@ const DashboardLayout = ({ queryClient }) => {
         logoutUser,
       }}
     >
-      <main className="dashboard">
-        <SmallSidebar />
-        <BigSidebar />
-        <div>
-          <Navbar />
-          <div className="dashboard-page">
-            {isPageLoading ? <Loading /> : <Outlet context={{ user }} />}
-          </div>
-        </div>
-      </main>
+      <MobileSideBar user={user} sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+
+      <DesktopSideBar user={user} />
+
+      {modalIsOpen && <Modal />}
+
+      <div className="flex flex-col flex-1 md:pl-64 bg-greyish dark:bg-rich-black">
+        <HamburgerNav setSidebarOpen={setSidebarOpen} />
+        <main className="relative flex-1 min-h-screen p-4 px-10 py-10 md:pt-20">
+          {isPageLoading ? <Loading /> : <Outlet context={{ user }} />}
+        </main>
+      </div>
+
     </DashboardContext.Provider>
   );
 };

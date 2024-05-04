@@ -1,51 +1,22 @@
-import  { useState } from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useDispatch, useSelector } from 'react-redux'
-import { FormField, SectionWrapper, FormSelect, MultiSelect } from '../../components'
-import { setSelection, clearValues, createJob, updateJob } from '../../store/jobSlice'
+import { FormField, SectionWrapper, FormSelect, MultiSelect, SubmitButton } from '../../components'
+import { useNavigation, useOutletContext } from 'react-router-dom';
+import { User } from '../../interfaces/user';
 
-
+interface IProps {
+    user: User
+}
 const AddJob = () => {
-    const {
-        isEdit,
-        skills,
-        status,
-        editId,
-        company,
-        location,
-        position,
-        statusType,
-        positionType
-    } = useSelector(state => state.job)
-    const dispatch = useDispatch()
-    const [value, setValue] = useState([])
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if (isEdit) {
-            //@Todo => adding {jobLocation,position} to updateJob
-            dispatch(updateJob({ jobId: editId, job: { company, status } }))
-            return
-        }
-        if (skills.length === 0) {
-            toast.error("Please add skills")
-            return
-        }
-        dispatch(createJob({ company, jobLocation: location, position, status, skills }))
-        setValue([])
-    }
-
+    const navigation = useNavigation();
+    const { user } = useOutletContext<IProps>();
+    const isEdit = false
+    const isSubmitting = navigation.state === "submitting";
     const handleClearValues = () => {
-        dispatch(clearValues())
-        setValue([])
-    }
-    const handleInputChange = (e:ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target
-        dispatch(setSelection({ name, value }))
     }
     return (
-        <SectionWrapper title={`${ isEdit ? "Edit Job" : "Add Job" }`}>
-            <form onSubmit={handleSubmit}>
+        <SectionWrapper title={`${isEdit ? "Edit Job" : "Add Job"}`}>
+            <form method='POST'>
                 <div className="mt-5 rounded-lg shadow-md dark:shadow-xl">
                     <div className="px-4 py-5 bg-white dark:bg-eerie-black sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
@@ -54,8 +25,7 @@ const AddJob = () => {
                                 <FormField
                                     id="company"
                                     label="company"
-                                    value={company}
-                                    onChange={handleInputChange}
+                                    defaultValue=''
                                     name="company"
                                     type="text"
                                 >
@@ -66,8 +36,7 @@ const AddJob = () => {
                                 <FormField
                                     id="location"
                                     label="job location"
-                                    value={location}
-                                    onChange={handleInputChange}
+                                    defaultValue=''
                                     name="location"
                                     type="text"
                                 >
@@ -80,10 +49,10 @@ const AddJob = () => {
                                         <FormSelect
                                             id="status"
                                             label="status Type"
-                                            value={status}
-                                            list={statusType}
-                                            onChange={handleInputChange}
+                                            value={""}
+                                            list={[""]}
                                             name="status"
+                                            onChange={(e) => null}
                                         >
                                         </FormSelect>
                                     </div>
@@ -92,10 +61,10 @@ const AddJob = () => {
                                         <FormSelect
                                             id="position"
                                             label="position Type"
-                                            value={position}
-                                            list={positionType}
-                                            onChange={handleInputChange}
+                                            value={""}
+                                            list={[""]}
                                             name="position"
+                                            onChange={(e) => null}
                                         >
                                         </FormSelect>
                                     </div>
@@ -103,7 +72,7 @@ const AddJob = () => {
                             </div>
 
                             <div className="col-span-6 md:col-span-3 ">
-                                <h3 className="block text-sm font-medium text-gray-600 capitalize dark:text-jet mb-1">Skills</h3>
+                                <h3 className="block mb-1 text-sm font-medium text-gray-600 capitalize dark:text-jet">Skills</h3>
                                 <MultiSelect value={value} setValue={setValue} />
                             </div>
                         </div>
@@ -120,13 +89,11 @@ const AddJob = () => {
                             </button>
 
                         </div>
-                        <div>
-                            <button
-                                type="submit"
-                                className="inline-flex justify-center px-6 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cornflower-300 hover:bg-cornflower-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Submit
-                            </button>
+                        <div className='  className="inline-flex justify-center px-6 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cornflower-300 hover:bg-cornflower-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"'>
+                            <SubmitButton
+                                name="Submit"
+                                isSubmitting={isSubmitting}
+                            />
                         </div>
                     </div>
 

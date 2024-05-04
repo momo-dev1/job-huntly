@@ -1,52 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { LogoIcon } from "../assets";
-import { loginUser } from "../store/userSlice";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, redirect, useNavigation } from "react-router-dom";
 import { FormField, SubmitButton, FormWrapper } from "../components";
-import { RootState } from "../store"; // Assuming you have a store type
+import fetchJson from "../utils/fetchJson";
 
 interface FormFields {
   email: string;
   password: string;
 }
 
-const Login: React.FC = () => {
-  const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((state: RootState) => state.user);
-  const navigate = useNavigate();
-  const [formFields, setFormFields] = useState<FormFields>({
-    email: "",
-    password: "",
-  });
-  const isInvalid = formFields.email === "" || formFields.password === "";
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormFields((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (isInvalid) {
-      toast.error("Please fill out all fields");
-      return;
-    }
-    dispatch(loginUser(formFields));
-  };
-
-  useEffect(() => {
-    if (user) {
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
-    }
-  }, [user, navigate]);
-
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    await fetchJson.get("/auth/login", data);
+    toast.success("Login successful!");
+    return redirect("/");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return null;
+  }
+};
+const Login = () => {
+ const navigation = useNavigation();
+ const isSubmitting = navigation.state === "submitting";
+ 
   return (
     <FormWrapper>
       <div className="mt-8 sm:mx-auto min-w-[400px] max-w-[600px] px-7">
@@ -54,12 +33,11 @@ const Login: React.FC = () => {
           <div className="flex items-center justify-center flex-shrink-0 ">
             <LogoIcon classes="w-52" />
           </div>
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+          <form method=""  className="mt-8 space-y-6">
             <FormField
               id="email"
               label="Email address"
-              value={formFields.email}
-              onChange={handleInputChange}
+              defaultValue=""
               name="email"
               type="email"
             />
@@ -67,16 +45,14 @@ const Login: React.FC = () => {
             <FormField
               id="password"
               label="password"
-              value={formFields.password}
-              onChange={handleInputChange}
+              defaultValue=""
               name="password"
               type="password"
             />
 
             <SubmitButton
               name="Log In"
-              isInvalid={isInvalid}
-              isLoading={isLoading}
+              isSubmitting={isSubmitting}
             />
           </form>
 
