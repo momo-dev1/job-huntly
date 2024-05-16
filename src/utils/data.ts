@@ -1,16 +1,18 @@
 import {
-    ChartBarIcon,
+    // ChartBarIcon,
     BriefcaseIcon,
     UserCircleIcon,
     PlusCircleIcon,
+    CogIcon,
 } from '@heroicons/react/outline'
 import { INavigationItem, ISkillOption, ISkill } from "../interfaces/data"
 
 export const navigation: INavigationItem[] = [
-    { name: 'Job Listing', path: 'job-listing', icon: BriefcaseIcon },
-    { name: 'Add Job', path: 'add-job', icon: PlusCircleIcon },
-    { name: 'Profile', path: 'profile', icon: UserCircleIcon },
-    { name: 'Reports', path: 'reports', icon: ChartBarIcon },
+    { name: 'Add Job', path: '/dashboard', icon: PlusCircleIcon },
+    { name: 'Jobs List', path: '/dashboard/jobs-list', icon: BriefcaseIcon },
+    { name: 'Profile', path: 'profile', icon: UserCircleIcon  },
+    { name: 'Admin', path: '/dashboard/admin', icon: CogIcon },
+    // { name: 'Reports', path: 'reports', icon: ChartBarIcon },
 ]
 
 export const skillOptions: ISkillOption[] = [

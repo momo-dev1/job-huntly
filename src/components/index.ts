@@ -1,26 +1,24 @@
-import Badge from "./Badge"
-import Modal from "./Modal"
+import Badge from "./Badge.tsx"
 import Search from "./Search"
-import JobCard from "./JobCard"
-import Loading from "./Loading"
-import BarChart from "./BarChart"
-import FormField from "./FormField"
-import Pagination from "./Pagination"
-import FormSelect from "./FormSelect"
-import MultiSelect from "./MultiSelect"
-import FormWrapper from "./FormWrapper"
-import SubmitButton from "./SubmitButton"
-import ProgressChart from "./ProgressChart"
-import SectionWrapper from "./SectionWrapper"
+import JobCard from "./JobCard.tsx"
+import Loading from "./Loading.tsx"
+// import BarChart from "./BarChart.tsx"
+import FormField from "./FormField.tsx"
+import Pagination from "./Pagination.tsx"
+import FormSelect from "./FormSelect.tsx"
+import MultiSelect from "./MultiSelect.tsx"
+import FormWrapper from "./FormWrapper.tsx"
+import SubmitButton from "./SubmitButton.tsx"
+// import ProgressChart from "./ProgressChart.tsx"
+import SectionWrapper from "./SectionWrapper.tsx"
 import { DesktopSideBar, MobileSideBar, HamburgerNav } from "./SideBar"
 
 export {
     Badge,
-    Modal,
     Loading,
     Search,
     JobCard,
-    BarChart,
+    // BarChart,
     FormField,
     FormSelect,
     Pagination,
@@ -28,7 +26,7 @@ export {
     FormWrapper,
     HamburgerNav,
     SubmitButton,
-    ProgressChart,
+    // ProgressChart,
     MobileSideBar,
     DesktopSideBar,
     SectionWrapper,

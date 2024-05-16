@@ -1,45 +1,31 @@
-import React from "react";
-import { Fragment, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
 import ToggleButton from "../ToggleButton";
 import { LogoIcon } from "../../assets";
 import { navigation } from "../../utils/data";
-import { clearStore } from "../../store/userSlice";
-import { useDispatch } from "react-redux";
 import { LogoutIcon, XIcon } from "@heroicons/react/outline";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import toast from "react-hot-toast";
+import { useDashboardContext } from "../../pages/dashboard/DashboardLayout";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
-  const [signOut, setSignOut] = useState(false);
-  const location = useLocation();
-  const dispatch = useDispatch();
-
+function MobileSideBar() {
+  const { user, showSidebar, setShowSidebar } = useDashboardContext();
   const handleSignOut = () => {
-    setSignOut(true);
     toast.success(`GoodBye ${user?.username}`);
   };
-  useEffect(() => {
-    if (signOut) {
-      const timeOut = setTimeout(() => {
-        dispatch(clearStore());
-      }, 1500);
-      return () => clearTimeout(timeOut);
-    }
-  }, [signOut, dispatch]);
 
   return (
-    <Transition.Root show={sidebarOpen} as={Fragment}>
+    <Transition show={showSidebar} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 z-40 flex md:hidden "
-        onClose={setSidebarOpen}
+        onClose={() => setShowSidebar(false)}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
           enterFrom="opacity-0"
@@ -48,9 +34,9 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75 " />
-        </Transition.Child>
-        <Transition.Child
+          {/* <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75 " /> */}
+        </TransitionChild>
+        <TransitionChild
           as={Fragment}
           enter="transition ease-in-out duration-300 transform"
           enterFrom="-translate-x-full"
@@ -60,7 +46,7 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
           leaveTo="-translate-x-full"
         >
           <div className="relative flex flex-col flex-1 w-full max-w-xs bg-white dark:bg-eerie-black">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-in-out duration-300"
               enterFrom="opacity-0"
@@ -73,13 +59,13 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
                 <button
                   type="button"
                   className="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => setShowSidebar(false)}
                 >
                   <span className="sr-only">Close sidebar</span>
                   <XIcon className="w-6 h-6 text-white" aria-hidden="true" />
                 </button>
               </div>
-            </Transition.Child>
+            </TransitionChild>
             <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4 ">
                 <LogoIcon classes="w-40" />
@@ -141,12 +127,12 @@ function MobileSideBar({ user, sidebarOpen, setSidebarOpen }) {
               </Link>
             </div>
           </div>
-        </Transition.Child>
+        </TransitionChild>
         <div className="flex-shrink-0 w-14">
           {/* Force sidebar to shrink to fit close icon */}
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   );
 }
 

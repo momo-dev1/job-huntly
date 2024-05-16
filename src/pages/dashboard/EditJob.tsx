@@ -3,48 +3,70 @@ import {
   FormField,
   SectionWrapper,
   FormSelect,
-  MultiSelect,
   SubmitButton,
+  MultiSelect,
 } from "../../components";
 import {
   Form,
   Link,
   redirect,
+  useLoaderData,
   useNavigation,
-  useOutletContext,
 } from "react-router-dom";
-import { User } from "../../interfaces";
 import { JOB_STATUS, JOB_POSITION, JOB_TYPE } from "../../utils/constants";
 import fetchJson from "../../utils/fetchJson";
-import { QueryClient } from "@tanstack/react-query";
+import { useQuery, QueryClient } from "@tanstack/react-query";
 
-interface IProps {
-  user: User;
-}
+const singleJobQuery = (id) => {
+  return {
+    queryKey: ["job", id],
+    queryFn: async () => {
+      const { data } = await fetchJson.get(`/jobs/${id}`);
+      return data;
+    },
+  };
+};
+
+export const loader =
+  (queryClient: QueryClient) =>
+  async ({ params }) => {
+    try {
+      await queryClient.ensureQueryData(singleJobQuery(params.id));
+      return params.id;
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return redirect("/dashboard/jobs-list");
+    }
+  };
 
 export const action =
   (queryClient: QueryClient) =>
-  async ({ request }) => {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
-    data.skills = formData.getAll("skills");
+  async ({ request, params }) => {
     try {
-      await fetchJson.post("/jobs", { ...data });
+      const formData = await request.formData();
+      const data = Object.fromEntries(formData);
+      data.skills = formData.getAll("skills");
+      await fetchJson.patch(`/jobs/${params.id}`, {
+        ...data,
+      });
       queryClient.invalidateQueries(["jobs"]);
-      toast.success("Job created!");
-      return redirect("jobs-list");
+      toast.success("Job Edited!");
+      return redirect("/dashboard/jobs-list");
     } catch (error) {
       toast.error(error?.response?.data?.msg);
-      return null;
+      return error;
     }
   };
-const AddJob = () => {
+const EditJob = () => {
+  const id = useLoaderData();
+  const {
+    data: { job },
+  } = useQuery(singleJobQuery(id));
   const navigation = useNavigation();
-  const { user } = useOutletContext<IProps>();
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <SectionWrapper title="Add Job">
+    <SectionWrapper title="Edit Job">
       <Form method="POST">
         <div className="mt-5 rounded-lg shadow-md dark:shadow-xl">
           <div className="px-4 py-5 bg-white dark:bg-eerie-black sm:p-6">
@@ -53,7 +75,7 @@ const AddJob = () => {
                 <FormField
                   id="company"
                   label="company"
-                  defaultValue=""
+                  defaultValue={job.company}
                   name="company"
                   type="text"
                 />
@@ -63,7 +85,7 @@ const AddJob = () => {
                 <FormField
                   id="location"
                   label="job location"
-                  defaultValue={user.location}
+                  defaultValue={job.location}
                   name="location"
                   type="text"
                 />
@@ -74,7 +96,7 @@ const AddJob = () => {
                   <div className="col-span-1">
                     <FormSelect
                       label="status Type"
-                      defaultValue={JOB_STATUS.PENDING}
+                      defaultValue={job.jobStatus}
                       list={Object.values(JOB_STATUS)}
                       name="jobStatus"
                     />
@@ -83,7 +105,7 @@ const AddJob = () => {
                   <div className="col-span-1">
                     <FormSelect
                       label="position Type"
-                      defaultValue={JOB_POSITION.INTERN}
+                      defaultValue={job.position}
                       list={Object.values(JOB_POSITION)}
                       name="position"
                     />
@@ -91,7 +113,7 @@ const AddJob = () => {
                   <div className="col-span-1">
                     <FormSelect
                       label="job Type"
-                      defaultValue={JOB_TYPE.FULL_TIME}
+                      defaultValue={job.jobType}
                       list={Object.values(JOB_TYPE)}
                       name="jobType"
                     />
@@ -103,7 +125,7 @@ const AddJob = () => {
                 <h3 className="block mb-1 text-sm font-medium text-gray-600 capitalize dark:text-jet">
                   Skills
                 </h3>
-                <MultiSelect name="skills" defaultValue={"javascript"} />
+                <MultiSelect name="skills" defaultValue={job.skills} />
               </div>
             </div>
           </div>
@@ -111,13 +133,14 @@ const AddJob = () => {
           <div className="flex items-center justify-end gap-2 p-4 dark:bg-eerie-black/40">
             <div>
               <Link
-                to="../dashboard"
+                to={`../edit-job/${job._id}`}
                 type="button"
                 className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-gray-400 border border-transparent rounded-md shadow-sm hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Clear
               </Link>
             </div>
+
             <SubmitButton name="Submit" isSubmitting={isSubmitting} />
           </div>
         </div>
@@ -126,4 +149,4 @@ const AddJob = () => {
   );
 };
 
-export default AddJob;
+export default EditJob;

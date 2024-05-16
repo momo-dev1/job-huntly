@@ -1,31 +1,50 @@
-import React from "react";
 import toast from "react-hot-toast";
 import { LogoIcon } from "../assets";
-import { Link, redirect, useNavigation } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { FormField, SubmitButton, FormWrapper } from "../components";
 import fetchJson from "../utils/fetchJson";
+import { QueryClient } from "@tanstack/react-query";
 
-interface FormFields {
-  email: string;
-  password: string;
-}
-
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  try {
-    await fetchJson.get("/auth/login", data);
-    toast.success("Login successful!");
-    return redirect("/");
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return null;
-  }
-};
+export const action =
+  (queryClient: QueryClient) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    try {
+      await fetchJson.post("/auth/login", data);
+      queryClient.invalidateQueries();
+      toast.success("Login successful!");
+      return redirect("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return null;
+    }
+  };
 const Login = () => {
- const navigation = useNavigation();
- const isSubmitting = navigation.state === "submitting";
- 
+  const navigation = useNavigation();
+  const navigate = useNavigate();
+  const isSubmitting = navigation.state === "submitting";
+
+  const loginDemoUser = async () => {
+    const data = {
+      email: "test@test.com",
+      password: "test1234",
+    };
+    try {
+      await fetchJson.post("/auth/login", data);
+      toast.success("Take a test drive");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+    }
+  };
+
   return (
     <FormWrapper>
       <div className="mt-8 sm:mx-auto min-w-[400px] max-w-[600px] px-7">
@@ -33,7 +52,7 @@ const Login = () => {
           <div className="flex items-center justify-center flex-shrink-0 ">
             <LogoIcon classes="w-52" />
           </div>
-          <form method=""  className="mt-8 space-y-6">
+          <Form method="POST" className="mt-8 space-y-6">
             <FormField
               id="email"
               label="Email address"
@@ -50,11 +69,15 @@ const Login = () => {
               type="password"
             />
 
-            <SubmitButton
-              name="Log In"
-              isSubmitting={isSubmitting}
-            />
-          </form>
+            <SubmitButton name="Log In" isSubmitting={isSubmitting} />
+            <button
+              type="button"
+              className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white duration-200 bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-500 bg-blue-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              onClick={loginDemoUser}
+            >
+              explore the app
+            </button>
+          </Form>
 
           <div>
             <div className="mt-2 text-sm text-left text-blue-600">
