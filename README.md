@@ -32,11 +32,13 @@ My motivations in building this project were to showcase what I've learned so fa
 
 ### Client - 
 - React
+- TypeScript
 - TailwindCss
 - React Charts
 - React Select
 - React-Router-Dom (actions & loader)
 - React Router Dom
+
 ### Server - 
 - Node.js
 - Express
