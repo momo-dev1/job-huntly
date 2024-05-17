@@ -11,7 +11,7 @@ import FormWrapper from "./FormWrapper.tsx"
 import SubmitButton from "./SubmitButton.tsx"
 import ProgressChart from "./ProgressChart.tsx"
 import SectionWrapper from "./SectionWrapper.tsx"
-import { DesktopSideBar,SideBar ,HamburgerNav } from "./SideBar"
+import SideBar from "./SideBar.tsx"
 
 export {
     Badge,
@@ -25,9 +25,7 @@ export {
     Pagination,
     MultiSelect,
     FormWrapper,
-    HamburgerNav,
     SubmitButton,
     ProgressChart,
-    DesktopSideBar,
     SectionWrapper,
 }

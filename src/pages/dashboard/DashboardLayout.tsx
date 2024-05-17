@@ -1,9 +1,5 @@
 import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
-import {
-  DesktopSideBar,
-  Loading,
-  // SideBar,
-} from "../../components";
+import { Loading, SideBar } from "../../components";
 import {
   createContext,
   useCallback,
@@ -92,9 +88,7 @@ const DashboardLayout = ({ queryClient }) => {
         logoutUser,
       }}
     >
-      {/* <SideBar /> */}
-
-      <DesktopSideBar />
+      <SideBar />
 
       <div className="flex flex-col flex-1 md:pl-64 bg-greyish dark:bg-rich-black">
         <main className="relative flex-1 min-h-[calc(100vh-64px)] p-4 px-10 py-10 md:pt-20">

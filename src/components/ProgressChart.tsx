@@ -6,9 +6,7 @@ const ProgressChart = ({ statsArray, colorKey }) => {
       <div className="flex items-center justify-between w-full mb-3 font-semibold md:text-xl text-md">
         <h3 className="dark:text-jet">My Active jobs</h3>
         <Link to="/dashboard/jobs-list">
-          <h3 className="text-cornflower-300 hover:text-cornflower-400 ">
-            See all jobs
-          </h3>
+          <h3 className="text-blue-300 hover:text-blue-400 ">See all jobs</h3>
         </Link>
       </div>
 

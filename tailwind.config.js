@@ -12,10 +12,6 @@ export default {
         "jet": "#bcbbc3",
         "greyish": "#edeef03b",
         "bar": "#49494c",
-        "cornflower": {
-          300: "#7a8dec",
-          400: "#6781dc"
-        }
       },
       fontFamily: {
         sans: ['Rubik', "sans-serif"]

@@ -30,7 +30,7 @@ function DesktopSideBar() {
                   key={item.name}
                   to={item.path}
                   className={classNames(
-                    "group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md text-gray-600 dark:text-jet hover:bg-cornflower-300/30 dark:hover:bg-rich-black"
+                    "group flex items-center px-2 py-2 text-sm md:text-lg font-medium rounded-md text-gray-600 dark:text-jet hover:bg-blue-300/30 dark:hover:bg-rich-black"
                   )}
                 >
                   <span className="flex items-center duration-300 group-hover:translate-x-2">
