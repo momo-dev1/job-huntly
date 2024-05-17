@@ -6,7 +6,7 @@ export { default as HomeLayout } from "./HomeLayout";
 
 export { default as AddJob } from "./dashboard/AddJob";
 export { default as EditJob } from "./dashboard/EditJob";
-// export { default as Reports } from "./dashboard/Reports";
+export { default as Reports } from "./dashboard/Reports";
 export { default as Admin } from "./dashboard/Admin";
 export { default as Profile } from "./dashboard/Profile";
 export { default as JobListing } from "./dashboard/JobListing";

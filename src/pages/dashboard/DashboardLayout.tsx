@@ -1,5 +1,9 @@
 import { Outlet, redirect, useNavigate, useNavigation } from "react-router-dom";
-import { DesktopSideBar, Loading, MobileSideBar } from "../../components";
+import {
+  DesktopSideBar,
+  Loading,
+  // SideBar,
+} from "../../components";
 import {
   createContext,
   useCallback,
@@ -88,13 +92,12 @@ const DashboardLayout = ({ queryClient }) => {
         logoutUser,
       }}
     >
-      <MobileSideBar />
+      {/* <SideBar /> */}
 
       <DesktopSideBar />
 
       <div className="flex flex-col flex-1 md:pl-64 bg-greyish dark:bg-rich-black">
-        <MobileSideBar />
-        <main className="relative flex-1 min-h-screen p-4 px-10 py-10 md:pt-20">
+        <main className="relative flex-1 min-h-[calc(100vh-64px)] p-4 px-10 py-10 md:pt-20">
           {isPageLoading ? <Loading /> : <Outlet context={{ user }} />}
         </main>
       </div>

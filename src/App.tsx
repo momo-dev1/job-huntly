@@ -11,7 +11,7 @@ import {
   EditJob,
   JobListing,
   Profile,
-  // Reports,
+  Reports,
   Admin,
   Error,
 } from "./pages";
@@ -26,7 +26,7 @@ import { action as editJobAction } from "./pages/dashboard/EditJob";
 import { action as deleteJobAction } from "./pages/dashboard/DeleteJob";
 import { loader as adminLoader } from "./pages/dashboard/Admin";
 import { action as profileAction } from "./pages/dashboard/Profile";
-// import { loader as statsLoader } from "./pages/dashboardStats";
+import { loader as statsLoader } from "./pages/dashboard/Reports";
 import ErrorElement from "./components/ErrorElement";
 
 const queryClient = new QueryClient({
@@ -67,12 +67,12 @@ const router = createBrowserRouter([
             element: <AddJob />,
             action: addJobAction(queryClient),
           },
-          //   {
-          //     path: "stats",
-          //     element: <Reports />,
-          //     loader: statsLoader(queryClient),
-          //     errorElement: <ErrorElement />,
-          //   },
+          {
+            path: "stats",
+            element: <Reports />,
+            loader: statsLoader(queryClient),
+            errorElement: <ErrorElement />,
+          },
           {
             path: "jobs-list",
             element: <JobListing />,

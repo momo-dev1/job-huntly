@@ -1,5 +1,5 @@
 import {
-    // ChartBarIcon,
+    ChartBarIcon,
     BriefcaseIcon,
     UserCircleIcon,
     PlusCircleIcon,
@@ -10,9 +10,9 @@ import { INavigationItem, ISkillOption, ISkill } from "../interfaces/data"
 export const navigation: INavigationItem[] = [
     { name: 'Add Job', path: '/dashboard', icon: PlusCircleIcon },
     { name: 'Jobs List', path: '/dashboard/jobs-list', icon: BriefcaseIcon },
-    { name: 'Profile', path: 'profile', icon: UserCircleIcon  },
+    { name: 'Profile', path: '/dashboard/profile', icon: UserCircleIcon  },
     { name: 'Admin', path: '/dashboard/admin', icon: CogIcon },
-    // { name: 'Reports', path: 'reports', icon: ChartBarIcon },
+    { name: 'Reports', path: '/dashboard/stats', icon: ChartBarIcon },
 ]
 
 export const skillOptions: ISkillOption[] = [

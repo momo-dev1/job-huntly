@@ -1,5 +1,3 @@
-import React from "react";
-
 const FormWrapper = ({ children }) => {
   return (
     <div className="relative flex items-center justify-center bg-gray-200 ">

@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "./logo.png";
 import heroImg from "./hero.jpg";
 
@@ -9,7 +8,7 @@ export const LogoIcon = ({ classes }) => {
 export const HeroImg = () => {
   return (
     <img
-      className="h-full w-full object-cover rounded-2xl"
+      className="object-cover w-full h-full rounded-2xl"
       src={heroImg}
       alt="hero img"
     />

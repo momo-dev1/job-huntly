@@ -1,4 +1,3 @@
-import React from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -21,7 +20,7 @@ const Paginitaion = ({ numberOfPages, currentPage }) => {
     if (newPage > numberOfPages) newPage = 1;
     handlePageChange(newPage);
   };
-  
+
   const prevBtn = () => {
     let newPage = currentPage - 1;
     if (newPage < 1) newPage = numberOfPages;

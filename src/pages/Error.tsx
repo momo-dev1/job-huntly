@@ -1,11 +1,16 @@
 import { Link, useRouteError } from "react-router-dom";
 
+interface RouteError {
+  status: number;
+  // include other properties as needed
+}
+
 const Error = () => {
-  const error = useRouteError();
+  const error = useRouteError() as RouteError;
   if (error.status === 404) {
     return (
       <div className="overflow-hidden ">
-        <div className="flex flex-col items-center justify-center gap-16 px-6  lg:flex-row py-28 md:px-24 md:py-20 lg:py-32 lg:gap-28">
+        <div className="flex flex-col items-center justify-center gap-16 px-6 lg:flex-row py-28 md:px-24 md:py-20 lg:py-32 lg:gap-28">
           <div className="w-full lg:w-1/2">
             <img
               className="mx-auto"

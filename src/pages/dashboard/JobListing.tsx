@@ -41,7 +41,6 @@ const JobListing = () => {
   const {
     data: { jobCounts, numOfPages, currentPage, jobs },
   } = useQuery(allJobsQuery(searchValues));
-
   const navigation = useNavigation();
   const isPageLoading = navigation.state === "loading";
   return (

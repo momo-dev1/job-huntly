@@ -1,60 +1,76 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { ProgressChart, BarChart } from "../../components";
+import { QueryClient, useQuery } from "@tanstack/react-query";
+import { ProgressChart, BarChart } from "../../components";
+import fetchJson from "../../utils/fetchJson";
 
-// const Reports = () => {
-//   const dispatch = useDispatch();
+const statsQuery = {
+  queryKey: ["stats"],
+  queryFn: async () => {
+    const response = await fetchJson.get("/jobs/stats");
+    return response.data;
+  },
+};
 
-//   function getPrecentage(value: number) {
-//     return (value / totalStats) * 100;
-//   }
+export const loader = (queryClient: QueryClient) => async () => {
+  const data = await queryClient.ensureQueryData(statsQuery);
+  return data;
+};
 
-//   const statsArray = [
-//     {
-//       state: "applied",
-//       count: stats.applied,
-//       percentage: getPrecentage(stats.applied) + "%",
-//     },
-//     {
-//       state: "pending",
-//       count: stats.pending,
-//       percentage: getPrecentage(stats.pending) + "%",
-//     },
-//     {
-//       state: "interview",
-//       count: stats.interview,
-//       percentage: getPrecentage(stats.interview) + "%",
-//     },
-//     {
-//       state: "hired",
-//       count: stats.hired,
-//       percentage: getPrecentage(stats.hired) + "%",
-//     },
-//     {
-//       state: "rejected",
-//       count: stats.rejected,
-//       percentage: getPrecentage(stats.rejected) + "%",
-//     },
-//   ];
+const Reports = () => {
+  const { data } = useQuery(statsQuery);
+  const { defaultStats, monthlyApplications } = data;
 
-//   const colorKey = {
-//     applied: "#06b6d4",
-//     pending: "#eab308",
-//     interview: "#3b82f6",
-//     hired: "#22c55e",
-//     rejected: "#ef4444",
-//   };
+  const totalStats = Object.values(defaultStats).reduce(
+    (sum: number, value: number) => sum + value,
+    0
+  ) as number;
 
-//   useEffect(() => {
-//     dispatch(getStats());
-//   }, [dispatch]);
+  function getPrecentage(value: number) {
+    return (value / totalStats) * 100;
+  }
 
-//   return (
-//     <>
-//       <ProgressChart colorKey={colorKey} statsArray={statsArray} />
-//       <BarChart chartData={monthlyApplications} />
-//     </>
-//   );
-// };
+  const statsArray = [
+    {
+      state: "applied",
+      count: defaultStats.applied,
+      percentage: getPrecentage(defaultStats.applied) + "%",
+    },
+    {
+      state: "pending",
+      count: defaultStats.pending,
+      percentage: getPrecentage(defaultStats.pending) + "%",
+    },
+    {
+      state: "interview",
+      count: defaultStats.interview,
+      percentage: getPrecentage(defaultStats.interview) + "%",
+    },
+    {
+      state: "hired",
+      count: defaultStats.hired,
+      percentage: getPrecentage(defaultStats.hired) + "%",
+    },
+    {
+      state: "rejected",
+      count: defaultStats.rejected,
+      percentage: getPrecentage(defaultStats.rejected) + "%",
+    },
+  ];
+  console.log(statsArray);
 
-// export default Reports;
+  const colorKey = {
+    applied: "#06b6d4",
+    pending: "#eab308",
+    interview: "#3b82f6",
+    hired: "#22c55e",
+    rejected: "#ef4444",
+  };
+
+  return (
+    <>
+      <ProgressChart colorKey={colorKey} statsArray={statsArray} />
+      <BarChart chartData={monthlyApplications} />
+    </>
+  );
+};
+
+export default Reports;

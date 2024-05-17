@@ -64,11 +64,6 @@ function DesktopSideBar() {
                   <p className="font-medium text-gray-700 capitalize text-md dark:text-jet">
                     {user?.username}
                   </p>
-                  <Link to="/profile">
-                    <p className="text-xs font-medium text-gray-500">
-                      View profile
-                    </p>
-                  </Link>
                 </div>
                 <LogoutIcon
                   onClick={logoutUser}
