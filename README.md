@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="src/assets/logo.png" width="250px"/> 
+<img src="/client/src/assets/logo.png" width="250px"/> 
 </h1>
 
 <br /> 
@@ -9,11 +9,9 @@
 A MERN STACK app built with React that allows you to track the status of your job applications.You can find a list of [features](#features) and [technologies used](#technologies-used) below.
 
 ### Showcase
-The GIF does not show all the features of the project.
+The Video does not show all the features of the project.
 <br /> 
 
-
-![](/src/assets/preview.gif)
 
 ## Performance
 I let [Google Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk) run over my app to check for **performance, accessibility, best practices, and SEO optimization** You can view the results right below this paragraph.
