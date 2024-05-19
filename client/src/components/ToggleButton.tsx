@@ -1,21 +1,34 @@
+import { useState } from "react";
 import useDarkMode from "../hooks/useDarkMode";
 import { SunIcon, MoonIcon } from "@heroicons/react/outline";
 
 const ToggleButton = () => {
   const [colorTheme, theme, setTheme] = useDarkMode();
-  const isChecked = theme === "light" ? false : true;
+  const [isChecked, setIsChecked] = useState(theme === "light" ? false : true);
+
+  const handleClick = () => {
+    setTheme(colorTheme);
+    setIsChecked(!isChecked);
+  };
+
   return (
-    <div className="flex flex-col items-center mx-auto">
+    <div className="flex flex-col items-center">
       <div className="relative rounded-full shadow-sm cursor-pointer">
-        {theme === "dark" ? (
-          <MoonIcon className="w-5 h-5 m-1.5 text-gray-200 absolute rounded-full " />
+        {theme === "light" ? (
+          <SunIcon
+            className="w-5 h-5 m-1.5 text-yellow-300 absolute rounded-full z-10 right-0"
+            onClick={handleClick}
+          />
         ) : (
-          <SunIcon className="w-5 h-5 m-1.5 text-yellow-300 absolute rounded-full right-0" />
+          <MoonIcon
+            className="w-5 h-5 m-1.5 text-gray-200 absolute rounded-full z-10 left-0"
+            onClick={handleClick}
+          />
         )}
 
         <input
-          defaultChecked={isChecked}
-          onClick={() => setTheme(colorTheme)}
+          checked={isChecked}
+          onChange={handleClick}
           type="checkbox"
           name="toggle"
           id="toggle"

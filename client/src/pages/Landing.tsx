@@ -1,21 +1,27 @@
 import { Link } from "react-router-dom";
 import { LogoIcon, HeroImg } from "../assets";
+import Footer from "../components/Footer";
+import FAQ from "../components/FAQ";
+import ToggleButton from "../components/ToggleButton";
 
 const Landing = () => {
   return (
     <>
-      <section className="container mx-auto">
-        <header>
-          <nav className="px-5 py-3">
-            <div className="flex items-center flex-shrink-0 px-4">
-              <LogoIcon classes="w-32 xl:w-52" />
+      <section className="container mx-auto dark:bg-eerie-black ">
+        <header className="sticky inset-0 z-50 bg-white shadow-md dark:shadow-2xl dark:bg-eerie-black">
+          <nav className="flex items-center justify-between w-full px-4 py-3 lg:px-10">
+            <div className="flex items-center flex-shrink-0">
+              <LogoIcon classes="h-16" />
+            </div>
+            <div className="lg:mr-10">
+              <ToggleButton />
             </div>
           </nav>
         </header>
 
         {/* hero */}
-        <main className="relative p-4">
-          <div className="absolute inset-x-0 bottom-0 h-1/2 " />
+        <main className="relative px-5 py-16 lg:px-10">
+          <div className="absolute inset-x-0 bottom-0 h-1/2" />
           <div className="mx-auto sm:px-6 lg:px-8">
             <div className="relative shadow-xl rounded-2xl sm:overflow-hidden">
               <div className="absolute inset-0">
@@ -29,10 +35,11 @@ const Landing = () => {
                     job application
                   </span>
                 </h1>
-                <p className="max-w-lg mx-auto mt-6 text-xl text-center text-indigo-200 sm:max-w-3xl">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                  occaecat fugiat aliqua.
+                <p className="max-w-lg mx-auto mt-6 text-sm text-center text-indigo-200 lg:text-xl sm:max-w-3xl">
+                  Stay updated with our job application tracker. It provides
+                  real-time status of your applications, sending timely updates
+                  and notifications. From interview calls to offer letters, it
+                  keeps you informed, streamlining the process
                 </p>
                 <div className="max-w-sm mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
                   <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
@@ -54,6 +61,12 @@ const Landing = () => {
             </div>
           </div>
         </main>
+
+        {/* Faq */}
+        <FAQ />
+
+        {/* Footer */}
+        <Footer />
       </section>
     </>
   );
