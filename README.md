@@ -8,11 +8,6 @@
 ### Short Description
 A MERN STACK app built with React that allows you to track the status of your job applications.You can find a list of [features](#features) and [technologies used](#technologies-used) below.
 
-### Api
-📡 [Show API](https://github.com/momo-dev1/Node-js-APIs/tree/main/job-api) . Click "Show API" to open it.
-
-
-
 ### Showcase
 The GIF does not show all the features of the project.
 <br /> 
