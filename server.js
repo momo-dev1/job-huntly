@@ -40,6 +40,9 @@ app.use("/api/v2/jobs", authenticateUser, jobRouter);
 app.use("/api/v2/users", authenticateUser, userRouter);
 app.use("/api/v2/auth", authRouter);
 
+app.use("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/dist','index.html'));
+});
 
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "not found" });
