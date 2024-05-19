@@ -14,7 +14,7 @@ const allJobsQuery = (params: ISearchParams) => {
       type ?? "all",
       status ?? "all",
       position ?? "all",
-      sort ?? "newest",
+      sort ?? "latest",
       page ?? 1,
     ],
     queryFn: async () => {

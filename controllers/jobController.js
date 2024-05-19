@@ -49,7 +49,7 @@ const getAllJobs = async (req, res) => {
       result = result.sort("-company");
       break;
     default:
-      result = result;
+      result = result.sort("-createdAt");;
   }
 
   const page = +req.query.page || 1;

@@ -22,7 +22,7 @@ export const JOB_STATUS = {
 };
 
 export const JOB_SORT_BY = {
-  NEWEST_FIRST: "newest",
+  NEWEST_FIRST: "latest",
   OLDEST_FIRST: "oldest",
   ASCENDING: "a-z",
   DESCENDING: "z-a",
