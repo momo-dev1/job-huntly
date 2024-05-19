@@ -48,7 +48,7 @@ const Login = () => {
   return (
     <FormWrapper>
       <div className="mt-8 sm:mx-auto min-w-[400px] max-w-[600px] px-7">
-        <div className="px-6 py-8 bg-white shadow max-w-[400px] rounded-lg">
+        <div className="px-6 py-8 bg-white dark:bg-eerie-black shadow max-w-[400px] rounded-lg">
           <div className="flex items-center justify-center flex-shrink-0 ">
             <LogoIcon classes="w-52" />
           </div>
@@ -88,7 +88,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow mx-7 sm:px-10 ">
+      <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow dark:text-jet dark:bg-eerie-black mx-7 sm:px-10 ">
         Need an account?
         <Link to="/register">
           <span className="ml-2 text-blue-600 cursor-pointer">Register</span>

@@ -24,7 +24,7 @@ const Register = () => {
   return (
     <FormWrapper>
       <div className="mt-8 sm:mx-auto sm:w-full max-w-[600px] px-7">
-        <div className="px-6 py-8 bg-white shadow max-w-[400px] rounded-lg">
+        <div className="px-6 py-8 bg-white dark:bg-eerie-black shadow max-w-[400px] rounded-lg">
           <div className="flex items-center justify-center flex-shrink-0">
             <LogoIcon classes="w-52" />
           </div>
@@ -65,14 +65,14 @@ const Register = () => {
           </Form>
 
           <div className="mt-5 text-center text-md">
-            <div className="w-full mx-auto font-medium text-gray-600">
+            <div className="w-full mx-auto font-medium text-gray-600 dark:text-jet">
               By signing up, you agree to our Terms , Data Policy and Cookies
               Policy.
             </div>
           </div>
         </div>
       </div>
-      <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow mx-7 sm:px-10 ">
+      <div className="py-4 mt-3 font-semibold text-center text-gray-600 bg-white rounded-lg shadow dark:bg-eerie-black dark:text-jet mx-7 sm:px-10 ">
         Have an account?
         <Link to="/login">
           <span className="ml-2 text-blue-600 cursor-pointer">Log In</span>
