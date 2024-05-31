@@ -11,6 +11,7 @@ A MERN STACK app built with React that allows you to track the status of your jo
 ### Showcase
 The Video does not show all the features of the project.
 <br /> 
+
 https://github.com/momo-dev1/job-huntly/assets/57541594/d7869882-d57e-47ae-ab88-91f475e032dd
 
 
